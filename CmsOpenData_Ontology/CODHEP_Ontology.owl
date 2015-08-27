@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/pablodecm/ontologies/2014/2/SFHEP#"
+     xml:base="http://www.semanticweb.org/pablodecm/ontologies/2014/2/SFHEP"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.purl.org/sfhep/sfhep"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#hasFormat -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#hasFormat">
+        <rdfs:domain rdf:resource="http://www.purl.org/sfhep/sfhep#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#AOD_DataSet -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#AOD_DataSet">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#DataSet"/>
+        <rdfs:comment>File containing information about a set of physics events in the AOD format, which is a subset of RECO. Events include reconstructed objects (tracks, vertices, jets, electrons, muons, etc.) and possible small quantities of very localised hit information.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#Boson_PhysicsObject -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Boson_PhysicsObject">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#DataSet -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#DataSet">
+        <rdfs:comment>A dataset is a file containing information (e.g. list of tracks, momentum, high-level reconstructed objects) about a set of physics collision events recorded from the detector or simulated. Data is classified in Tiers depending on what types of data the events contain. Dataset labels usually contain a list of tier labels indicating what data they contain eg. RAW, GEN, SIM, RECO, A dataset might  be a general collection or a more restricted set of events selected using certain filter settings for specific studies. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#Electron_Lepton -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Electron_Lepton">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#Lepton_PhysicsObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#Event -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Event">
+        <rdfs:comment xml:lang="en">An event is a set of signals in the detector resulting from one or several coincident particle collisions (pile up). It might be measured with the actual detector or produced by a simulation program. The signals can be raw or derived/processed.
+
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#Lepton_PhysicsObject -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Lepton_PhysicsObject">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#Muon_Lepton -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Muon_Lepton">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#Lepton_PhysicsObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#PhysicsAnalysis -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#PhysicsAnalysis"/>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#PhysicsObject -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#PhysicsObject"/>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#RAW_DataSet -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#RAW_DataSet">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#DataSet"/>
+        <rdfs:comment>File containing information about a set of physics events in the RAW format. Events include the detector data after online formatting, the L1 trigger result, the result of the HLT selections (HLT trigger bits) and potentially some of the higher level quantities calculated during HLT processing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#RECO_DataSet -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#RECO_DataSet">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#DataSet"/>
+        <rdfs:comment>File containing information about a set of physics events in the RECO format, that is, with reconstructed objects (tracks, vertices, jets, electrons, muons, etc.) and reconstructed hits/clusters.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
