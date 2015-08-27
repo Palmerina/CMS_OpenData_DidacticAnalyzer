@@ -108,6 +108,14 @@
     
 
 
+    <!-- http://www.purl.org/sfhep/sfhep#NTuples_DataSet -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#NTuples_DataSet">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#DataSet"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.purl.org/sfhep/sfhep#PhysicsAnalysis -->
 
     <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#PhysicsAnalysis"/>
