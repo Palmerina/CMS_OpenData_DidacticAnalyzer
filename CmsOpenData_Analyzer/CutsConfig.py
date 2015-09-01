@@ -29,4 +29,8 @@ class CutsConfig(object):
 		self.dB_min = dB_min # cm. dB=impact parameter
 		#normChi2_max = 10
 		self.isolation = isolation #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
+<<<<<<< HEAD
 		#SIP variable
+=======
+		#SIP variable?
+>>>>>>> 99aa6b109d672ca3c4df52eb5a73dd5f4596431c
