@@ -37,6 +37,8 @@ isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = máxima en
 
 cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_min, isolation)
 
-analyzer = TwoMuonAnalyzer(cutsConfig, data_files)
+analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the TwoMuonAnalyzer class
 
-analyzer.eventLoop()
+analyzer.process()
+analyzer.plotter()
+
