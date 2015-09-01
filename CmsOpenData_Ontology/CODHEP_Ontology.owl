@@ -30,9 +30,156 @@
     
 
 
-    <!-- http://www.purl.org/sfhep/sfhep#hasFormat -->
+    <!-- http://www.purl.org/sfhep/sfhep#Analysis_Property -->
 
-    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#hasFormat"/>
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#Analysis_Property"/>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#Data_Property -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#Data_Property">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#PhysicsObject_Property -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_Energy -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_Energy">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_Eta -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_Eta">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_Flavour -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_Flavour">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_Format -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_Format">
+        <rdfs:range rdf:resource="http://www.purl.org/sfhep/sfhep#AOD_DataSet"/>
+        <rdfs:domain rdf:resource="http://www.purl.org/sfhep/sfhep#DataSet"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#Data_Property"/>
+        <rdfs:range rdf:resource="http://www.purl.org/sfhep/sfhep#Patuples_DataSet"/>
+        <rdfs:range rdf:resource="http://www.purl.org/sfhep/sfhep#RAW_DataSet"/>
+        <rdfs:range rdf:resource="http://www.purl.org/sfhep/sfhep#RECO_DataSet"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_Mass -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_Mass">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_NumberOfHits -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_NumberOfHits">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#Analysis_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_Statistics -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_Statistics">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#Analysis_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_dB -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_dB">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_p4 -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_p4">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_pdgID -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_pdgID">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_pt -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_pt">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_px -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_px">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_py -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_py">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_pz -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_pz">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#has_spin -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#has_spin">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject_Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#is_Located -->
+
+    <owl:ObjectProperty rdf:about="http://www.purl.org/sfhep/sfhep#is_Located">
+        <rdfs:subPropertyOf rdf:resource="http://www.purl.org/sfhep/sfhep#Data_Property"/>
+    </owl:ObjectProperty>
     
 
 
@@ -66,6 +213,14 @@
 
     <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Boson_PhysicsObject">
         <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#PhysicsObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#DAPF -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#DAPF">
+        <rdfs:comment>Data Analysis Preservation Framework</rdfs:comment>
     </owl:Class>
     
 
@@ -108,6 +263,14 @@
     
 
 
+    <!-- http://www.purl.org/sfhep/sfhep#PathReconstruction_Analysis -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#PathReconstruction_Analysis">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#Analysis"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.purl.org/sfhep/sfhep#Patuples_DataSet -->
 
     <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Patuples_DataSet">
@@ -120,6 +283,14 @@
 
     <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#PhysicsObject">
         <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#Events"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#Primary_Vertex -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Primary_Vertex">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#Vertex"/>
     </owl:Class>
     
 
@@ -142,10 +313,34 @@
     
 
 
+    <!-- http://www.purl.org/sfhep/sfhep#Restrinction_Analysis -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Restrinction_Analysis">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#Analysis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#Secondary_Vertex -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Secondary_Vertex">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#Vertex"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.purl.org/sfhep/sfhep#Vertex -->
 
     <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Vertex">
         <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#Events"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.purl.org/sfhep/sfhep#Z_Boson -->
+
+    <owl:Class rdf:about="http://www.purl.org/sfhep/sfhep#Z_Boson">
+        <rdfs:subClassOf rdf:resource="http://www.purl.org/sfhep/sfhep#Boson_PhysicsObject"/>
     </owl:Class>
 </rdf:RDF>
 
