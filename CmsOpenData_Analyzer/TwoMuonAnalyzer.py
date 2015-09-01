@@ -18,6 +18,8 @@ import ROOT
 from LeptonPair import LeptonPair #class LeptonPair inside LeptonPair.py
 from DataFormats.FWLite import Events, Handle
 from CutsConfig import CutsConfig
+import numpy as np
+import matplotlib.pylab as P
 
 
 class TwoMuonAnalyzer(object):
@@ -31,6 +33,7 @@ class TwoMuonAnalyzer(object):
         self.vertexHandle = Handle('std::vector<reco::Vertex>')
         self.cutsConfig = cutsConfig
         self.events = Events(data_files)
+        self.zMass = []
 
     def getMuons(self, event):
 
@@ -92,29 +95,60 @@ class TwoMuonAnalyzer(object):
 
 	def plotter(self):
 
+		# the histogram of the data with histtype='step'
+		P.figure()
+		P.hist(self.zMass, 50, normed=1, histtype='stepfilled')
+		P.show(block = False)
 
-	def eventLoop(self, maxEv = 100):
 
+
+	def process(self, maxEv = 100):
+
+		selectedMuons = []
+		zCandidates = []
 
 		for event in self.events:
 
 			muons = self.getMuons(event)
 			vertex = self.getVertex(event)
 
-			selectedMuons = self.selectMuons(muon, vertex) # it applies the cutsConfig
+			for muon in muons: # it applies the cutsConfig
+
+				if self.selectMuons(muon, vertex) == True:
+					selectedMuons.append(muon)
+				else:
+					continue 
 
 			numMuons = len(selectedMuons)
 			if selectedMuons < 2: continue
 
 			for outer in xrange(numMuons-1): #outer loop
-				outerMuon=muons[outer]
+				outerMuon=selectedMuons[outer]
 
 				for inner in xrange(outer+1, numMuons): #inner loop
-					innerMuon=muons[inner]
+					innerMuon=selectedMuons[inner]
 
 					if outerMuon.charge() * innerMuon.charge() >= 0:
 						continue
 
-					p4 = LeptonPair(innerMuon, outerMuon)
+					muPair = LeptonPair(innerMuon, outerMuon) #sum of the four-momentums of both muons
 
 					#zmassHist.Fill(p4.M())
+
+					if not (muPair.mass() > 12 and muPair.mass() < 120):
+						continue
+
+					zCandidates.append(muPair)
+
+					
+			if len(zCandidates) == 0: 
+				continue
+
+			# picks the zCandidate with the bes mass (the one closer to 91.118 GeV/c**2)
+			sortedZs = sorted(zCandidates, key=lambda x: abs(x.mass() - 91.118)) 
+
+			z = sortedZs[0]
+
+			self.zMass.append(z.mass())
+
+		# self.plotter()---> execute.py
