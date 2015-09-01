@@ -26,89 +26,90 @@ class TwoMuonAnalyzer(object):
 	"""
 	Ni zorra
 	"""
-
+	
 	def __init__(self, cutsConfig, data_files):
 
-        self.muonHandle = Handle('std::vector<pat::Muon>')
-        self.vertexHandle = Handle('std::vector<reco::Vertex>')
-        self.cutsConfig = cutsConfig
-        self.events = Events(data_files)
-        self.zMass = []
+		self.muonHandle = Handle('std::vector<pat::Muon>')
+		self.vertexHandle = Handle('std::vector<reco::Vertex>')	
+		self.cutsConfig = cutsConfig
+		self.events = Events(data_files)
+		self.zMass = []
 
-    def getMuons(self, event):
+	def getMuons(self, event):
 
-        event.getByLabel('patMuons', self.muonHandle)
-        muons = muonHandle.product()
-        return muons
+		event.getByLabel('patMuons', self.muonHandle)
+		muons = self.muonHandle.product()
+		return muons
 
 	def getVertex(self, event):
 
-        event.getByLabel('offlinePrimaryVertices', self.vertexHandle)
-        vertex = vertexHandle.product()[0] #it only takes the first element which corresponds to the primary vertex
-        return vertex
+		event.getByLabel('offlinePrimaryVertices', self.vertexHandle)
+		vertex = self.vertexHandle.product()[0] #it only takes the first element which corresponds to the primary vertex
+		return vertex
 
 
-	def selectMuons(self, muon, vertex): #muon=getMuons(), vertex=getVertex()
-
-		#The muon must be detected by both the tracker and the muon chambers
+	def selectMuons(self, muon, vertex):
+        #muon=getMuons(), vertex=getVertex()
+	#The muon must be detected by both the tracker and the muon chambers
 		if not (muon.isGlobalMuon() and muon.isTrackerMuon()):
-            return False
+		    return False
 
-        # Minimum transverse momentum (pt) and maximum eta angle
-        if muon.pt() < cutsConfig.pt_min or abs(muon.eta()) > cutsConfig.eta_max:
-            return False
+		# Minimum transverse momentum (pt) and maximum eta angle
+		if muon.pt() < self.cutsConfig.pt_min or abs(muon.eta()) > self.cutsConfig.eta_max:
+		    return False
 
-        # Maximum distance of the muon respect to the vertex
-        if abs(muon.vertex().z() - vertex.z()) > cutsConfig.distance:
-            return False
+		# Maximum distance of the muon respect to the vertex
+		if abs(muon.vertex().z() - vertex.z()) > self.cutsConfig.distance:
+	       	    return False
 
-        # Maximum impact parameter
-        if muon.dB(muon.PV3D) > cutsConfig.dB_min:
-            return False
+	       	# Maximum impact parameter
+	       	if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
+	       	    return False
 
-        
-        # I_trk + I_ECAL + I_HCAL
-        # sumPt = suma de los momentos transversos
-        # emEt = electromagnetic energy
-        # hadEt = hadronic energy
 
-        # Maximum energy content in that region before consider the "muon" as a jet of particles
-        if (muon.isolationR03().sumPt +
-                muon.isolationR03().emEt +
-                muon.isolationR03().hadEt) / muon.pt() > cutsConfig.isolation:
-            return False
+	       	# I_trk + I_ECAL + I_HCAL
+	       	# sumPt = suma de los momentos transversos
+	       	# emEt = electromagnetic energy
+	       	# hadEt = hadronic energy
+		# Maximum energy content in that region before consider the "muon" as a jet of particles
+	       	if (muon.isolationR03().sumPt +
+	       		muon.isolationR03().emEt +
+				muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
+	       	    return False
 
-        # muon SIP variable # Symmetrized Impact Parameter in 2010?
-        if (muon.dB(muon.PV3D) / muon.edB(muon.PV3D)) > 4:
-            return False
+	       	# muon SIP variable # Symmetrized Impact Parameter in 2010?
+	       	if (muon.dB(muon.PV3D) / muon.edB(muon.PV3D)) > 4:
+	       	    return False
+	    
+	       	# Maximum chi2
+	       	if muon.normChi2() > 10:
+	       	    return False
 
-        # Maximum chi2
-        if muon.normChi2() > 10:
-            return False
+	       	# Minimum number of hits
+	       	if muon.numberOfValidHits() < 10:
+	       	    return False
 
-        # Minimum number of hits
-        if muon.numberOfValidHits() < 10:
-            return False
-
-        return True
+	       	return True
 
 
 	def plotter(self):
-
-		# the histogram of the data with histtype='step'
-		P.figure()
-		P.hist(self.zMass, 50, normed=1, histtype='stepfilled')
+	# the histogram of the data with histtype='step'
+       		P.figure()
+       		P.hist(self.zMass, 50, normed=1, histtype='stepfilled')
 		P.show(block = False)
 
 
 
 	def process(self, maxEv = 100):
 
-		selectedMuons = []
-		zCandidates = []
-
-		for event in self.events:
-
+		for N, event in enumerate(self.events):
+			
+			selectedMuons = []
+			zCandidates = []
+ 
+			if maxEv>=0 and (N+1)>=maxEv:
+				break
+			
 			muons = self.getMuons(event)
 			vertex = self.getVertex(event)
 
@@ -140,7 +141,7 @@ class TwoMuonAnalyzer(object):
 
 					zCandidates.append(muPair)
 
-					
+
 			if len(zCandidates) == 0: 
 				continue
 
@@ -151,4 +152,4 @@ class TwoMuonAnalyzer(object):
 
 			self.zMass.append(z.mass())
 
-		# self.plotter()---> execute.py
+				# self.plotter()---> execute.py
