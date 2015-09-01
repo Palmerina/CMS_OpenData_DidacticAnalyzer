@@ -32,7 +32,7 @@ eta_max = 2.4
 distance = 0.2
 dB_min = 0.02 # cm. dB=impact parameter
 #normChi2_max = 10
-isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = máxima energía antes de considerarlo como un jet de partículas.
+isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
 #SIP variable?
 
 cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_min, isolation)
