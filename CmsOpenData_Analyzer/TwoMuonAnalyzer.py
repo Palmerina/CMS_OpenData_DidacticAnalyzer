@@ -37,7 +37,6 @@ class TwoMuonAnalyzer(object):
 
 	def getMuons(self, event):
 
-<<<<<<< HEAD
 		event.getByLabel('patMuons', self.muonHandle)
 		muons = self.muonHandle.product()
 		return muons
@@ -47,7 +46,6 @@ class TwoMuonAnalyzer(object):
 		event.getByLabel('offlinePrimaryVertices', self.vertexHandle)
 		vertex = self.vertexHandle.product()[0] #it only takes the first element which corresponds to the primary vertex
 		return vertex
-=======
         event.getByLabel('patMuons', self.muonHandle)
         muons = self.muonHandle.product()
         return muons
@@ -58,7 +56,6 @@ class TwoMuonAnalyzer(object):
         vertex = self.vertexHandle.product()[0] #it only takes the first element which corresponds to the primary vertex
         return vertex
 
->>>>>>> 99aa6b109d672ca3c4df52eb5a73dd5f4596431c
 
 
 	def selectMuons(self, muon, vertex):
@@ -66,8 +63,7 @@ class TwoMuonAnalyzer(object):
 	#The muon must be detected by both the tracker and the muon chambers
 		if not (muon.isGlobalMuon() and muon.isTrackerMuon()):
 		    return False
-
-<<<<<<< HEAD
+	
 		# Minimum transverse momentum (pt) and maximum eta angle
 		if muon.pt() < self.cutsConfig.pt_min or abs(muon.eta()) > self.cutsConfig.eta_max:
 		    return False
@@ -79,7 +75,7 @@ class TwoMuonAnalyzer(object):
 	       	# Maximum impact parameter
 	       	if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
 	       	    return False
-=======
+
         # Minimum transverse momentum (pt) and maximum eta angle
         if muon.pt() < self.cutsConfig.pt_min or abs(muon.eta()) > self.cutsConfig.eta_max:
             return False
@@ -91,26 +87,21 @@ class TwoMuonAnalyzer(object):
         # Maximum impact parameter
         if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
             return False
->>>>>>> 99aa6b109d672ca3c4df52eb5a73dd5f4596431c
 
 
-<<<<<<< HEAD
 	       	# I_trk + I_ECAL + I_HCAL
 	       	# sumPt = suma de los momentos transversos
 	       	# emEt = electromagnetic energy
 	       	# hadEt = hadronic energy
-		# Maximum energy content in that region before consider the "muon" as a jet of particles
-	       	if (muon.isolationR03().sumPt +
-	       		muon.isolationR03().emEt +
-				muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
-	       	    return False
-=======
+		# Maximum energy content in that region before consider the "muon" as a jet of particle
+	if (muon.isolationR03().sumPt + muon.isolationR03().emEt + muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
+		return False
+
         # Maximum energy content in that region before consider the "muon" as a jet of particles
         if (muon.isolationR03().sumPt +
                 muon.isolationR03().emEt +
                 muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
             return False
->>>>>>> 99aa6b109d672ca3c4df52eb5a73dd5f4596431c
 
 	       	# muon SIP variable # Symmetrized Impact Parameter in 2010?
 	       	if (muon.dB(muon.PV3D) / muon.edB(muon.PV3D)) > 4:
@@ -137,7 +128,6 @@ class TwoMuonAnalyzer(object):
 
 	def process(self, maxEv = 100):
 
-<<<<<<< HEAD
 		for N, event in enumerate(self.events):
 			
 			selectedMuons = []
@@ -146,7 +136,7 @@ class TwoMuonAnalyzer(object):
 			if maxEv>=0 and (N+1)>=maxEv:
 				break
 			
-=======
+
 
 		for N, event in enumerate(self.events):
 
@@ -156,7 +146,6 @@ class TwoMuonAnalyzer(object):
 			selectedMuons = []
 			zCandidates = []
 
->>>>>>> 99aa6b109d672ca3c4df52eb5a73dd5f4596431c
 			muons = self.getMuons(event)
 			vertex = self.getVertex(event)
 
