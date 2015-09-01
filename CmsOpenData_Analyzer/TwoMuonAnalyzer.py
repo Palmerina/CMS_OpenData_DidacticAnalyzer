@@ -38,13 +38,13 @@ class TwoMuonAnalyzer(object):
     def getMuons(self, event):
 
         event.getByLabel('patMuons', self.muonHandle)
-        muons = muonHandle.product()
+        muons = self.muonHandle.product()
         return muons
 
 	def getVertex(self, event):
 
         event.getByLabel('offlinePrimaryVertices', self.vertexHandle)
-        vertex = vertexHandle.product()[0] #it only takes the first element which corresponds to the primary vertex
+        vertex = self.vertexHandle.product()[0] #it only takes the first element which corresponds to the primary vertex
         return vertex
 
 
@@ -55,15 +55,15 @@ class TwoMuonAnalyzer(object):
             return False
 
         # Minimum transverse momentum (pt) and maximum eta angle
-        if muon.pt() < cutsConfig.pt_min or abs(muon.eta()) > cutsConfig.eta_max:
+        if muon.pt() < self.cutsConfig.pt_min or abs(muon.eta()) > self.cutsConfig.eta_max:
             return False
 
         # Maximum distance of the muon respect to the vertex
-        if abs(muon.vertex().z() - vertex.z()) > cutsConfig.distance:
+        if abs(muon.vertex().z() - vertex.z()) > self.cutsConfig.distance:
             return False
 
         # Maximum impact parameter
-        if muon.dB(muon.PV3D) > cutsConfig.dB_min:
+        if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
             return False
 
         
@@ -75,7 +75,7 @@ class TwoMuonAnalyzer(object):
         # Maximum energy content in that region before consider the "muon" as a jet of particles
         if (muon.isolationR03().sumPt +
                 muon.isolationR03().emEt +
-                muon.isolationR03().hadEt) / muon.pt() > cutsConfig.isolation:
+                muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
             return False
 
         # muon SIP variable # Symmetrized Impact Parameter in 2010?
@@ -104,10 +104,14 @@ class TwoMuonAnalyzer(object):
 
 	def process(self, maxEv = 100):
 
-		selectedMuons = []
-		zCandidates = []
 
-		for event in self.events:
+		for N, event in enumerate(self.events):
+
+			if maxEv >= 0 and (N + 1) >= maxEv:
+				break
+
+			selectedMuons = []
+			zCandidates = []
 
 			muons = self.getMuons(event)
 			vertex = self.getVertex(event)
