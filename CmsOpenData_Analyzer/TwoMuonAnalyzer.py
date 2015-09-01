@@ -46,17 +46,6 @@ class TwoMuonAnalyzer(object):
 		event.getByLabel('offlinePrimaryVertices', self.vertexHandle)
 		vertex = self.vertexHandle.product()[0] #it only takes the first element which corresponds to the primary vertex
 		return vertex
-        event.getByLabel('patMuons', self.muonHandle)
-        muons = self.muonHandle.product()
-        return muons
-
-	def getVertex(self, event):
-
-        event.getByLabel('offlinePrimaryVertices', self.vertexHandle)
-        vertex = self.vertexHandle.product()[0] #it only takes the first element which corresponds to the primary vertex
-        return vertex
-
-
 
 	def selectMuons(self, muon, vertex):
         #muon=getMuons(), vertex=getVertex()
