@@ -109,11 +109,11 @@ class TwoMuonAnalyzer(object):
 
 	def plotter(self):
 	# the histogram of the data with histtype='step'
-       		P.figure()
+       	# Estoy imprimiendo en pantalla zMass para ver que pinta tiene
+		print self.zMass 
+		P.figure()
        		P.hist(self.zMass, 50, normed=1, histtype='stepfilled')
 		P.show(block = False)
-
-
 
 	def process(self, maxEv = 100):
 
