@@ -1,23 +1,14 @@
-## This file is part of CMSOutreachExercise2010.
-## Copyright (C) 2014 Instituto de Fisica de Cantabria and CERN.
-## Based on the code of the CMSData Analysis School 2014 Long Exercise: 
-## Search for the Higgs in ZZ -> 4 leptons decay channel (available 
-## at https://github.com/bachtis/CMSDAS)
+# Name: execute.py
+#
+# CMS Open Data
+#
+# Description: 
+#
+# Returns: 
 
-## CMSOutreachExercise2010 is free software: you can redistribute it and/or modify
-## it under the terms of the GNU General Public License as published by
-## the Free Software Foundation, either version 3 of the License, or
-## (at your option) any later version.
-##
-## CMSOutreachExercise2010 is distributed in the hope that it will be useful,
-## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-## GNU General Public License for more details.
-
-## You should have received a copy of the GNU General Public License
-## along with CMSOutreachExercise2010. If not, see <http://www.gnu.org/licenses/>.
-
-#from OutreachExercise2010.DecaysToLeptons.Sample import Sample
+import ROOT
+from TwoMuonAnalyzer import TwoMuonAnalyzer
+from CutsConfig import CutsConfig
 
 data_files = [
         'root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/PATtuples/Mu_PAT_data_500files_1.root',
@@ -34,6 +25,18 @@ data_files = [
         'root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Electron/PATtuples/Electron_PAT_data_500files_6.root'
 ]
 
-#data = Sample('data', False, data_files, 1)
+#Estos son los valores para los cortes que cambiarán los alumnos:
+# (metodo muonID):
+pt_min = 5 
+eta_max = 2.4
+distance = 0.2
+dB_min = 0.02 # cm. dB=impact parameter
+#normChi2_max = 10
+isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = máxima energía antes de considerarlo como un jet de partículas.
+#SIP variable?
 
-#sources = [data]
+cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_min, isolation)
+
+analyzer = TwoMuonAnalyzer(cutsConfig, data_files)
+
+analyzer.eventLoop()
