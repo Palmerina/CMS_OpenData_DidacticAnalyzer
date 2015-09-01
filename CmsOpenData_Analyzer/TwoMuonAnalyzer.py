@@ -62,31 +62,31 @@ class TwoMuonAnalyzer(object):
         #muon=getMuons(), vertex=getVertex()
 	#The muon must be detected by both the tracker and the muon chambers
 		if not (muon.isGlobalMuon() and muon.isTrackerMuon()):
-		    return False
+			return False
 	
 		# Minimum transverse momentum (pt) and maximum eta angle
 		if muon.pt() < self.cutsConfig.pt_min or abs(muon.eta()) > self.cutsConfig.eta_max:
-		    return False
+			return False
 
 		# Maximum distance of the muon respect to the vertex
 		if abs(muon.vertex().z() - vertex.z()) > self.cutsConfig.distance:
-	       	    return False
+	       		return False
 
 	       	# Maximum impact parameter
 	       	if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
-	       	    return False
+	       		return False
 
-        # Minimum transverse momentum (pt) and maximum eta angle
-        if muon.pt() < self.cutsConfig.pt_min or abs(muon.eta()) > self.cutsConfig.eta_max:
-            return False
-
-        # Maximum distance of the muon respect to the vertex
-        if abs(muon.vertex().z() - vertex.z()) > self.cutsConfig.distance:
-            return False
-
-        # Maximum impact parameter
-        if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
-            return False
+	        # Minimum transverse momentum (pt) and maximum eta angle
+	        if muon.pt() < self.cutsConfig.pt_min or abs(muon.eta()) > self.cutsConfig.eta_max:
+	        	return False
+	
+	        # Maximum distance of the muon respect to the vertex
+	        if abs(muon.vertex().z() - vertex.z()) > self.cutsConfig.distance:
+	        	return False
+	
+	        # Maximum impact parameter
+	        if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
+	        	return False
 
 
 	       	# I_trk + I_ECAL + I_HCAL
@@ -94,26 +94,26 @@ class TwoMuonAnalyzer(object):
 	       	# emEt = electromagnetic energy
 	       	# hadEt = hadronic energy
 		# Maximum energy content in that region before consider the "muon" as a jet of particle
-	if (muon.isolationR03().sumPt + muon.isolationR03().emEt + muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
-		return False
-
-        # Maximum energy content in that region before consider the "muon" as a jet of particles
-        if (muon.isolationR03().sumPt +
-                muon.isolationR03().emEt +
-                muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
-            return False
+		if (muon.isolationR03().sumPt + muon.isolationR03().emEt + muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
+			return False
+	
+	        # Maximum energy content in that region before consider the "muon" as a jet of particles
+	        if (muon.isolationR03().sumPt +
+	                muon.isolationR03().emEt +
+	                muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
+	            	return False
 
 	       	# muon SIP variable # Symmetrized Impact Parameter in 2010?
 	       	if (muon.dB(muon.PV3D) / muon.edB(muon.PV3D)) > 4:
-	       	    return False
+	       		return False
 	    
 	       	# Maximum chi2
 	       	if muon.normChi2() > 10:
-	       	    return False
+	       		return False
 
 	       	# Minimum number of hits
 	       	if muon.numberOfValidHits() < 10:
-	       	    return False
+	       		return False
 
 	       	return True
 
