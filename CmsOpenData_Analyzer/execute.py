@@ -25,7 +25,7 @@ data_files = [
         'root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Electron/PATtuples/Electron_PAT_data_500files_6.root'
 ]
 
-#Estos son los valores para los cortes que cambiarán los alumnos:
+#Estos son los valores para los cortes que cambiaran los alumnos:
 # (metodo muonID):
 pt_min = 5 
 eta_max = 2.4
