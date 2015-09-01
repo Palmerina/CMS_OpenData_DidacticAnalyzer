@@ -105,7 +105,10 @@ class TwoMuonAnalyzer(object):
 	def process(self, maxEv = 100):
 
 
-		for event in self.events:
+		for N, event in enumerate(self.events):
+
+			if maxEv >= 0 and (N + 1) >= maxEv:
+				break
 
 			selectedMuons = []
 			zCandidates = []
