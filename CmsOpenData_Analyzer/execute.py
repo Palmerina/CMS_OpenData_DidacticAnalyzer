@@ -9,6 +9,7 @@
 import ROOT
 from TwoMuonAnalyzer import TwoMuonAnalyzer
 from CutsConfig import CutsConfig
+import matplotlib.pyplot as P
 
 data_files = [
         'root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/PATtuples/Mu_PAT_data_500files_1.root',
@@ -40,5 +41,9 @@ cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_min, isolation)
 analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the TwoMuonAnalyzer class
 
 analyzer.process()
-analyzer.plotter()
+#analyzer.plotter()
+P.figure()
+P.hist(analyzer.zMass, 50, normed=1, histtype='stepfilled')
+P.show()
+
 
