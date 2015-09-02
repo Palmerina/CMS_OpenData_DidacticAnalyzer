@@ -18,7 +18,9 @@ import ROOT
 from LeptonPair import LeptonPair #class LeptonPair inside LeptonPair.py
 from DataFormats.FWLite import Events, Handle
 from CutsConfig import CutsConfig
-import numpy as np
+import numpy as n
+import matplotlib
+matplotlib.use('QT4agg')
 import matplotlib.pylab as P
 
 
@@ -72,12 +74,6 @@ class TwoMuonAnalyzer(object):
 		# Maximum energy content in that region before consider the "muon" as a jet of particle
 		if (muon.isolationR03().sumPt + muon.isolationR03().emEt + muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
 			return False
-	
-	        # Maximum energy content in that region before consider the "muon" as a jet of particles
-	        if (muon.isolationR03().sumPt +
-	                muon.isolationR03().emEt +
-	                muon.isolationR03().hadEt) / muon.pt() > self.cutsConfig.isolation:
-	            	return False
 
 	       	# muon SIP variable # Symmetrized Impact Parameter in 2010?
 	       	if (muon.dB(muon.PV3D) / muon.edB(muon.PV3D)) > 4:
@@ -93,11 +89,15 @@ class TwoMuonAnalyzer(object):
 
 	       	return True
 
+	def plotter(self):
 
-		
-       	
+		P.figure()
+		P.hist(self.zMass, bins = 10)
+		P.xlabel("Z mass (GeV/c2)")
+		P.ylabel("frequency")
+		P.show()
 
-	def process(self, maxEv = 10000):
+	def process(self, maxEv = 100000):
 
 
 		for N, event in enumerate(self.events):
@@ -150,5 +150,6 @@ class TwoMuonAnalyzer(object):
 			#z = LeptonPair(z)
 			#print z.mass()
 			self.zMass.append(z.mass())
-			print self.zMass
+			print z.mass()
 				# self.plotter()---> execute.py
+
