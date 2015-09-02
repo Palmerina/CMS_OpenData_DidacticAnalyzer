@@ -28,7 +28,6 @@ class TwoMuonAnalyzer(object):
 	"""
 	
 	def __init__(self, cutsConfig, data_files):
-
 		self.muonHandle = Handle('std::vector<pat::Muon>')
 		self.vertexHandle = Handle('std::vector<reco::Vertex>')	
 		self.cutsConfig = cutsConfig
@@ -65,18 +64,6 @@ class TwoMuonAnalyzer(object):
 	       	if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
 	       		return False
 
-	        # Minimum transverse momentum (pt) and maximum eta angle
-	        if muon.pt() < self.cutsConfig.pt_min or abs(muon.eta()) > self.cutsConfig.eta_max:
-	        	return False
-	
-	        # Maximum distance of the muon respect to the vertex
-	        if abs(muon.vertex().z() - vertex.z()) > self.cutsConfig.distance:
-	        	return False
-	
-	        # Maximum impact parameter
-	        if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
-	        	return False
-
 
 	       	# I_trk + I_ECAL + I_HCAL
 	       	# sumPt = suma de los momentos transversos
@@ -107,24 +94,10 @@ class TwoMuonAnalyzer(object):
 	       	return True
 
 
-	def plotter(self):
-	# the histogram of the data with histtype='step'
-       	# Estoy imprimiendo en pantalla zMass para ver que pinta tiene
-		print self.zMass 
-		P.figure()
-       		P.hist(self.zMass, 50, normed=1, histtype='stepfilled')
-		P.show(block = False)
+		
+       	
 
-	def process(self, maxEv = 100):
-
-		for N, event in enumerate(self.events):
-			
-			selectedMuons = []
-			zCandidates = []
- 
-			if maxEv>=0 and (N+1)>=maxEv:
-				break
-			
+	def process(self, maxEv = 10000):
 
 
 		for N, event in enumerate(self.events):
@@ -137,7 +110,8 @@ class TwoMuonAnalyzer(object):
 
 			muons = self.getMuons(event)
 			vertex = self.getVertex(event)
-
+			
+			
 			for muon in muons: # it applies the cutsConfig
 
 				if self.selectMuons(muon, vertex) == True:
@@ -158,10 +132,9 @@ class TwoMuonAnalyzer(object):
 						continue
 
 					muPair = LeptonPair(innerMuon, outerMuon) #sum of the four-momentums of both muons
+					
 
-					#zmassHist.Fill(p4.M())
-
-					if not (muPair.mass() > 12 and muPair.mass() < 120):
+					if not ((muPair.mass() > 12) and (muPair.mass() < 120)):
 						continue
 
 					zCandidates.append(muPair)
@@ -174,7 +147,8 @@ class TwoMuonAnalyzer(object):
 			sortedZs = sorted(zCandidates, key=lambda x: abs(x.mass() - 91.118)) 
 
 			z = sortedZs[0]
-
+			#z = LeptonPair(z)
+			#print z.mass()
 			self.zMass.append(z.mass())
-
+			print self.zMass
 				# self.plotter()---> execute.py
