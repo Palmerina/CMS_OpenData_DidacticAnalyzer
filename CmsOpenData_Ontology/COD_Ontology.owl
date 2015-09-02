@@ -31,16 +31,25 @@
         <Class IRI="#Boson"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#ChiSquared"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CmsDetectors"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#DAPF"/>
     </Declaration>
     <Declaration>
         <Class IRI="#DataSet"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Detectors"/>
+        <Class IRI="#ElectromagneticCalorimeter"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Events"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HadronicCalorimeter"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Lepton"/>
@@ -58,13 +67,16 @@
         <Class IRI="#PhysicsObject"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Primary"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#RAW"/>
     </Declaration>
     <Declaration>
         <Class IRI="#RECO"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Restrictions"/>
+        <Class IRI="#Second-Order"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Tracker"/>
@@ -76,22 +88,43 @@
         <Class IRI="#Vertex"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#DataSet"/>
+        <ObjectProperty IRI="#Analysis"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#DataSet_type"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Events"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#Restrictions"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#TracksReconstruction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Vertex_type"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#are_detected_in"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#are_reconstructed_as"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#has_Format"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has_Statistics"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#PhysicsObject"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#Restrictions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Distance"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#has_DistanceMax"/>
@@ -153,12 +186,24 @@
         <Class IRI="#PhysicsObject"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#ChiSquared"/>
+        <Class IRI="#TracksReconstruction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CmsDetectors"/>
+        <Class IRI="#Analysis"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#DataSet"/>
         <Class IRI="#Events"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Detectors"/>
-        <Class IRI="#Analysis"/>
+        <Class IRI="#ElectromagneticCalorimeter"/>
+        <Class IRI="#CmsDetectors"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HadronicCalorimeter"/>
+        <Class IRI="#CmsDetectors"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Lepton"/>
@@ -166,7 +211,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#MuonChambers"/>
-        <Class IRI="#Detectors"/>
+        <Class IRI="#CmsDetectors"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#ParticleCandidates"/>
@@ -181,6 +226,10 @@
         <Class IRI="#Events"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Primary"/>
+        <Class IRI="#Vertex"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#RAW"/>
         <Class IRI="#DataSet"/>
     </SubClassOf>
@@ -189,12 +238,12 @@
         <Class IRI="#DataSet"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Restrictions"/>
-        <Class IRI="#Analysis"/>
+        <Class IRI="#Second-Order"/>
+        <Class IRI="#Vertex"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Tracker"/>
-        <Class IRI="#Detectors"/>
+        <Class IRI="#CmsDetectors"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TracksReconstruction"/>
@@ -205,23 +254,84 @@
         <Class IRI="#Events"/>
     </SubClassOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#DataSet_type"/>
+        <ObjectProperty IRI="#Events"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#Restrictions"/>
+        <ObjectProperty IRI="#Analysis"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#TracksReconstruction"/>
+        <ObjectProperty IRI="#Restrictions"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#Vertex_type"/>
+        <ObjectProperty IRI="#Events"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#are_detected_in"/>
         <ObjectProperty IRI="#Restrictions"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#are_reconstructed_as"/>
+        <ObjectProperty IRI="#Vertex_type"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#has_Format"/>
-        <ObjectProperty IRI="#DataSet"/>
+        <ObjectProperty IRI="#DataSet_type"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has_Statistics"/>
+        <ObjectProperty IRI="#TracksReconstruction"/>
     </SubObjectPropertyOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="#Vertex_type"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="#has_Format"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#has_Statistics"/>
     </FunctionalObjectProperty>
     <InverseFunctionalObjectProperty>
         <ObjectProperty IRI="#are_detected_in"/>
     </InverseFunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#are_reconstructed_as"/>
+    </InverseFunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Vertex_type"/>
+        <Class IRI="#Vertex"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#are_detected_in"/>
+        <Class IRI="#PhysicsObject"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#are_reconstructed_as"/>
+        <Class IRI="#Vertex"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#has_Format"/>
         <Class IRI="#DataSet"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has_Statistics"/>
+        <Class IRI="#TracksReconstruction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Vertex_type"/>
+        <Class IRI="#Primary"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Vertex_type"/>
+        <Class IRI="#Second-Order"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#are_detected_in"/>
+        <Class IRI="#CmsDetectors"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#has_Format"/>
         <Class IRI="#AOD"/>
@@ -238,6 +348,14 @@
         <ObjectProperty IRI="#has_Format"/>
         <Class IRI="#RECO"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has_Statistics"/>
+        <Class IRI="#ChiSquared"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Distance"/>
+        <DataProperty IRI="#PhysicsObject"/>
+    </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_DistanceMax"/>
         <DataProperty IRI="#Restrictions"/>
@@ -363,6 +481,14 @@
     <FunctionalDataProperty>
         <DataProperty IRI="#has_pz"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_DistanceMax"/>
+        <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_DistanceMax"/>
+        <Class IRI="#Vertex"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_Energy"/>
         <Class IRI="#PhysicsObject"/>
@@ -486,8 +612,23 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CmsDetectors</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Different components of the CMS detector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ElectromagneticCalorimeter</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Composed by scintillators that works providing the energy of electrons and photons</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Events</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Buscar definicion de Evento ---&gt; La señal recogida durante x periodo de tiempo tras producirse una serie de colisiones</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#HadronicCalorimeter</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Made of dense materials as brass that determines the path and energy of hadrons</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -508,6 +649,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Tracker</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Silicon detectors used to measure trajectories and momenta of charged particles</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_DistanceMax</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Maximum distance of the detected particle respect to the primary vertex</Literal>
     </AnnotationAssertion>
 </Ontology>
 
