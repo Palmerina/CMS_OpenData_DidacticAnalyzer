@@ -15,6 +15,8 @@ __maintainer__ = "Palmerina Gonzalez"
 __email__ = "pgi25@alumnos.unican.es"
 
 import ROOT
+import math
+import numpy as np
 
 class LeptonPair(object):
 
@@ -31,29 +33,31 @@ class LeptonPair(object):
 	 	#	self.py = l1.py()+l2.py()
 	 	#	self.pz = l1.pz()+l2.pz()
 	 	#	self.energy = l1.energy() + l2.energy() #GeV
-	 	#	self.squareP = l1.px() * l2.px() + l1.py() * l2.py() + l1.pz() * l2.pz() 
+	 		#self.squareP = l1.px() * l2.px() + l1.py() * l2.py() + l1.pz() * l2.pz() 
 			
 			self.p4 = ROOT.TLorentzVector(self.l1.px()+self.l2.px(), self.l1.py()+self.l2.py(), self.l1.pz()+self.l2.pz(),self.l1.energy()+self.l2.energy())
 
 	 	else:    #it is the Z boson
-	 	#	self.px = l1.px() # GeV/c
-	 	#	self.py = l1.py()
-	 	#	self.pz = l1.pz()
+	 		#self.px = l1.px() # GeV/c
+	 		#self.py = l1.py()
+	 		#self.pz = l1.pz()
 
 			self.p4 = ROOT.TLorentzVector(self.l1.px(), self.l1.py(), self.l1.pz(), self.l1.energy())
 
-	 	#	self.energy = l1.energy() # GeV
-	 	#	self.squareP = (self.px)**2 + (self.py)**2 + (self.pz)**2
-
+	 		#self.energy = l1.energy() # GeV
+	 		#self.squareP = np.power(self.px,2) + np.power(self.py,2) + np.power(self.pz,2)
+		#	print self.squareP
+			
 	 	#l.px(),l.py(),l.pz() and l.energy() are ROOT methods
 
 
 	def mass(self):
 	 	#invariant mass
-	 	#return sqrt(self.energy() - squareP) # in natural units (GeV/c**2)
+	 	#return np.sqrt(np.power(self.energy,2)-self.squareP) # in natural units (GeV/c**2)
 		return self.p4.M()
+		
 
 	def pt(self):
 	 	#Transverse momentum
-	 	#return sqrt((self.px)**2 + (self.py)**2)
+	 	#return math.sqrt(math.pow(self.px,2) + math.pow(self.py,2))
 	 	return self.p4.Pt()
