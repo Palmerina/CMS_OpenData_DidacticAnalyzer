@@ -46,22 +46,13 @@
         <Class IRI="#DataSet"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#ElectromagneticCalorimeter"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Events"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Goal_Particles"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#HadronicCalorimeter"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Lepton"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#MuonChambers"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Patuples"/>
@@ -82,9 +73,6 @@
         <Class IRI="#Second-Order"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Tracker"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#TracksReconstruction"/>
     </Declaration>
     <Declaration>
@@ -98,9 +86,6 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#Events"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Particles"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#Restrictions"/>
@@ -124,13 +109,13 @@
         <ObjectProperty IRI="#has_Statistics"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#is_type"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="#PhysicsObject"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#Restrictions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Charge"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#has_Distance"/>
@@ -187,10 +172,28 @@
         <DataProperty IRI="#has_pz"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#ElectromagneticCalorimeter"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Electron"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#HadronicCalorimeter"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Muon"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MuonChambers"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tracker"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Z"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="#AOD"/>
@@ -217,24 +220,12 @@
         <Class IRI="#Events"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#ElectromagneticCalorimeter"/>
-        <Class IRI="#CmsDetectors"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#Goal_Particles"/>
         <Class IRI="#Analysis"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#HadronicCalorimeter"/>
-        <Class IRI="#CmsDetectors"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#Lepton"/>
         <Class IRI="#PhysicsObject"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#MuonChambers"/>
-        <Class IRI="#CmsDetectors"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Patuples"/>
@@ -261,10 +252,6 @@
         <Class IRI="#Vertex"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Tracker"/>
-        <Class IRI="#CmsDetectors"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#TracksReconstruction"/>
         <Class IRI="#Analysis"/>
     </SubClassOf>
@@ -273,13 +260,70 @@
         <Class IRI="#Events"/>
     </SubClassOf>
     <ClassAssertion>
+        <Class IRI="#CmsDetectors"/>
+        <NamedIndividual IRI="#ElectromagneticCalorimeter"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Lepton"/>
         <NamedIndividual IRI="#Electron"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CmsDetectors"/>
+        <NamedIndividual IRI="#HadronicCalorimeter"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Lepton"/>
         <NamedIndividual IRI="#Muon"/>
     </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CmsDetectors"/>
+        <NamedIndividual IRI="#MuonChambers"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Candidates_Particles"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lepton"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CmsDetectors"/>
+        <NamedIndividual IRI="#Tracker"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Boson"/>
+        <NamedIndividual IRI="#Z"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Goal_Particles"/>
+        <NamedIndividual IRI="#Z"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#are_detected_in"/>
+        <NamedIndividual IRI="#Muon"/>
+        <NamedIndividual IRI="#Tracker"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#are_detected_in"/>
+        <NamedIndividual IRI="#Muon"/>
+        <NamedIndividual IRI="#MuonChambers"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#are_detected_in"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <NamedIndividual IRI="#Tracker"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#are_detected_in"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <NamedIndividual IRI="#MuonChambers"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Charge"/>
+        <NamedIndividual IRI="#Electron"/>
+        <Literal datatypeIRI="&xsd;integer">-1</Literal>
+    </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#has_Mass"/>
         <NamedIndividual IRI="#Electron"/>
@@ -296,6 +340,11 @@
         <Literal datatypeIRI="&xsd;integer">11</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="#has_Charge"/>
+        <NamedIndividual IRI="#Muon"/>
+        <Literal datatypeIRI="&xsd;integer">-1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="#has_Mass"/>
         <NamedIndividual IRI="#Muon"/>
         <Literal datatypeIRI="&xsd;decimal">0.106</Literal>
@@ -310,13 +359,79 @@
         <NamedIndividual IRI="#Muon"/>
         <Literal datatypeIRI="&xsd;integer">13</Literal>
     </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Charge"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;integer">-1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_DistanceMax"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;decimal">0.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_EtaMax"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;decimal">2.4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Isolation"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral"></Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Mass"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;decimal">0.106</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_PtMin"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;integer">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Spin"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1/2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_dBMin"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;decimal">0.02</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_normChiSquaredMax"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;integer">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_pdgID"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;integer">13</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Charge"/>
+        <NamedIndividual IRI="#Z"/>
+        <Literal datatypeIRI="&xsd;integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Mass"/>
+        <NamedIndividual IRI="#Z"/>
+        <Literal datatypeIRI="&xsd;decimal">91.1876</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Spin"/>
+        <NamedIndividual IRI="#Z"/>
+        <Literal datatypeIRI="&xsd;integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_pdgID"/>
+        <NamedIndividual IRI="#Z"/>
+        <Literal datatypeIRI="&xsd;integer">23</Literal>
+    </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#DataSet_type"/>
         <ObjectProperty IRI="#Events"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Particles"/>
-        <ObjectProperty IRI="#Analysis"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#Restrictions"/>
@@ -324,7 +439,7 @@
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#TracksReconstruction"/>
-        <ObjectProperty IRI="#Restrictions"/>
+        <ObjectProperty IRI="#Analysis"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#Vertex_type"/>
@@ -346,12 +461,11 @@
         <ObjectProperty IRI="#has_Statistics"/>
         <ObjectProperty IRI="#TracksReconstruction"/>
     </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#is_type"/>
-        <ObjectProperty IRI="#Particles"/>
-    </SubObjectPropertyOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#Vertex_type"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#are_detected_in"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#has_Format"/>
@@ -359,9 +473,6 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#has_Statistics"/>
     </FunctionalObjectProperty>
-    <InverseFunctionalObjectProperty>
-        <ObjectProperty IRI="#are_detected_in"/>
-    </InverseFunctionalObjectProperty>
     <InverseFunctionalObjectProperty>
         <ObjectProperty IRI="#are_reconstructed_as"/>
     </InverseFunctionalObjectProperty>
@@ -418,6 +529,10 @@
         <Class IRI="#ChiSquared"/>
     </ObjectPropertyRange>
     <SubDataPropertyOf>
+        <DataProperty IRI="#has_Charge"/>
+        <DataProperty IRI="#PhysicsObject"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
         <DataProperty IRI="#has_Distance"/>
         <DataProperty IRI="#PhysicsObject"/>
     </SubDataPropertyOf>
@@ -496,6 +611,9 @@
         <DataProperty IRI="#Restrictions"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="#has_Charge"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="#has_DistanceMax"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -547,6 +665,10 @@
         <DataProperty IRI="#has_pz"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_Charge"/>
+        <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_Distance"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
@@ -557,6 +679,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="#has_DistanceMax"/>
         <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_DistanceMax"/>
+        <Class IRI="#TracksReconstruction"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_DistanceMax"/>
@@ -571,11 +697,27 @@
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_Eta"/>
+        <Class IRI="#TracksReconstruction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_EtaMax"/>
+        <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_EtaMax"/>
+        <Class IRI="#TracksReconstruction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_Isolation"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_Mass"/>
+        <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_PtMin"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -587,6 +729,10 @@
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_dB"/>
+        <Class IRI="#Vertex"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_dBMin"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
@@ -596,7 +742,7 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_normChiSquaredMax"/>
-        <Class IRI="#PhysicsObject"/>
+        <Class IRI="#ChiSquared"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_p4"/>
@@ -623,6 +769,10 @@
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="#has_Charge"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#has_Distance"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
@@ -640,11 +790,11 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_EtaMax"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_Isolation"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_Mass"/>
@@ -726,8 +876,18 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Muon</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Second Generation Lepton</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#MuonChambers</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Ascertain the path of muons and their energy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Muon_Candidate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Second Generation Lepton that fulfills a serie of properties in magnitudes due to the fact that is the product particle of Z decay</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -743,6 +903,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Tracker</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Silicon detectors used to measure trajectories and momenta of charged particles</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Z</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Boson responsable of transmitting Weak Force</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
