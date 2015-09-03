@@ -92,12 +92,12 @@ class TwoMuonAnalyzer(object):
 	def plotter(self):
 
 		P.figure()
-		P.hist(self.zMass, bins = 10)
+		P.hist(self.zMass, bins = 10, normed=1)
 		P.xlabel("Z mass (GeV/c2)")
 		P.ylabel("frequency")
 		P.show()
 
-	def process(self, maxEv = 100000):
+	def process(self, maxEv = 50000):
 
 
 		for N, event in enumerate(self.events):
