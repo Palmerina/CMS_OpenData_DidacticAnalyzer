@@ -31,6 +31,9 @@
         <Class IRI="#Boson"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Candidates_Particles"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#ChiSquared"/>
     </Declaration>
     <Declaration>
@@ -49,6 +52,9 @@
         <Class IRI="#Events"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Goal_Particles"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#HadronicCalorimeter"/>
     </Declaration>
     <Declaration>
@@ -56,9 +62,6 @@
     </Declaration>
     <Declaration>
         <Class IRI="#MuonChambers"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#ParticleCandidates"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Patuples"/>
@@ -97,6 +100,9 @@
         <ObjectProperty IRI="#Events"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#Particles"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#Restrictions"/>
     </Declaration>
     <Declaration>
@@ -116,6 +122,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#has_Statistics"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#is_type"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#PhysicsObject"/>
@@ -177,6 +186,12 @@
     <Declaration>
         <DataProperty IRI="#has_pz"/>
     </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Electron"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Muon"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="#AOD"/>
         <Class IRI="#DataSet"/>
@@ -184,6 +199,10 @@
     <SubClassOf>
         <Class IRI="#Boson"/>
         <Class IRI="#PhysicsObject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Candidates_Particles"/>
+        <Class IRI="#Analysis"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#ChiSquared"/>
@@ -202,6 +221,10 @@
         <Class IRI="#CmsDetectors"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Goal_Particles"/>
+        <Class IRI="#Analysis"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#HadronicCalorimeter"/>
         <Class IRI="#CmsDetectors"/>
     </SubClassOf>
@@ -212,10 +235,6 @@
     <SubClassOf>
         <Class IRI="#MuonChambers"/>
         <Class IRI="#CmsDetectors"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ParticleCandidates"/>
-        <Class IRI="#Analysis"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Patuples"/>
@@ -253,9 +272,51 @@
         <Class IRI="#Vertex"/>
         <Class IRI="#Events"/>
     </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Lepton"/>
+        <NamedIndividual IRI="#Electron"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lepton"/>
+        <NamedIndividual IRI="#Muon"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Mass"/>
+        <NamedIndividual IRI="#Electron"/>
+        <Literal datatypeIRI="&xsd;decimal">0.000511</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Spin"/>
+        <NamedIndividual IRI="#Electron"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1/2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_pdgID"/>
+        <NamedIndividual IRI="#Electron"/>
+        <Literal datatypeIRI="&xsd;integer">11</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Mass"/>
+        <NamedIndividual IRI="#Muon"/>
+        <Literal datatypeIRI="&xsd;decimal">0.106</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Spin"/>
+        <NamedIndividual IRI="#Muon"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1/2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_pdgID"/>
+        <NamedIndividual IRI="#Muon"/>
+        <Literal datatypeIRI="&xsd;integer">13</Literal>
+    </DataPropertyAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#DataSet_type"/>
         <ObjectProperty IRI="#Events"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#Particles"/>
+        <ObjectProperty IRI="#Analysis"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#Restrictions"/>
@@ -284,6 +345,10 @@
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#has_Statistics"/>
         <ObjectProperty IRI="#TracksReconstruction"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#is_type"/>
+        <ObjectProperty IRI="#Particles"/>
     </SubObjectPropertyOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#Vertex_type"/>
@@ -482,6 +547,14 @@
         <DataProperty IRI="#has_pz"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_Distance"/>
+        <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Distance"/>
+        <Class IRI="#Vertex"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_DistanceMax"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
@@ -514,6 +587,14 @@
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_dBMin"/>
+        <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_dBMin"/>
+        <Class IRI="#Vertex"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_normChiSquaredMax"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
@@ -542,16 +623,20 @@
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="#has_Distance"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#has_DistanceMax"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_Energy"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_Eta"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_EtaMax"/>
@@ -563,7 +648,7 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_Mass"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_PtMin"/>
@@ -571,15 +656,15 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_Spin"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_dB"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_dBMin"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_normChiSquaredMax"/>
@@ -587,7 +672,7 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_p4"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_pdgID"/>
@@ -595,20 +680,29 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_pt"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_px"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_py"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_pz"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#AOD</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">File containing information about a set of physics events in the AOD format, which is a subset of RECO. Events include reconstructed objects (tracks, vertices, jets, electrons, muons, etc.) and possible small quantities of very localised hit information.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Analysis</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Structure of Analysis followed to identify a Goal Particle through Particle Candidates</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -652,8 +746,83 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_Distance</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Distance of the particle respect to the vertex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_DistanceMax</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Maximum distance of the detected particle respect to the primary vertex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_Energy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Particle Energy in GeV</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_Isolation</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Maximum energy content in analysis region before consider the analized particle being part of a jet of particles</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_Mass</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Particle mass value in GeV</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_PtMin</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Minimum value of the particle transverse momentum to be considered for analysis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_Spin</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Value of the Particle Spin, considered to be an intrinsic form of angular momentum carried by particles</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_dB</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Impact parameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_dBMin</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Maximum value for the impact parameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_normChiSquaredMax</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Maximum value of the statistic paramenter ChiSquared</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_p4</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Particle Four-Momentum</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_pdgID</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Particle Data Group (PDG) code used to identify precisely a particle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_pt</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Particle Transverse Momentum defined as pt=sqrt(px^2+py^2)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_px</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">X-component of the particle tri-momentum</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_py</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Y-component of the particle tri-momentum</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_pz</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Z-component of the particle tri-momentum</Literal>
     </AnnotationAssertion>
 </Ontology>
 
