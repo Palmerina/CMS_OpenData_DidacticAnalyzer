@@ -92,12 +92,13 @@ class TwoMuonAnalyzer(object):
 	def plotter(self):
 
 		P.figure()
-		P.hist(self.zMass, bins = 10, normed=1)
+		P.hist(self.zMass, bins = 50)
 		P.xlabel("Z mass (GeV/c2)")
 		P.ylabel("frequency")
 		P.show()
 
-	def process(self, maxEv = 50000):
+	def process(self, maxEv = -1):
+	#maxEv=-1 runs over all the events
 
 
 		for N, event in enumerate(self.events):
@@ -134,7 +135,7 @@ class TwoMuonAnalyzer(object):
 					muPair = LeptonPair(innerMuon, outerMuon) #sum of the four-momentums of both muons
 					
 
-					if not ((muPair.mass() > 12) and (muPair.mass() < 120)):
+					if not ((muPair.mass() > self.cutsConfig.mass_min) and (muPair.mass() < 120)):
 						continue
 
 					zCandidates.append(muPair)
