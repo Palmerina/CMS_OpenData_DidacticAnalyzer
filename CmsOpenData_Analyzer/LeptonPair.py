@@ -26,14 +26,17 @@ class LeptonPair(object):
 	 	It sums the four-momentums of l1 and l2 and gets their mass, their energy and their transverse momentum
 	 	"""
 
- 		self.px = l1.px()+l2.px() #GeV/c
- 		self.py = l1.py()+l2.py()
- 		self.pz = l1.pz()+l2.pz()
-		self.energy = l1.energy() + l2.energy() #GeV
+		self.l1 = l1
+		self.l2 = l2		
+
+ 		self.px = self.l1.px()+self.l2.px() #GeV/c
+ 		self.py = self.l1.py()+self.l2.py()
+ 		self.pz = self.l1.pz()+self.l2.pz()
+		self.energy = self.l1.energy() + self.l2.energy() #GeV
 
 		self.squareEnergy = np.power(self.energy,2)			
 	 	self.squareP = np.power(self.px,2) + np.power(self.py,2) + np.power(self.pz,2)
-
+		
 	 	#l.px(),l.py(),l.pz() and l.energy() are ROOT methods
 
 
@@ -48,5 +51,26 @@ class LeptonPair(object):
 		
 
 	def pt(self):
-	 	#Transverse momentum
+	 	#Total transverse momentum
 	 	return np.sqrt(np.power(self.px,2) + np.power(self.py,2))
+
+
+
+	def pt1(self):
+	 	#Total transverse momentum
+	 	return np.sqrt(np.power(self.l1.px(),2) + np.power(self.l1.py(),2))
+
+
+	def pt2(self):
+	 	#Total transverse momentum
+	 	return np.sqrt(np.power(self.l2.px(),2) + np.power(self.l2.py(),2))
+
+
+	def eta1(self):
+	 	#Total transverse momentum
+	 	return self.l1.eta()
+
+
+	def eta2(self):
+	 	#Total transverse momentum
+	 	return self.l2.eta()

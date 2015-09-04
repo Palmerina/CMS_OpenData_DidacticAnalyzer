@@ -26,7 +26,7 @@ import matplotlib.pylab as P
 
 class TwoMuonAnalyzer(object):
 	"""
-	Ni zorra
+	
 	"""
 	
 	def __init__(self, cutsConfig, data_files):
@@ -35,6 +35,10 @@ class TwoMuonAnalyzer(object):
 		self.cutsConfig = cutsConfig
 		self.events = Events(data_files)
 		self.zMass = []
+		self.zPt = []
+		self.zPt1 = []
+		self.zPt2 = []
+		self.eta = []
 
 	def getMuons(self, event):
 
@@ -91,9 +95,39 @@ class TwoMuonAnalyzer(object):
 
 	def plotter(self):
 
+		#P.ion()
+
 		P.figure()
 		P.hist(self.zMass, bins = 50)
-		P.xlabel("Z mass (GeV/c2)")
+		P.xlabel("Invariant mass (GeV/c2)")
+		P.ylabel("frequency")
+		#P.show()
+
+
+		P.figure()
+		P.hist(self.zPt, bins = 50)
+		P.xlabel("Transverse momentum (GeV/c)")
+		P.ylabel("frequency")
+		#P.show()
+
+
+		P.figure()
+		P.hist(self.zPt1, bins = 50)
+		P.xlabel("pt_1 (GeV/c)")
+		P.ylabel("frequency")
+		#P.show()
+
+
+		P.figure()
+		P.hist(self.zPt2, bins = 50)
+		P.xlabel("pt_2 (GeV/c)")
+		P.ylabel("frequency")
+		#P.show()
+
+
+		P.figure()
+		P.hist(self.eta, bins = 50)
+		P.xlabel("Muons' eta angle (GeV/c)")
 		P.ylabel("frequency")
 		P.show()
 
@@ -144,13 +178,18 @@ class TwoMuonAnalyzer(object):
 			if len(zCandidates) == 0: 
 				continue
 
-			# picks the zCandidate with the bes mass (the one closer to 91.118 GeV/c**2)
+			# picks the zCandidate with the best mass (the one closer to 91.118 GeV/c**2)
 			sortedZs = sorted(zCandidates, key=lambda x: abs(x.mass() - 91.118)) 
 
 			z = sortedZs[0]
-			#z = LeptonPair(z)
-			#print z.mass()
+			
 			self.zMass.append(z.mass())
+			self.zPt.append(z.pt())
+			self.zPt2.append(z.pt2())
+			self.zPt1.append(z.pt2())
+			self.eta.append(z.eta1())
+			self.eta.append(z.eta2())
+
 			print z.mass()
 				# self.plotter()---> execute.py
 
