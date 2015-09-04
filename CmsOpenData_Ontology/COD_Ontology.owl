@@ -76,6 +76,9 @@
         <Class IRI="#Mini-AOD"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Package"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Patuples"/>
     </Declaration>
     <Declaration>
@@ -94,6 +97,12 @@
         <Class IRI="#RECO"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Script"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Software"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#TracksReconstruction"/>
     </Declaration>
     <Declaration>
@@ -106,10 +115,16 @@
         <ObjectProperty IRI="#DataSet_type"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#Documentation"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#Events"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#Restrictions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Software"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#TracksReconstruction"/>
@@ -121,16 +136,25 @@
         <ObjectProperty IRI="#follows_CMS_policy"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#has_Data"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has_Documentation"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#has_Format"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#has_Statistics"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#DAPF"/>
+        <ObjectProperty IRI="#is_in_format"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#DataSet"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Documentation"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#PhysicsObject"/>
@@ -142,7 +166,31 @@
         <DataProperty IRI="#Restrictions"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#Software"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Abstract"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Attachments"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Authors"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#has_Charge"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Comments"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Contact_Information"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Copyright"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Date"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#has_Distance"/>
@@ -166,10 +214,22 @@
         <DataProperty IRI="#has_Isolation"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#has_Keywords"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Links"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#has_Mass"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#has_Metadata"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#has_NumberOfValidHits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Page_Editors"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#has_PtMin"/>
@@ -182,6 +242,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="#has_Spin"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Version_Data"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Version_Documentation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_Version_Software"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#has_creation_time"/>
@@ -197,6 +266,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="#has_normChiSquaredMax"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_number_of_contributions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_number_of_participants"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#has_p4"/>
@@ -229,13 +304,25 @@
         <DataProperty IRI="#has_title"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#has_version"/>
+        <DataProperty IRI="#in_Journal"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#is_located_in"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#is_type_detectors"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#CmsOpenData2010"/>
+        <DataProperty IRI="#is_written_in"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#works_in_OS"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CmsOpenData_Package"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CmsOpenData_Patuples"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#ElectromagneticCalorimeter"/>
@@ -263,6 +350,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Primary"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#README"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Tracker"/>
@@ -331,6 +421,10 @@
         <Class IRI="#Level_2"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Package"/>
+        <Class IRI="#Software"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Patuples"/>
         <Class IRI="#Level_2"/>
     </SubClassOf>
@@ -355,6 +449,10 @@
         <Class IRI="#Level_3"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Script"/>
+        <Class IRI="#Software"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#TracksReconstruction"/>
         <Class IRI="#Analysis"/>
     </SubClassOf>
@@ -363,12 +461,12 @@
         <Class IRI="#Events"/>
     </SubClassOf>
     <ClassAssertion>
-        <Class IRI="#Patuples"/>
-        <NamedIndividual IRI="#CmsOpenData2010"/>
+        <Class IRI="#Package"/>
+        <NamedIndividual IRI="#CmsOpenData_Package"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#PhysicsObject"/>
-        <NamedIndividual IRI="#CmsOpenData2010"/>
+        <Class IRI="#Patuples"/>
+        <NamedIndividual IRI="#CmsOpenData_Patuples"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#CmsDetectors"/>
@@ -411,6 +509,10 @@
         <NamedIndividual IRI="#Primary"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#InternalNote"/>
+        <NamedIndividual IRI="#README"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#CmsDetectors"/>
         <NamedIndividual IRI="#Tracker"/>
     </ClassAssertion>
@@ -422,6 +524,16 @@
         <Class IRI="#Goal_Particles"/>
         <NamedIndividual IRI="#Z"/>
     </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#has_Data"/>
+        <NamedIndividual IRI="#CmsOpenData_Package"/>
+        <NamedIndividual IRI="#CmsOpenData_Patuples"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#has_Documentation"/>
+        <NamedIndividual IRI="#CmsOpenData_Package"/>
+        <NamedIndividual IRI="#README"/>
+    </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#are_detected_in"/>
         <NamedIndividual IRI="#Muon"/>
@@ -448,14 +560,24 @@
         <NamedIndividual IRI="#ElectromagneticCalorimeter"/>
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#has_creation_time"/>
-        <NamedIndividual IRI="#CmsOpenData2010"/>
-        <Literal datatypeIRI="&xsd;integer">2010</Literal>
+        <DataProperty IRI="#has_Version_Software"/>
+        <NamedIndividual IRI="#CmsOpenData_Package"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1.0.0</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#has_physics_group"/>
-        <NamedIndividual IRI="#CmsOpenData2010"/>
-        <Literal datatypeIRI="&rdf;PlainLiteral">CMSOpenData</Literal>
+        <DataProperty IRI="#is_located_in"/>
+        <NamedIndividual IRI="#CmsOpenData_Package"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">https://github.com/gcanasherrera/CmsOpenData_IFCA.git</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#is_written_in"/>
+        <NamedIndividual IRI="#CmsOpenData_Package"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Python</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#works_in_OS"/>
+        <NamedIndividual IRI="#CmsOpenData_Package"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Unix with Cms Env</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#has_Charge"/>
@@ -578,6 +700,16 @@
         <Literal datatypeIRI="&xsd;integer">22</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="#has_Contact_Information"/>
+        <NamedIndividual IRI="#README"/>
+        <Literal xml:lang="alumnos.unican.es" datatypeIRI="&rdf;PlainLiteral">gch24</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Version_Documentation"/>
+        <NamedIndividual IRI="#README"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">1.0.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="#has_Charge"/>
         <NamedIndividual IRI="#Z"/>
         <Literal datatypeIRI="&xsd;integer">0</Literal>
@@ -618,12 +750,24 @@
         <ObjectProperty IRI="#DataSet_type"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has_Data"/>
+        <ObjectProperty IRI="#Software"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has_Documentation"/>
+        <ObjectProperty IRI="#Software"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#has_Format"/>
         <ObjectProperty IRI="#DataSet_type"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#has_Statistics"/>
         <ObjectProperty IRI="#TracksReconstruction"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#is_in_format"/>
+        <ObjectProperty IRI="#Documentation"/>
     </SubObjectPropertyOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#are_detected_in"/>
@@ -636,6 +780,9 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#has_Statistics"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#is_in_format"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#are_detected_in"/>
@@ -652,6 +799,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#has_Statistics"/>
         <Class IRI="#TracksReconstruction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#is_in_format"/>
+        <Class IRI="#Documentation"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#are_detected_in"/>
@@ -697,17 +848,57 @@
         <ObjectProperty IRI="#has_Statistics"/>
         <Class IRI="#ChiSquared"/>
     </ObjectPropertyRange>
-    <SubDataPropertyOf>
-        <DataProperty IRI="#DAPF"/>
-        <DataProperty IRI="#DataSet"/>
-    </SubDataPropertyOf>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#is_in_format"/>
+        <Class IRI="#Discussion"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#is_in_format"/>
+        <Class IRI="#InternalNote"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#is_in_format"/>
+        <Class IRI="#Presentation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#is_in_format"/>
+        <Class IRI="#Publication"/>
+    </ObjectPropertyRange>
     <SubDataPropertyOf>
         <DataProperty IRI="#Properties"/>
         <DataProperty IRI="#PhysicsObject"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
+        <DataProperty IRI="#has_Abstract"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Attachments"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Authors"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
         <DataProperty IRI="#has_Charge"/>
         <DataProperty IRI="#Properties"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Comments"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Contact_Information"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Copyright"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Date"/>
+        <DataProperty IRI="#Documentation"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_Distance"/>
@@ -731,19 +922,35 @@
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_ID"/>
-        <DataProperty IRI="#DAPF"/>
+        <DataProperty IRI="#DataSet"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_Isolation"/>
         <DataProperty IRI="#Restrictions"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
+        <DataProperty IRI="#has_Keywords"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Links"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
         <DataProperty IRI="#has_Mass"/>
         <DataProperty IRI="#Properties"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
+        <DataProperty IRI="#has_Metadata"/>
+        <DataProperty IRI="#Software"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
         <DataProperty IRI="#has_NumberOfValidHits"/>
         <DataProperty IRI="#Restrictions"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Page_Editors"/>
+        <DataProperty IRI="#Documentation"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_PtMin"/>
@@ -762,8 +969,20 @@
         <DataProperty IRI="#Properties"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
+        <DataProperty IRI="#has_Version_Data"/>
+        <DataProperty IRI="#DataSet"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Version_Documentation"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_Version_Software"/>
+        <DataProperty IRI="#Software"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
         <DataProperty IRI="#has_creation_time"/>
-        <DataProperty IRI="#DAPF"/>
+        <DataProperty IRI="#DataSet"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_dB"/>
@@ -775,11 +994,19 @@
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_modification_time"/>
-        <DataProperty IRI="#DAPF"/>
+        <DataProperty IRI="#DataSet"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_normChiSquaredMax"/>
         <DataProperty IRI="#Restrictions"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_number_of_contributions"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_number_of_participants"/>
+        <DataProperty IRI="#Documentation"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_p4"/>
@@ -791,7 +1018,7 @@
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_physics_group"/>
-        <DataProperty IRI="#DAPF"/>
+        <DataProperty IRI="#DataSet"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_pt"/>
@@ -811,27 +1038,36 @@
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_release_date"/>
-        <DataProperty IRI="#DAPF"/>
+        <DataProperty IRI="#DataSet"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_size"/>
-        <DataProperty IRI="#DAPF"/>
+        <DataProperty IRI="#DataSet"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#has_title"/>
-        <DataProperty IRI="#DAPF"/>
+        <DataProperty IRI="#DataSet"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
-        <DataProperty IRI="#has_version"/>
-        <DataProperty IRI="#DAPF"/>
+        <DataProperty IRI="#in_Journal"/>
+        <DataProperty IRI="#Documentation"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#is_located_in"/>
+        <DataProperty IRI="#Software"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#is_type_detectors"/>
         <DataProperty IRI="#Restrictions"/>
     </SubDataPropertyOf>
-    <FunctionalDataProperty>
-        <DataProperty IRI="#DAPF"/>
-    </FunctionalDataProperty>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#is_written_in"/>
+        <DataProperty IRI="#Software"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#works_in_OS"/>
+        <DataProperty IRI="#Software"/>
+    </SubDataPropertyOf>
     <FunctionalDataProperty>
         <DataProperty IRI="#PhysicsObject"/>
     </FunctionalDataProperty>
@@ -864,6 +1100,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="#has_NumberOfValidHits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_Page_Editors"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="#has_PtMin"/>
@@ -905,8 +1144,44 @@
         <DataProperty IRI="#has_pz"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_Abstract"/>
+        <Class IRI="#Documentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Attachments"/>
+        <Class IRI="#Documentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Authors"/>
+        <Class IRI="#Documentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_Charge"/>
         <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Comments"/>
+        <Class IRI="#Discussion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Comments"/>
+        <Class IRI="#InternalNote"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Comments"/>
+        <Class IRI="#Presentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Contact_Information"/>
+        <Class IRI="#Documentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Copyright"/>
+        <Class IRI="#Documentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Date"/>
+        <Class IRI="#Documentation"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_Distance"/>
@@ -957,6 +1232,22 @@
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_Keywords"/>
+        <Class IRI="#Documentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Links"/>
+        <Class IRI="#Discussion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Links"/>
+        <Class IRI="#InternalNote"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Links"/>
+        <Class IRI="#Presentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_Mass"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
@@ -967,6 +1258,18 @@
     <DataPropertyDomain>
         <DataProperty IRI="#has_NumberOfValidHits"/>
         <Class IRI="#TracksReconstruction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Page_Editors"/>
+        <Class IRI="#Discussion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Page_Editors"/>
+        <Class IRI="#InternalNote"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Page_Editors"/>
+        <Class IRI="#Presentation"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_PtMin"/>
@@ -991,6 +1294,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="#has_Spin"/>
         <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Version_Data"/>
+        <Class IRI="#DataSet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_Version_Documentation"/>
+        <Class IRI="#Documentation"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_creation_time"/>
@@ -1021,6 +1332,14 @@
         <Class IRI="#ChiSquared"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_number_of_contributions"/>
+        <Class IRI="#Documentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_number_of_participants"/>
+        <Class IRI="#Documentation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_p4"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
@@ -1061,8 +1380,8 @@
         <Class IRI="#DataSet"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#has_version"/>
-        <Class IRI="#DataSet"/>
+        <DataProperty IRI="#in_Journal"/>
+        <Class IRI="#Publication"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#is_type_detectors"/>
@@ -1076,9 +1395,45 @@
         <DataProperty IRI="#is_type_detectors"/>
         <Class IRI="#TracksReconstruction"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#is_written_in"/>
+        <Class IRI="#Software"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#works_in_OS"/>
+        <Class IRI="#Software"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_Abstract"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_Attachments"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_Authors"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_Charge"/>
         <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_Comments"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_Contact_Information"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_Copyright"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_Date"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_Distance"/>
@@ -1109,6 +1464,14 @@
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="#has_Keywords"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_Links"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#has_Mass"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
@@ -1133,6 +1496,14 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="#has_Version_Data"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_Version_Documentation"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#has_creation_time"/>
         <Datatype abbreviatedIRI="xsd:dateTime"/>
     </DataPropertyRange>
@@ -1151,6 +1522,14 @@
     <DataPropertyRange>
         <DataProperty IRI="#has_normChiSquaredMax"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_number_of_contributions"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_number_of_participants"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_p4"/>
@@ -1193,7 +1572,15 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="#has_version"/>
+        <DataProperty IRI="#in_Journal"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#is_written_in"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#works_in_OS"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -1298,6 +1685,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#README</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Documentation of CmsOpenData_Package</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#RECO</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">File containing information about a set of physics events in the RECO format, that is, with reconstructed objects (tracks, vertices, jets, electrons, muons, etc.) and reconstructed hits/clusters.</Literal>
     </AnnotationAssertion>
@@ -1373,6 +1765,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_Version_Data</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Number of version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_creation_time</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Time of File Creation</Literal>
     </AnnotationAssertion>
@@ -1445,11 +1842,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_title</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Name attached to the file</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#has_version</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Number of version</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
