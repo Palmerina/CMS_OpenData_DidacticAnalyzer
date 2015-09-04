@@ -34,12 +34,14 @@ dB_min = 0.02 # cm. dB=impact parameter
 #normChi2_max = 10
 isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
 #SIP variable?
+maxEvents = 500000 #number of processed events. maxEvents = -1 runs over all of them
+mass_min=5
 
-cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_min, isolation)
+cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_min, isolation, mass_min)
 
 analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the TwoMuonAnalyzer class
 
-analyzer.process()
+analyzer.process(maxEvents) 
 analyzer.plotter()
 
 

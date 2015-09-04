@@ -21,14 +21,15 @@ class CutsConfig(object):
 
 	"""
 
-	def __init__(self, pt_min = 5, eta_max = 2.4, distance = 0.2, dB_min = 0.02, isolation = 0.15):
+	def __init__(self, pt_min = 5, eta_max = 2.4, distance = 0.2, dB_min = 0.02, isolation = 0.15, mass_min = 60):
 		
 		self.pt_min = pt_min 
 		self.eta_max = eta_max
 		self.distance = distance
 		self.dB_min = dB_min # cm. dB=impact parameter
 		#normChi2_max = 10
-		self.isolation = isolation #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
-		#SIP variable
+		self.isolation = isolation 
+		#dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
+		self.mass_min = mass_min
 
 
