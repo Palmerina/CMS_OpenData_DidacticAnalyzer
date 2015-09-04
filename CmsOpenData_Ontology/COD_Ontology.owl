@@ -40,16 +40,22 @@
         <Class IRI="#CmsDetectors"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#DAPF"/>
+        <Class IRI="#DataSet"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#DataSet"/>
+        <Class IRI="#Discussion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Documentation"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Events"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Goal_Particles"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InternalNote"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Lepton"/>
@@ -74,6 +80,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="#PhysicsObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Presentation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Publication"/>
     </Declaration>
     <Declaration>
         <Class IRI="#RAW"/>
@@ -116,6 +128,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="#DAPF"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#DataSet"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#PhysicsObject"/>
@@ -184,9 +199,6 @@
         <DataProperty IRI="#has_normChiSquaredMax"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#has_number_events"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="#has_p4"/>
     </Declaration>
     <Declaration>
@@ -221,6 +233,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="#is_type_detectors"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CmsOpenData2010"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#ElectromagneticCalorimeter"/>
@@ -280,8 +295,16 @@
         <Class IRI="#Events"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Discussion"/>
+        <Class IRI="#Documentation"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Goal_Particles"/>
         <Class IRI="#Analysis"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InternalNote"/>
+        <Class IRI="#Documentation"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Lepton"/>
@@ -316,6 +339,14 @@
         <Class IRI="#Events"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Presentation"/>
+        <Class IRI="#Documentation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Publication"/>
+        <Class IRI="#Documentation"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#RAW"/>
         <Class IRI="#Level_4"/>
     </SubClassOf>
@@ -331,6 +362,14 @@
         <Class IRI="#Vertex"/>
         <Class IRI="#Events"/>
     </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Patuples"/>
+        <NamedIndividual IRI="#CmsOpenData2010"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PhysicsObject"/>
+        <NamedIndividual IRI="#CmsOpenData2010"/>
+    </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#CmsDetectors"/>
         <NamedIndividual IRI="#ElectromagneticCalorimeter"/>
@@ -408,6 +447,16 @@
         <NamedIndividual IRI="#Photon"/>
         <NamedIndividual IRI="#ElectromagneticCalorimeter"/>
     </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_creation_time"/>
+        <NamedIndividual IRI="#CmsOpenData2010"/>
+        <Literal datatypeIRI="&xsd;integer">2010</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_physics_group"/>
+        <NamedIndividual IRI="#CmsOpenData2010"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">CMSOpenData</Literal>
+    </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#has_Charge"/>
         <NamedIndividual IRI="#Electron"/>
@@ -650,7 +699,7 @@
     </ObjectPropertyRange>
     <SubDataPropertyOf>
         <DataProperty IRI="#DAPF"/>
-        <DataProperty IRI="#PhysicsObject"/>
+        <DataProperty IRI="#DataSet"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
         <DataProperty IRI="#Properties"/>
@@ -733,10 +782,6 @@
         <DataProperty IRI="#Restrictions"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
-        <DataProperty IRI="#has_number_events"/>
-        <DataProperty IRI="#DAPF"/>
-    </SubDataPropertyOf>
-    <SubDataPropertyOf>
         <DataProperty IRI="#has_p4"/>
         <DataProperty IRI="#Properties"/>
     </SubDataPropertyOf>
@@ -785,6 +830,9 @@
         <DataProperty IRI="#Restrictions"/>
     </SubDataPropertyOf>
     <FunctionalDataProperty>
+        <DataProperty IRI="#DAPF"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="#PhysicsObject"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -804,6 +852,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="#has_EtaMax"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_ID"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="#has_Isolation"/>
@@ -896,6 +947,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="#has_EtaMax"/>
         <Class IRI="#TracksReconstruction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_ID"/>
+        <Class IRI="#DataSet"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_Isolation"/>
@@ -938,6 +993,10 @@
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_creation_time"/>
+        <Class IRI="#DataSet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_dB"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
@@ -952,6 +1011,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="#has_dBMin"/>
         <Class IRI="#Vertex"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_modification_time"/>
+        <Class IRI="#DataSet"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_normChiSquaredMax"/>
@@ -964,6 +1027,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="#has_pdgID"/>
         <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_physics_group"/>
+        <Class IRI="#DataSet"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_pt"/>
@@ -980,6 +1047,22 @@
     <DataPropertyDomain>
         <DataProperty IRI="#has_pz"/>
         <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_release_date"/>
+        <Class IRI="#DataSet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_size"/>
+        <Class IRI="#DataSet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_title"/>
+        <Class IRI="#DataSet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_version"/>
+        <Class IRI="#DataSet"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#is_type_detectors"/>
@@ -1018,6 +1101,10 @@
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="#has_ID"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#has_Isolation"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
@@ -1046,12 +1133,20 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="#has_creation_time"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#has_dB"/>
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_dBMin"/>
         <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_modification_time"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_normChiSquaredMax"/>
@@ -1064,6 +1159,10 @@
     <DataPropertyRange>
         <DataProperty IRI="#has_pdgID"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_physics_group"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_pt"/>
@@ -1080,6 +1179,22 @@
     <DataPropertyRange>
         <DataProperty IRI="#has_pz"/>
         <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_release_date"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_size"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_title"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1100,11 +1215,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#CmsDetectors</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Different components of the CMS detector</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#DAPF</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Data Analysis Preservation Framework Data Properties for Physics Objects</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1223,6 +1333,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_ID</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Identification Number For Physics Object Content</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_Isolation</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Maximum energy content in analysis region before consider the analized particle being part of a jet of particles</Literal>
     </AnnotationAssertion>
@@ -1258,6 +1373,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_creation_time</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Time of File Creation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_dB</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Impact parameter</Literal>
     </AnnotationAssertion>
@@ -1265,6 +1385,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_dBMin</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Maximum value for the impact parameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_modification_time</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Time of the file modification</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1280,6 +1405,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_pdgID</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Particle Data Group (PDG) code used to identify precisely a particle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_physics_group</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Name of the Physics Group/Collaboration reponsable of collecting the data</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -1300,6 +1430,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_pz</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Z-component of the particle tri-momentum</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_release_date</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Date of the release</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_size</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Size of the file</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_title</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Name attached to the file</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_version</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Number of version</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
