@@ -55,22 +55,31 @@
         <Class IRI="#Lepton"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Level_1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Level_2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Level_3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Level_4"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mini-AOD"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Patuples"/>
     </Declaration>
     <Declaration>
         <Class IRI="#PhysicsObject"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Primary"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#RAW"/>
     </Declaration>
     <Declaration>
         <Class IRI="#RECO"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Second-Order"/>
     </Declaration>
     <Declaration>
         <Class IRI="#TracksReconstruction"/>
@@ -94,13 +103,10 @@
         <ObjectProperty IRI="#TracksReconstruction"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#Vertex_type"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#are_detected_in"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#are_reconstructed_as"/>
+        <ObjectProperty IRI="#follows_CMS_policy"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#has_Format"/>
@@ -139,7 +145,16 @@
         <DataProperty IRI="#has_Mass"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#has_NumberOfValidHits"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#has_PtMin"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_SIP"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_SIPMin"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#has_Spin"/>
@@ -172,6 +187,9 @@
         <DataProperty IRI="#has_pz"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#is_type_detectors"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#ElectromagneticCalorimeter"/>
     </Declaration>
     <Declaration>
@@ -179,6 +197,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#HadronicCalorimeter"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#High-Order"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Muon"/>
@@ -190,6 +211,12 @@
         <NamedIndividual IRI="#Muon_Candidate"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Photon"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Primary"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Tracker"/>
     </Declaration>
     <Declaration>
@@ -197,7 +224,7 @@
     </Declaration>
     <SubClassOf>
         <Class IRI="#AOD"/>
-        <Class IRI="#DataSet"/>
+        <Class IRI="#Level_3"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Boson"/>
@@ -228,28 +255,40 @@
         <Class IRI="#PhysicsObject"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Patuples"/>
+        <Class IRI="#Level_1"/>
         <Class IRI="#DataSet"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Level_2"/>
+        <Class IRI="#DataSet"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Level_3"/>
+        <Class IRI="#DataSet"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Level_4"/>
+        <Class IRI="#DataSet"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mini-AOD"/>
+        <Class IRI="#Level_2"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patuples"/>
+        <Class IRI="#Level_2"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#PhysicsObject"/>
         <Class IRI="#Events"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Primary"/>
-        <Class IRI="#Vertex"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#RAW"/>
-        <Class IRI="#DataSet"/>
+        <Class IRI="#Level_4"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#RECO"/>
-        <Class IRI="#DataSet"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Second-Order"/>
-        <Class IRI="#Vertex"/>
+        <Class IRI="#Level_3"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TracksReconstruction"/>
@@ -272,6 +311,10 @@
         <NamedIndividual IRI="#HadronicCalorimeter"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Vertex"/>
+        <NamedIndividual IRI="#High-Order"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Lepton"/>
         <NamedIndividual IRI="#Muon"/>
     </ClassAssertion>
@@ -286,6 +329,14 @@
     <ClassAssertion>
         <Class IRI="#Lepton"/>
         <NamedIndividual IRI="#Muon_Candidate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Boson"/>
+        <NamedIndividual IRI="#Photon"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Vertex"/>
+        <NamedIndividual IRI="#Primary"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#CmsDetectors"/>
@@ -318,6 +369,11 @@
         <ObjectProperty IRI="#are_detected_in"/>
         <NamedIndividual IRI="#Muon_Candidate"/>
         <NamedIndividual IRI="#MuonChambers"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#are_detected_in"/>
+        <NamedIndividual IRI="#Photon"/>
+        <NamedIndividual IRI="#ElectromagneticCalorimeter"/>
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#has_Charge"/>
@@ -377,7 +433,7 @@
     <DataPropertyAssertion>
         <DataProperty IRI="#has_Isolation"/>
         <NamedIndividual IRI="#Muon_Candidate"/>
-        <Literal datatypeIRI="&rdf;PlainLiteral"></Literal>
+        <Literal datatypeIRI="&xsd;decimal">0.15</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#has_Mass"/>
@@ -385,9 +441,19 @@
         <Literal datatypeIRI="&xsd;decimal">0.106</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
+        <DataProperty IRI="#has_NumberOfValidHits"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;integer">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
         <DataProperty IRI="#has_PtMin"/>
         <NamedIndividual IRI="#Muon_Candidate"/>
         <Literal datatypeIRI="&xsd;integer">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_SIPMin"/>
+        <NamedIndividual IRI="#Muon_Candidate"/>
+        <Literal datatypeIRI="&xsd;integer">4</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#has_Spin"/>
@@ -408,6 +474,26 @@
         <DataProperty IRI="#has_pdgID"/>
         <NamedIndividual IRI="#Muon_Candidate"/>
         <Literal datatypeIRI="&xsd;integer">13</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Charge"/>
+        <NamedIndividual IRI="#Photon"/>
+        <Literal datatypeIRI="&xsd;integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Mass"/>
+        <NamedIndividual IRI="#Photon"/>
+        <Literal datatypeIRI="&xsd;integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_Spin"/>
+        <NamedIndividual IRI="#Photon"/>
+        <Literal datatypeIRI="&xsd;integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_pdgID"/>
+        <NamedIndividual IRI="#Photon"/>
+        <Literal datatypeIRI="&xsd;integer">22</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="#has_Charge"/>
@@ -442,16 +528,12 @@
         <ObjectProperty IRI="#Analysis"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Vertex_type"/>
-        <ObjectProperty IRI="#Events"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
         <ObjectProperty IRI="#are_detected_in"/>
         <ObjectProperty IRI="#Restrictions"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#are_reconstructed_as"/>
-        <ObjectProperty IRI="#Vertex_type"/>
+        <ObjectProperty IRI="#follows_CMS_policy"/>
+        <ObjectProperty IRI="#DataSet_type"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#has_Format"/>
@@ -462,10 +544,10 @@
         <ObjectProperty IRI="#TracksReconstruction"/>
     </SubObjectPropertyOf>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="#Vertex_type"/>
+        <ObjectProperty IRI="#are_detected_in"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="#are_detected_in"/>
+        <ObjectProperty IRI="#follows_CMS_policy"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#has_Format"/>
@@ -473,20 +555,13 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#has_Statistics"/>
     </FunctionalObjectProperty>
-    <InverseFunctionalObjectProperty>
-        <ObjectProperty IRI="#are_reconstructed_as"/>
-    </InverseFunctionalObjectProperty>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#Vertex_type"/>
-        <Class IRI="#Vertex"/>
-    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#are_detected_in"/>
         <Class IRI="#PhysicsObject"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
-        <ObjectProperty IRI="#are_reconstructed_as"/>
-        <Class IRI="#Vertex"/>
+        <ObjectProperty IRI="#follows_CMS_policy"/>
+        <Class IRI="#DataSet"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#has_Format"/>
@@ -497,16 +572,24 @@
         <Class IRI="#TracksReconstruction"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="#Vertex_type"/>
-        <Class IRI="#Primary"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#Vertex_type"/>
-        <Class IRI="#Second-Order"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
         <ObjectProperty IRI="#are_detected_in"/>
         <Class IRI="#CmsDetectors"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#follows_CMS_policy"/>
+        <Class IRI="#Level_1"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#follows_CMS_policy"/>
+        <Class IRI="#Level_2"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#follows_CMS_policy"/>
+        <Class IRI="#Level_3"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#follows_CMS_policy"/>
+        <Class IRI="#Level_4"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#has_Format"/>
@@ -561,7 +644,19 @@
         <DataProperty IRI="#PhysicsObject"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
+        <DataProperty IRI="#has_NumberOfValidHits"/>
+        <DataProperty IRI="#Restrictions"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
         <DataProperty IRI="#has_PtMin"/>
+        <DataProperty IRI="#Restrictions"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_SIP"/>
+        <DataProperty IRI="#PhysicsObject"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#has_SIPMin"/>
         <DataProperty IRI="#Restrictions"/>
     </SubDataPropertyOf>
     <SubDataPropertyOf>
@@ -604,6 +699,10 @@
         <DataProperty IRI="#has_pz"/>
         <DataProperty IRI="#PhysicsObject"/>
     </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#is_type_detectors"/>
+        <DataProperty IRI="#Restrictions"/>
+    </SubDataPropertyOf>
     <FunctionalDataProperty>
         <DataProperty IRI="#PhysicsObject"/>
     </FunctionalDataProperty>
@@ -632,7 +731,16 @@
         <DataProperty IRI="#has_Mass"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="#has_NumberOfValidHits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="#has_PtMin"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_SIP"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_SIPMin"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="#has_Spin"/>
@@ -717,8 +825,32 @@
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#has_NumberOfValidHits"/>
+        <Class IRI="#CmsDetectors"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_NumberOfValidHits"/>
+        <Class IRI="#TracksReconstruction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#has_PtMin"/>
         <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_SIP"/>
+        <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_SIP"/>
+        <Class IRI="#Vertex"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_SIPMin"/>
+        <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#has_SIPMin"/>
+        <Class IRI="#Vertex"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#has_Spin"/>
@@ -768,6 +900,18 @@
         <DataProperty IRI="#has_pz"/>
         <Class IRI="#PhysicsObject"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#is_type_detectors"/>
+        <Class IRI="#Candidates_Particles"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#is_type_detectors"/>
+        <Class IRI="#PhysicsObject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#is_type_detectors"/>
+        <Class IRI="#TracksReconstruction"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="#has_Charge"/>
         <Datatype abbreviatedIRI="xsd:double"/>
@@ -801,8 +945,20 @@
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="#has_NumberOfValidHits"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#has_PtMin"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_SIP"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_SIPMin"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#has_Spin"/>
@@ -856,8 +1012,18 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Candidates_Particles</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Set of candidates particles in which the goal particle decays into</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#CmsDetectors</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Different components of the CMS detector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DataSet</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">CMS Data take diverse forms and have been identified through four levels of complexity which can provide opporutnities for preservation of the data and the policy.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -871,8 +1037,38 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Goal_Particles</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Set of particles we are searching with this analisys</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#HadronicCalorimeter</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Made of dense materials as brass that determines the path and energy of hadrons</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Level_1</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Publications, additional documentation to put the results in context and understand the analyses procedures, some additional numerical data which did not or could not appear in the publications (e.g. cross sections as a function of multiple variables, data behind figures).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Level_2</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Simplified data formats (e.g. multi-dimensional distributions of analysis variables, four- vectors of particles/jets, energy clusters and tracks) for several levels of immediate re-use: theory interpretations, limited analyses, education, outreach.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Level_3</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Reconstructed data and simulations, together with the software, analysis workflows and documentation needed to access the data, understand them, reproduce published analyses, perform new analyses not requiring re-reconstruction of the data or new simulations.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Level_4</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Raw data and the software and documentation needed to access, reconstruct and analyse them.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Mini-AOD</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">High level physics objects (leptons, photons, jets, ETmiss), with detailed information in order to allow e.g. retuning of identification criteria, saved using PAT dataformats. Some preselection requirements are applied on the objects, and objects failing these requirements are either not stored or stored only with a more limited set of information.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -891,6 +1087,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Primary</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Type of vertex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#RAW</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">File containing information about a set of physics events in the RAW format. Events include the detector data after online formatting, the L1 trigger result, the result of the HLT selections (HLT trigger bits) and potentially some of the higher level quantities calculated during HLT processing.</Literal>
     </AnnotationAssertion>
@@ -903,6 +1104,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Tracker</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Silicon detectors used to measure trajectories and momenta of charged particles</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TracksReconstruction</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Provides information of how the path of the particles has been reconstructed</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -936,8 +1142,23 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_NumberOfValidHits</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Minimum value of hits in the tracker by a candidate particle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_PtMin</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Minimum value of the particle transverse momentum to be considered for analysis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_SIP</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Simetrized Impact Parameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has_SIPMin</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Minimum value of the Simetrized Impact Parameter in order to select particle candidates</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -988,6 +1209,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#has_pz</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Z-component of the particle tri-momentum</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#is_type_detectors</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Characteristic of the candidate particle respect to its trajectory.</Literal>
     </AnnotationAssertion>
 </Ontology>
 
