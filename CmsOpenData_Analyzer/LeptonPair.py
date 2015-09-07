@@ -22,7 +22,7 @@ class LeptonPair(object):
 
 	def __init__(self, l1, l2):
 	 	"""
-	 	l1, l2: leptons (getMuons() from GetData.py) or l1 = Z boson and l2 = None
+	 	l1, l2: leptons 
 	 	It sums the four-momentums of l1 and l2 and gets their mass, their energy and their transverse momentum
 	 	"""
 
@@ -47,7 +47,6 @@ class LeptonPair(object):
 			return np.sqrt(-squareM) # con un - en el codigo de TLorentzVector
 		else:
 			return np.sqrt(squareM) # in natural units (GeV/c**2)
-		#return self.p4.M()
 		
 
 	def pt(self):
@@ -57,20 +56,18 @@ class LeptonPair(object):
 
 
 	def pt1(self):
-	 	#Total transverse momentum
+	 	# Transverse momentum of lepton 2
 	 	return np.sqrt(np.power(self.l1.px(),2) + np.power(self.l1.py(),2))
 
 
 	def pt2(self):
-	 	#Total transverse momentum
+	 	# Transverse momentum of lepton 2
 	 	return np.sqrt(np.power(self.l2.px(),2) + np.power(self.l2.py(),2))
 
 
 	def eta1(self):
-	 	#Total transverse momentum
 	 	return self.l1.eta()
 
 
 	def eta2(self):
-	 	#Total transverse momentum
 	 	return self.l2.eta()

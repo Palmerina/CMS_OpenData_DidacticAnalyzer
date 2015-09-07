@@ -26,10 +26,15 @@ import matplotlib.pylab as P
 
 class TwoMuonAnalyzer(object):
 	"""
-	
+	Analyzes the properties of the muons in every event
+	and selects those coming from the Z boson decay
 	"""
 	
 	def __init__(self, cutsConfig, data_files):
+		"""
+		TwoMuonAnalyzer initializer
+		"""
+
 		self.muonHandle = Handle('std::vector<pat::Muon>')
 		self.vertexHandle = Handle('std::vector<reco::Vertex>')	
 		self.cutsConfig = cutsConfig
@@ -41,18 +46,36 @@ class TwoMuonAnalyzer(object):
 		self.eta = []
 
 	def getMuons(self, event):
+		"""
+		event: one element of self.events
+		
+		returns:
+		"""
 
 		event.getByLabel('patMuons', self.muonHandle)
 		muons = self.muonHandle.product()
 		return muons
 
 	def getVertex(self, event):
+		"""
+		event: one element of self.events
+		
+		returns:
+		"""
 
 		event.getByLabel('offlinePrimaryVertices', self.vertexHandle)
 		vertex = self.vertexHandle.product()[0] #it only takes the first element which corresponds to the primary vertex
 		return vertex
 
+
 	def selectMuons(self, muon, vertex):
+		"""
+		muon:
+		vertex:
+		
+		returns: boolean
+		"""
+
         #muon=getMuons(), vertex=getVertex()
 	#The muon must be detected by both the tracker and the muon chambers
 		if not (muon.isGlobalMuon() and muon.isTrackerMuon()):
@@ -94,35 +117,32 @@ class TwoMuonAnalyzer(object):
 	       	return True
 
 	def plotter(self):
-
-		#P.ion()
+		"""
+		Plots the histograms
+		"""
 
 		P.figure()
 		P.hist(self.zMass, bins = 50)
 		P.xlabel("Invariant mass (GeV/c2)")
 		P.ylabel("frequency")
-		#P.show()
 
 
 		P.figure()
 		P.hist(self.zPt, bins = 50)
 		P.xlabel("Transverse momentum (GeV/c)")
 		P.ylabel("frequency")
-		#P.show()
 
 
 		P.figure()
 		P.hist(self.zPt1, bins = 50)
 		P.xlabel("pt_1 (GeV/c)")
 		P.ylabel("frequency")
-		#P.show()
 
 
 		P.figure()
 		P.hist(self.zPt2, bins = 50)
 		P.xlabel("pt_2 (GeV/c)")
 		P.ylabel("frequency")
-		#P.show()
 
 
 		P.figure()
@@ -132,6 +152,16 @@ class TwoMuonAnalyzer(object):
 		P.show()
 
 	def process(self, maxEv = -1):
+		"""
+		maxEv: maximum number of processed events
+		       maxEv=-1 runs over all the events
+
+		It selects the good muons applying the cut configuration
+		and paires up them creating objects of the class LeptonPair.
+		It gets the mass of every pair and adds the one which approaches 
+		the most to the Z boson's mass to the list self.zMass.  
+
+		"""
 	#maxEv=-1 runs over all the events
 
 
