@@ -45,6 +45,13 @@ class TwoMuonAnalyzer(object):
 		self.zPt2 = []
 		self.eta = []
 
+		self.badZMass = []
+		self.badZPt = []
+		self.badZPt1 = []
+		self.badZPt2 = []
+		self.badEta = []
+
+
 	def getMuons(self, event):
 		"""
 		event: one element of self.events
@@ -125,31 +132,65 @@ class TwoMuonAnalyzer(object):
 		P.hist(self.zMass, bins = 50)
 		P.xlabel("Invariant mass (GeV/c2)")
 		P.ylabel("frequency")
+		P.title("Good muons")
 
 
 		P.figure()
 		P.hist(self.zPt, bins = 50)
 		P.xlabel("Transverse momentum (GeV/c)")
 		P.ylabel("frequency")
-
+		P.title("Good muons")
 
 		P.figure()
 		P.hist(self.zPt1, bins = 50)
 		P.xlabel("pt_1 (GeV/c)")
 		P.ylabel("frequency")
-
+		P.title("Good muons")
 
 		P.figure()
 		P.hist(self.zPt2, bins = 50)
 		P.xlabel("pt_2 (GeV/c)")
 		P.ylabel("frequency")
-
+		P.title("Good muons")
 
 		P.figure()
 		P.hist(self.eta, bins = 50)
 		P.xlabel("Muons' eta angle (GeV/c)")
 		P.ylabel("frequency")
+		P.title("Good muons")
+
+		P.figure()
+		P.hist(self.badZMass, bins = 50)
+		P.xlabel("Invariant mass (GeV/c2)")
+		P.ylabel("frequency")
+		P.title("Bad muons")
+
+		P.figure()
+		P.hist(self.badZPt, bins = 50)
+		P.xlabel("Transverse momentum (GeV/c)")
+		P.ylabel("frequency")
+		P.title("Bad muons")
+
+		P.figure()
+		P.hist(self.badZPt1, bins = 50)
+		P.xlabel("pt_1 (GeV/c)")
+		P.ylabel("frequency")
+		P.title("Bad muons")
+
+		P.figure()
+		P.hist(self.badZPt2, bins = 50)
+		P.xlabel("pt_2 (GeV/c)")
+		P.ylabel("frequency")
+		P.title("Bad muons")
+
+		P.figure()
+		P.hist(self.badEta, bins = 50)
+		P.xlabel("Muons' eta angle (GeV/c)")
+		P.ylabel("frequency")
+		P.title("Bad muons")
+
 		P.show()
+
 
 	def process(self, maxEv = -1):
 		"""
@@ -172,6 +213,7 @@ class TwoMuonAnalyzer(object):
 
 			selectedMuons = []
 			zCandidates = []
+			badZCandidates = []
 
 			muons = self.getMuons(event)
 			vertex = self.getVertex(event)
@@ -216,10 +258,51 @@ class TwoMuonAnalyzer(object):
 			self.zMass.append(z.mass())
 			self.zPt.append(z.pt())
 			self.zPt2.append(z.pt2())
-			self.zPt1.append(z.pt2())
+			self.zPt1.append(z.pt1())
 			self.eta.append(z.eta1())
 			self.eta.append(z.eta2())
 
 			print z.mass()
 				# self.plotter()---> execute.py
+
+
+
+			# Without selecting the good muons:
+			numBadMuons=len(muons)
+			for outer in xrange(numBadMuons-1): #outer loop
+				outerMuon=muons[outer]
+
+				for inner in xrange(outer+1, numMuons): #inner loop
+					innerMuon=muons[inner]
+
+					if outerMuon.charge() * innerMuon.charge() >= 0:
+						continue
+
+					badMuPair = LeptonPair(innerMuon, outerMuon) #sum of the four-momentums of both muons
+					
+
+					if not ((badMuPair.mass() > self.cutsConfig.mass_min) and (badMuPair.mass() < 120)):
+						continue
+
+					badZCandidates.append(badMuPair)
+
+
+			if len(badZCandidates) == 0: 
+				continue
+
+			# picks the zCandidate with the best mass (the one closer to 91.118 GeV/c**2)
+			sortedBadZs = sorted(badZCandidates, key=lambda x: abs(x.mass() - 91.118)) 
+
+			badZ = sortedBadZs[0]
+
+			print badZ.mass()
+			print ""
+
+			self.badZMass.append(badZ.mass())
+			self.badZPt.append(badZ.pt())
+			self.badZPt2.append(badZ.pt2())
+			self.badZPt1.append(badZ.pt1())
+			self.badEta.append(badZ.eta1())
+			self.badEta.append(badZ.eta2())
+
 
