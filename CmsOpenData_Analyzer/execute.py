@@ -8,7 +8,6 @@
 
 import ROOT
 from TwoMuonAnalyzer import TwoMuonAnalyzer
-from TwoMuonAnalyzer2 import TwoMuonAnalyzer2
 from CutsConfig import CutsConfig
 
 # CMS data:

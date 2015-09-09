@@ -49,7 +49,10 @@ class TwoMuonAnalyzer(object):
 		self.badZPt2 = []
 		self.eta = []
 		self.badEta = []
-
+		self.chi2 = []
+		self.badChi2 = []
+		self.numValidHits = []
+		self.badNumValidHits = []
 
 
 	def getMuons(self, event):
@@ -83,8 +86,8 @@ class TwoMuonAnalyzer(object):
 		returns: boolean
 		"""
 
-        #muon=getMuons(), vertex=getVertex()
-	#The muon must be detected by both the tracker and the muon chambers
+	        #muon=getMuons(), vertex=getVertex()
+		#The muon must be detected by both the tracker and the muon chambers
 		if not (muon.isGlobalMuon() and muon.isTrackerMuon()):
 			return False
 	
@@ -117,7 +120,7 @@ class TwoMuonAnalyzer(object):
 	       	if muon.normChi2() > 10:
 	       		return False
 
-	       	# Minimum number of hits
+	       	# Minimum number of valid hits on the global track. 
 	       	if muon.numberOfValidHits() < 10:
 	       		return False
 
@@ -138,21 +141,21 @@ class TwoMuonAnalyzer(object):
 		P.figure()
 		P.hist(self.zPt, bins = 100, normed=1, alpha=0.5, label="Good Muons")
 		P.hist(self.badZPt, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
-		P.xlabel("Total pt (GeV/c2)")
+		P.xlabel("Total pt (GeV/c)")
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
 
 		P.figure()
 		P.hist(self.zPt1, bins = 100, normed=1, alpha=0.5, label="Good Muons")
 		P.hist(self.badZPt1, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
-		P.xlabel("pt_1 (GeV/c2)")
+		P.xlabel("pt_1 (GeV/c)")
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
 
 		P.figure()
 		P.hist(self.zPt2, bins = 100, normed=1, alpha=0.5, label="Good Muons")
 		P.hist(self.badZPt2, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
-		P.xlabel("pt_2 (GeV/c2)")
+		P.xlabel("pt_2 (GeV/c)")
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
 
@@ -160,11 +163,24 @@ class TwoMuonAnalyzer(object):
 		P.figure()
 		P.hist(self.eta, bins = 100, normed=1, alpha=0.5, label="Good Muons")
 		P.hist(self.badEta, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
-		P.xlabel("Invariant mass (GeV/c2)")
+		P.xlabel("Eta")
+		P.ylabel("frequency")
+		P.legend(loc='upper right')
+
+		P.figure()
+		P.hist(self.chi2, bins = 100, normed=1, alpha=0.5, label="Good Muons")
+		P.hist(self.badChi2, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlabel("Chi**2")
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
 
 
+		P.figure()
+		P.hist(self.numValidHits, bins = 100, normed=1, alpha=0.5, label="Good Muons")
+		P.hist(self.badNumValidHits, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlabel("Number of valid hits")
+		P.ylabel("frequency")
+		P.legend(loc='upper right')
 		P.show()
 
 
@@ -195,8 +211,11 @@ class TwoMuonAnalyzer(object):
 			
 			for muon in muons: # it applies the cutsConfig
 
+				self.chi2.append(muon.normChi2())
+
 				if self.selectMuons(muon, vertex) == True:
 					selectedMuons.append(muon)
+					self.badChi2.append(muon.normChi2())
 				else:
 					continue 
 
@@ -224,6 +243,10 @@ class TwoMuonAnalyzer(object):
 					self.zPt1.append(muPair.pt1())
 					self.eta.append(muPair.eta1())
 					self.eta.append(muPair.eta2())
+				#	self.chi2.append(muPair.chi2())
+				#	self.chi2.append(muPair.chi1())
+					self.numValidHits.append(muPair.numValidHits1())
+					self.numValidHits.append(muPair.numValidHits2())
 
 					print muPair.mass()
 
@@ -251,6 +274,10 @@ class TwoMuonAnalyzer(object):
 					self.badZPt1.append(badMuPair.pt1())
 					self.badEta.append(badMuPair.eta1())
 					self.badEta.append(badMuPair.eta2())
+					self.badChi2.append(badMuPair.chi2())
+					self.badChi2.append(badMuPair.chi1())
+					self.badNumValidHits.append(badMuPair.numValidHits1())
+					self.badNumValidHits.append(badMuPair.numValidHits2())
 
 
 					print badMuPair.mass()

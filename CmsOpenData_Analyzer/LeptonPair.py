@@ -17,6 +17,7 @@ __email__ = "pgi25@alumnos.unican.es"
 import ROOT
 import math
 import numpy as np
+from DataFormats.FWLite import Events, Handle
 
 class LeptonPair(object):
 
@@ -71,3 +72,19 @@ class LeptonPair(object):
 
 	def eta2(self):
 	 	return self.l2.eta()
+
+
+	def chi1(self):
+		return self.l1.normChi2()
+
+
+	def chi2(self):
+		return self.l2.normChi2()
+
+
+	def numValidHits1(self):
+		return self.l1.numberOfValidHits()
+
+
+	def numValidHits2(self):
+		return self.l2.numberOfValidHits()
