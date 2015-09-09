@@ -8,6 +8,7 @@
 
 import ROOT
 from TwoMuonAnalyzer import TwoMuonAnalyzer
+from TwoMuonAnalyzer2 import TwoMuonAnalyzer2
 from CutsConfig import CutsConfig
 
 # CMS data:
@@ -38,12 +39,13 @@ dB_min = 0.02 # cm. dB=impact parameter
 isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
 mass_min=5
 
-maxEv = 1000000 #number of processed events. maxEvents = -1 runs over all of them
+maxEv = 100000 #number of processed events. maxEvents = -1 runs over all of them
 
 
 cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_min, isolation, mass_min)
 
 analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the TwoMuonAnalyzer class
+
 
 analyzer.process(maxEv) 
 analyzer.plotter()
