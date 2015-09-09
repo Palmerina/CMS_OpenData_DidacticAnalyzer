@@ -19,6 +19,8 @@ from LeptonPair import LeptonPair #class LeptonPair inside LeptonPair.py
 from DataFormats.FWLite import Events, Handle
 from CutsConfig import CutsConfig
 import numpy as n
+from scipy.stats import norm
+import matplotlib.mlab as mlab
 import matplotlib
 matplotlib.use('QT4agg')
 import matplotlib.pylab as P
@@ -167,12 +169,12 @@ class TwoMuonAnalyzer(object):
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
 
-		P.figure()
-		P.hist(self.chi2, bins = 100, normed=1, alpha=0.5, label="Good Muons")
-		P.hist(self.badChi2, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
-		P.xlabel("Chi**2")
-		P.ylabel("frequency")
-		P.legend(loc='upper right')
+	#	P.figure()
+	#	P.hist(self.chi2, bins = 100, normed=1, alpha=0.5, label="Good Muons")
+	#	P.hist(self.badChi2, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+	#	P.xlabel("Chi**2")
+	#	P.ylabel("frequency")
+	#	P.legend(loc='upper right')
 
 
 		P.figure()
@@ -181,6 +183,22 @@ class TwoMuonAnalyzer(object):
 		P.xlabel("Number of valid hits")
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
+		P.show()
+
+
+	def gaussianFit(self):
+		
+		#bins = 100
+		(mu, sigma) = norm.fit(self.zMass)
+
+		n,bins,patches=P.hist(self.zMass, 100, normed=1)
+
+		y = mlab.normpdf( bins, mu, sigma)
+		l = P.plot(bins, y, 'r--', linewidth=2)
+
+		P.xlabel("Invariant mass (GeV/c2)")
+		P.ylabel("frequency")
+				
 		P.show()
 
 
@@ -208,14 +226,16 @@ class TwoMuonAnalyzer(object):
 			muons = self.getMuons(event)
 			vertex = self.getVertex(event)
 			
+
+			
 			
 			for muon in muons: # it applies the cutsConfig
 
-				self.chi2.append(muon.normChi2())
+			#	self.chi2.append(muon.normChi2())
 
 				if self.selectMuons(muon, vertex) == True:
 					selectedMuons.append(muon)
-					self.badChi2.append(muon.normChi2())
+			#		self.badChi2.append(muon.normChi2())
 				else:
 					continue 
 
@@ -274,10 +294,10 @@ class TwoMuonAnalyzer(object):
 					self.badZPt1.append(badMuPair.pt1())
 					self.badEta.append(badMuPair.eta1())
 					self.badEta.append(badMuPair.eta2())
-					self.badChi2.append(badMuPair.chi2())
-					self.badChi2.append(badMuPair.chi1())
-					self.badNumValidHits.append(badMuPair.numValidHits1())
-					self.badNumValidHits.append(badMuPair.numValidHits2())
+				#	self.badChi2.append(badMuPair.chi2())
+				#	self.badChi2.append(badMuPair.chi1())
+			#		self.badNumValidHits.append(badMuPair.numValidHits1())
+			#		self.badNumValidHits.append(badMuPair.numValidHits2())
 
 
 					print badMuPair.mass()

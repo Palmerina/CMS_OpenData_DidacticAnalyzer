@@ -36,7 +36,7 @@ eta_max = 2.4
 distance = 0.2
 dB_min = 0.02 # cm. dB=impact parameter
 isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
-mass_min=5
+mass_min=60
 
 maxEv = 100000 #number of processed events. maxEvents = -1 runs over all of them
 
@@ -47,6 +47,7 @@ analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the Tw
 
 
 analyzer.process(maxEv) 
-analyzer.plotter()
+#analyzer.plotter()
+analyzer.gaussianFit()
 
 
