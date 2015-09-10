@@ -21,7 +21,7 @@ from DataFormats.FWLite import Events, Handle
 
 class LeptonPair(object):
 
-	def __init__(self, l1, l2):
+	def __init__(self, l1, l2, vertex):
 	 	"""
 	 	l1, l2: leptons 
 	 	It sums the four-momentums of l1 and l2 and gets their mass, their energy and their transverse momentum
@@ -29,6 +29,7 @@ class LeptonPair(object):
 
 		self.l1 = l1
 		self.l2 = l2		
+		self.vertex = vertex
 
  		self.px = self.l1.px()+self.l2.px() #GeV/c
  		self.py = self.l1.py()+self.l2.py()
@@ -75,16 +76,48 @@ class LeptonPair(object):
 
 
 	def chi1(self):
-		return self.l1.normChi2()
+
+		if not self.l1.globalTrack().isNull():
+			return self.l1.normChi2()
 
 
 	def chi2(self):
-		return self.l2.normChi2()
+
+		if not self.l2.globalTrack().isNull():
+			return self.l2.normChi2()
 
 
 	def numValidHits1(self):
-		return self.l1.numberOfValidHits()
+
+		if not self.l1.globalTrack().isNull():
+			return self.l1.numberOfValidHits()
 
 
 	def numValidHits2(self):
-		return self.l2.numberOfValidHits()
+
+		if not self.l2.globalTrack().isNull():
+			return self.l2.numberOfValidHits()
+
+
+	def dB1(self):
+		return self.l1.dB(self.l1.PV3D)
+
+
+	def dB2(self):
+		return self.l2.dB(self.l2.PV3D)
+
+
+	def distance1(self):
+		return self.l1.vertex().z()-self.vertex.z()
+
+
+	def distance2(self):
+		return self.l2.vertex().z()-self.vertex.z()
+
+
+
+
+
+
+
+

@@ -55,6 +55,8 @@ class TwoMuonAnalyzer(object):
 		self.badChi2 = []
 		self.numValidHits = []
 		self.badNumValidHits = []
+		self.dB = []
+		self.distance = []
 
 
 	def getMuons(self, event):
@@ -102,7 +104,7 @@ class TwoMuonAnalyzer(object):
 	       		return False
 
 	       	# Maximum impact parameter
-	       	if muon.dB(muon.PV3D) > self.cutsConfig.dB_min:
+	       	if muon.dB(muon.PV3D) > self.cutsConfig.dB_max:
 	       		return False
 
 
@@ -119,16 +121,68 @@ class TwoMuonAnalyzer(object):
 	       		return False
 	    
 	       	# Maximum chi2
-	       	if muon.normChi2() > 10:
+	       	if muon.normChi2() > self.cutsConfig.chi2:
 	       		return False
 
 	       	# Minimum number of valid hits on the global track. 
-	       	if muon.numberOfValidHits() < 10:
+	       	if muon.numberOfValidHits() < self.cutsConfig.numValidHits:
 	       		return False
 
 	       	return True
 
+
+	def plotter1(self):
+		"""
+		Plots the transverse momentum 
+
+		"""
+
+		P.figure()
+		P.hist(self.badZPt, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlim(0, 500)
+		P.xlabel("Total pt (GeV/c)")
+		P.ylabel("frequency")
+
+		P.figure()
+		P.hist(self.badZPt1, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlim(0, 500)
+		P.xlabel("pt_1 (GeV/c)")
+		P.ylabel("frequency")
+		P.legend(loc='upper right')
+
+		P.figure()
+		P.hist(self.badZPt2, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlim(0, 500)
+		P.xlabel("pt_2 (GeV/c)")
+		P.ylabel("frequency")
+
+		P.figure()
+		P.hist(self.badChi2, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlabel("Chi**2")
+		P.ylabel("frequency")
+
+
+		P.figure()
+		P.hist(self.badNumValidHits, bins = 20, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlabel("Number of valid hits")
+		P.ylabel("frequency")
+
+		P.figure()
+		P.hist(self.dB, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlabel("Impact parameter")
+		P.ylabel("frequency")
+
+
+		P.figure()
+		P.hist(self.distance, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlabel("Dz to PV")
+		P.ylabel("frequency")
+
+		P.show()
+
+
 	def plotter(self):
+
 		"""
 		Plots the histograms
 		"""
@@ -143,6 +197,7 @@ class TwoMuonAnalyzer(object):
 		P.figure()
 		P.hist(self.zPt, bins = 100, normed=1, alpha=0.5, label="Good Muons")
 		P.hist(self.badZPt, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlim(0, 500)
 		P.xlabel("Total pt (GeV/c)")
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
@@ -150,6 +205,7 @@ class TwoMuonAnalyzer(object):
 		P.figure()
 		P.hist(self.zPt1, bins = 100, normed=1, alpha=0.5, label="Good Muons")
 		P.hist(self.badZPt1, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlim(0, 500)
 		P.xlabel("pt_1 (GeV/c)")
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
@@ -157,6 +213,7 @@ class TwoMuonAnalyzer(object):
 		P.figure()
 		P.hist(self.zPt2, bins = 100, normed=1, alpha=0.5, label="Good Muons")
 		P.hist(self.badZPt2, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
+		P.xlim(0, 500)
 		P.xlabel("pt_2 (GeV/c)")
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
@@ -177,12 +234,14 @@ class TwoMuonAnalyzer(object):
 	#	P.legend(loc='upper right')
 
 
-		P.figure()
-		P.hist(self.numValidHits, bins = 100, normed=1, alpha=0.5, label="Good Muons")
-		P.hist(self.badNumValidHits, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
-		P.xlabel("Number of valid hits")
-		P.ylabel("frequency")
-		P.legend(loc='upper right')
+	#	P.figure()
+	#	P.hist(self.numValidHits, bins = 50, normed=1, alpha=0.5, label="Good Muons")
+	#	P.hist(self.badNumValidHits, bins = 50, normed=1, alpha=0.5, label="Bad Muons")
+	#	P.xlabel("Number of valid hits")
+	#	P.ylabel("frequency")
+	#	P.legend(loc='upper right')
+
+
 		P.show()
 
 
@@ -230,14 +289,24 @@ class TwoMuonAnalyzer(object):
 			
 			
 			for muon in muons: # it applies the cutsConfig
+				
+				if not muon.globalTrack().isNull():
 
-			#	self.chi2.append(muon.normChi2())
+			#		print muon.normChi2()
+					self.chi2.append(muon.normChi2())
+					self.numValidHits.append(muon.numberOfValidHits())
 
 				if self.selectMuons(muon, vertex) == True:
 					selectedMuons.append(muon)
-			#		self.badChi2.append(muon.normChi2())
+
+					if not muon.globalTrack().isNull():
+
+				#		print muon.normChi2()
+						self.badChi2.append(muon.normChi2())
+						self.badNumValidHits.append(muon.numberOfValidHits())
 				else:
 					continue 
+
 
 			numMuons = len(selectedMuons)
 			if selectedMuons < 2: continue
@@ -251,7 +320,7 @@ class TwoMuonAnalyzer(object):
 					if outerMuon.charge() * innerMuon.charge() >= 0:
 						continue
 
-					muPair = LeptonPair(innerMuon, outerMuon) #sum of the four-momentums of both muons
+					muPair = LeptonPair(innerMuon, outerMuon, vertex) #sum of the four-momentums of both muons
 					
 
 					if not ((muPair.mass() > self.cutsConfig.mass_min) and (muPair.mass() < 120)):
@@ -263,12 +332,12 @@ class TwoMuonAnalyzer(object):
 					self.zPt1.append(muPair.pt1())
 					self.eta.append(muPair.eta1())
 					self.eta.append(muPair.eta2())
-				#	self.chi2.append(muPair.chi2())
-				#	self.chi2.append(muPair.chi1())
-					self.numValidHits.append(muPair.numValidHits1())
-					self.numValidHits.append(muPair.numValidHits2())
+			#		self.chi2.append(muPair.chi2())
+			#		self.chi2.append(muPair.chi1())
+			#		self.numValidHits.append(muPair.numValidHits1())
+			#		self.numValidHits.append(muPair.numValidHits2())
 
-					print muPair.mass()
+			#		print muPair.mass()
 
 
 			# Without selecting the good muons:
@@ -282,7 +351,7 @@ class TwoMuonAnalyzer(object):
 					if outerMuon.charge() * innerMuon.charge() >= 0:
 						continue
 
-					badMuPair = LeptonPair(innerMuon, outerMuon) #sum of the four-momentums of both muons
+					badMuPair = LeptonPair(innerMuon, outerMuon, vertex) #sum of the four-momentums of both muons
 					
 
 					if not ((badMuPair.mass() > self.cutsConfig.mass_min) and (badMuPair.mass() < 120)):
@@ -296,13 +365,20 @@ class TwoMuonAnalyzer(object):
 					self.badEta.append(badMuPair.eta2())
 				#	self.badChi2.append(badMuPair.chi2())
 				#	self.badChi2.append(badMuPair.chi1())
-			#		self.badNumValidHits.append(badMuPair.numValidHits1())
-			#		self.badNumValidHits.append(badMuPair.numValidHits2())
+				#	self.badNumValidHits.append(badMuPair.numValidHits1())
+				#	self.badNumValidHits.append(badMuPair.numValidHits2())
 
+					if abs(badMuPair.dB1())<10:
+						print badMuPair.dB1()
+						self.dB.append(badMuPair.dB1())
 
-					print badMuPair.mass()
-					print ""
+					if abs(badMuPair.dB2())<10:
+						print badMuPair.dB2()
+						self.dB.append(badMuPair.dB2())
+					self.distance.append(badMuPair.distance1())
+					self.distance.append(badMuPair.distance2())
 
-
+			#		print badMuPair.mass()
+		#			print ""
 
 

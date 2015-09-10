@@ -30,27 +30,25 @@ data_files = [
 # cutsConfig parameters:
 
 # These are the cuts applied to the muons in order to select the good ones (see TwoMuonAnalyzer.py)
+# Change the values to get the Z mass boson peak
 
-pt_min = 5 
-eta_max = 2.4
-distance = 0.2
-dB_max = 0.02  # cm. dB=impact parameter
-isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
+pt_min = 0 
+eta_max = 100
+distance = 1
+dB_max = 1  # cm. dB=impact parameter
+isolation = 1 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
 mass_min=60
-chi2 = 5
-numValidHits = 20
+chi2 = 50
+numValidHits = 0
 
-maxEv = 1000000 #number of processed events. maxEvents = -1 runs over all of them
+maxEv = 100000 #number of processed events. maxEvents = -1 runs over all of them
 
 
 cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_max, isolation, mass_min)
-
 analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the TwoMuonAnalyzer class
 
 
 analyzer.process(maxEv) 
-analyzer.plotter1()
 analyzer.plotter()
-#analyzer.gaussianFit()
 
 
