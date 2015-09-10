@@ -61,6 +61,7 @@
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#PhysicsObject -->
 
     <ObjectProperty rdf:about="&COD_Ontology;PhysicsObject">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Events"/>
     </ObjectProperty>
     
@@ -69,6 +70,7 @@
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Restrictions -->
 
     <ObjectProperty rdf:about="&COD_Ontology;Restrictions">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Analysis"/>
     </ObjectProperty>
     
@@ -138,10 +140,77 @@
     
 
 
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Abstract -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Abstract">
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Attachments -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Attachments">
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Authors -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Authors">
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Comments -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Comments">
+        <rdfs:domain rdf:resource="&COD_Ontology;Discussion"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;InternalNote"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Presentation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Contact_Information -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Contact_Information">
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Copyright -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Copyright">
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+    </ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Data -->
 
     <ObjectProperty rdf:about="&COD_Ontology;has_Data">
+        <rdfs:range rdf:resource="&COD_Ontology;DataSet"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Software"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Software"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Date -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Date">
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
     </ObjectProperty>
     
 
@@ -149,7 +218,9 @@
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Documentation -->
 
     <ObjectProperty rdf:about="&COD_Ontology;has_Documentation">
+        <rdfs:range rdf:resource="&COD_Ontology;Documentation"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Software"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Software"/>
     </ObjectProperty>
     
 
@@ -169,6 +240,26 @@
     
 
 
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Keywords -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Keywords">
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Links -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Links">
+        <rdfs:domain rdf:resource="&COD_Ontology;Discussion"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;InternalNote"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Presentation"/>
+    </ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Magnitude -->
 
     <ObjectProperty rdf:about="&COD_Ontology;has_Magnitude">
@@ -177,10 +268,61 @@
     
 
 
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Page_Editors -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Page_Editors">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Discussion"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;InternalNote"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Presentation"/>
+    </ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Property -->
 
     <ObjectProperty rdf:about="&COD_Ontology;has_Property">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment>Attach theoretical particle&apos;s properties according to the SM</rdfs:comment>
+        <rdfs:domain rdf:resource="&COD_Ontology;Properties"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;StandardModel"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Version_Documentation -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_Version_Documentation">
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_number_of_contributions -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_number_of_contributions">
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_number_of_participants -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;has_number_of_participants">
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#in_Journal -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;in_Journal">
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Publication"/>
     </ObjectProperty>
     
 
@@ -195,6 +337,17 @@
         <rdfs:range rdf:resource="&COD_Ontology;InternalNote"/>
         <rdfs:range rdf:resource="&COD_Ontology;Presentation"/>
         <rdfs:range rdf:resource="&COD_Ontology;Publication"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#is_type_detectors -->
+
+    <ObjectProperty rdf:about="&COD_Ontology;is_type_detectors">
+        <rdfs:domain rdf:resource="&COD_Ontology;Candidates_Particles"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;PhysicsObject"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;TracksReconstruction"/>
     </ObjectProperty>
     
 
@@ -226,23 +379,15 @@
 
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Documentation -->
 
-    <DatatypeProperty rdf:about="&COD_Ontology;Documentation"/>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#PhysicsObject -->
-
-    <DatatypeProperty rdf:about="&COD_Ontology;PhysicsObject">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    <DatatypeProperty rdf:about="&COD_Ontology;Documentation">
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
     </DatatypeProperty>
     
 
 
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Properties -->
 
-    <DatatypeProperty rdf:about="&COD_Ontology;Properties">
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;PhysicsObject"/>
-    </DatatypeProperty>
+    <DatatypeProperty rdf:about="&COD_Ontology;Properties"/>
     
 
 
@@ -299,10 +444,8 @@
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Comments -->
 
     <DatatypeProperty rdf:about="&COD_Ontology;has_Comments">
-        <rdfs:domain rdf:resource="&COD_Ontology;Discussion"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;InternalNote"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Presentation"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
     
@@ -338,28 +481,15 @@
     
 
 
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_DistanceMax -->
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Experimental_Value -->
 
-    <DatatypeProperty rdf:about="&COD_Ontology;has_DistanceMax">
+    <DatatypeProperty rdf:about="&COD_Ontology;has_Experimental_Value">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:comment>Maximum distance of the detected particle respect to the primary vertex</rdfs:comment>
+        <rdfs:domain rdf:resource="&COD_Ontology;Magnitudes"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Particles"/>
         <rdfs:domain rdf:resource="&COD_Ontology;PhysicsObject"/>
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;TracksReconstruction"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Vertex"/>
-        <rdfs:range rdf:resource="&xsd;double"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_EtaMax -->
-
-    <DatatypeProperty rdf:about="&COD_Ontology;has_EtaMax">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;PhysicsObject"/>
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;TracksReconstruction"/>
-        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Properties"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
     
 
@@ -371,18 +501,6 @@
         <rdfs:comment>Identification Number For Physics Object Content</rdfs:comment>
         <rdfs:domain rdf:resource="&COD_Ontology;DataSet"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;DataSet"/>
-        <rdfs:range rdf:resource="&xsd;double"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Isolation -->
-
-    <DatatypeProperty rdf:about="&COD_Ontology;has_Isolation">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:comment>Maximum energy content in analysis region before consider the analized particle being part of a jet of particles</rdfs:comment>
-        <rdfs:domain rdf:resource="&COD_Ontology;PhysicsObject"/>
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
         <rdfs:range rdf:resource="&xsd;double"/>
     </DatatypeProperty>
     
@@ -401,23 +519,28 @@
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Links -->
 
     <DatatypeProperty rdf:about="&COD_Ontology;has_Links">
-        <rdfs:domain rdf:resource="&COD_Ontology;Discussion"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;InternalNote"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Presentation"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_NumberOfValidHits -->
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Max_Value -->
 
-    <DatatypeProperty rdf:about="&COD_Ontology;has_NumberOfValidHits">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:comment>Minimum value of hits in the tracker by a candidate particle</rdfs:comment>
-        <rdfs:domain rdf:resource="&COD_Ontology;CmsDetectors"/>
+    <DatatypeProperty rdf:about="&COD_Ontology;has_Max_Value">
+        <rdfs:domain rdf:resource="&COD_Ontology;Magnitudes"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;TracksReconstruction"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Min_Value -->
+
+    <DatatypeProperty rdf:about="&COD_Ontology;has_Min_Value">
+        <rdfs:domain rdf:resource="&COD_Ontology;Magnitudes"/>
+        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
         <rdfs:range rdf:resource="&xsd;double"/>
     </DatatypeProperty>
     
@@ -427,35 +550,9 @@
 
     <DatatypeProperty rdf:about="&COD_Ontology;has_Page_Editors">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Discussion"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Documentation"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Documentation"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;InternalNote"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Presentation"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_PtMin -->
-
-    <DatatypeProperty rdf:about="&COD_Ontology;has_PtMin">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:comment>Minimum value of the particle transverse momentum to be considered for analysis</rdfs:comment>
-        <rdfs:domain rdf:resource="&COD_Ontology;PhysicsObject"/>
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
-        <rdfs:range rdf:resource="&xsd;int"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_SIPMin -->
-
-    <DatatypeProperty rdf:about="&COD_Ontology;has_SIPMin">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:comment>Minimum value of the Simetrized Impact Parameter in order to select particle candidates</rdfs:comment>
-        <rdfs:domain rdf:resource="&COD_Ontology;PhysicsObject"/>
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Vertex"/>
-        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
     
 
@@ -464,34 +561,10 @@
 
     <DatatypeProperty rdf:about="&COD_Ontology;has_Theoretical_Value">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:comment>Attach theoreical value of the particle&apos;s properties according to the SM</rdfs:comment>
+        <rdfs:domain rdf:resource="&COD_Ontology;Particles"/>
         <rdfs:domain rdf:resource="&COD_Ontology;Properties"/>
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;StandardModel"/>
-        <rdfs:range rdf:resource="&xsd;double"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_Value -->
-
-    <DatatypeProperty rdf:about="&COD_Ontology;has_Value">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Charge"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Distance"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Energy"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Eta"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;FourMomentum"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Magnitudes"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Mass"/>
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Properties"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Px"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Py"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Pz"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;SIP"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Spin"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;TransverseMomentum"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;dB"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;pdgID"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;StandardModel"/>
         <rdfs:range rdf:resource="&xsd;double"/>
     </DatatypeProperty>
     
@@ -522,6 +595,8 @@
 
     <DatatypeProperty rdf:about="&COD_Ontology;has_Version_Software">
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Software"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Software"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
     
 
@@ -537,19 +612,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_dBMin -->
-
-    <DatatypeProperty rdf:about="&COD_Ontology;has_dBMin">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:comment>Maximum value for the impact parameter</rdfs:comment>
-        <rdfs:domain rdf:resource="&COD_Ontology;PhysicsObject"/>
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;Vertex"/>
-        <rdfs:range rdf:resource="&xsd;double"/>
-    </DatatypeProperty>
-    
-
-
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_modification_time -->
 
     <DatatypeProperty rdf:about="&COD_Ontology;has_modification_time">
@@ -557,18 +619,6 @@
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;DataSet"/>
         <rdfs:domain rdf:resource="&COD_Ontology;DataSet"/>
         <rdfs:range rdf:resource="&xsd;dateTime"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#has_normChiSquaredMax -->
-
-    <DatatypeProperty rdf:about="&COD_Ontology;has_normChiSquaredMax">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:comment>Maximum value of the statistic paramenter ChiSquared</rdfs:comment>
-        <rdfs:domain rdf:resource="&COD_Ontology;ChiSquared"/>
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
-        <rdfs:range rdf:resource="&xsd;int"/>
     </DatatypeProperty>
     
 
@@ -651,18 +701,8 @@
 
     <DatatypeProperty rdf:about="&COD_Ontology;is_located_in">
         <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Software"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#is_type_detectors -->
-
-    <DatatypeProperty rdf:about="&COD_Ontology;is_type_detectors">
-        <rdfs:comment>Characteristic of the candidate particle respect to its trajectory.</rdfs:comment>
-        <rdfs:domain rdf:resource="&COD_Ontology;Candidates_Particles"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;PhysicsObject"/>
-        <rdfs:subPropertyOf rdf:resource="&COD_Ontology;Restrictions"/>
-        <rdfs:domain rdf:resource="&COD_Ontology;TracksReconstruction"/>
+        <rdfs:domain rdf:resource="&COD_Ontology;Software"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
     
 
@@ -717,14 +757,7 @@
 
     <Class rdf:about="&COD_Ontology;Baryons">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;Hadrons"/>
-    </Class>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Boson -->
-
-    <Class rdf:about="&COD_Ontology;Boson">
-        <rdfs:subClassOf rdf:resource="&COD_Ontology;Type"/>
+        <rdfs:comment>composed by three quarks</rdfs:comment>
     </Class>
     
 
@@ -902,6 +935,7 @@
 
     <Class rdf:about="&COD_Ontology;Hadrons">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;Composite_Particles"/>
+        <rdfs:comment>Particle composed by quarks</rdfs:comment>
     </Class>
     
 
@@ -910,7 +944,6 @@
 
     <Class rdf:about="&COD_Ontology;Higgs_Boson">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;Bosons"/>
-        <rdfs:comment>Class of Higgs Boson</rdfs:comment>
     </Class>
     
 
@@ -936,14 +969,6 @@
     <Class rdf:about="&COD_Ontology;Lagrangian">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;StandardModel"/>
         <rdfs:comment>The quantum field theory provides the mathematical framework for the Standard Model, in which a Lagrangian controls the dynamics and kinematics of the theory</rdfs:comment>
-    </Class>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Lepton -->
-
-    <Class rdf:about="&COD_Ontology;Lepton">
-        <rdfs:subClassOf rdf:resource="&COD_Ontology;Type"/>
     </Class>
     
 
@@ -1014,6 +1039,7 @@
 
     <Class rdf:about="&COD_Ontology;Mesons">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;Hadrons"/>
+        <rdfs:comment>composed by a quark and an anti-quark</rdfs:comment>
     </Class>
     
 
@@ -1023,6 +1049,14 @@
     <Class rdf:about="&COD_Ontology;Mini-AOD">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;Level_3"/>
         <rdfs:comment>High level physics objects (leptons, photons, jets, ETmiss), with detailed information in order to allow e.g. retuning of identification criteria, saved using PAT dataformats. Some preselection requirements are applied on the objects, and objects failing these requirements are either not stored or stored only with a more limited set of information.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#NumberOfHits -->
+
+    <Class rdf:about="&COD_Ontology;NumberOfHits">
+        <rdfs:subClassOf rdf:resource="&COD_Ontology;Magnitudes"/>
     </Class>
     
 
@@ -1197,7 +1231,7 @@
 
     <Class rdf:about="&COD_Ontology;Theoretical_Electric_Charge">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;Properties"/>
-        <rdfs:comment>Predicted Value of the particles&apos; Electric Charge according to the SM</rdfs:comment>
+        <rdfs:comment>Predicted Value of the particles&apos; Electric Charge according to the SM, based on the electron charge e.</rdfs:comment>
     </Class>
     
 
@@ -1206,7 +1240,7 @@
 
     <Class rdf:about="&COD_Ontology;Theoretical_Mass">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;Properties"/>
-        <rdfs:comment>Predicted Value of the particles&apos; Mass according to the SM</rdfs:comment>
+        <rdfs:comment>Predicted Value of the particles&apos; Mass according to the SM, in GeV/c^2.</rdfs:comment>
     </Class>
     
 
@@ -1223,7 +1257,7 @@
 
     <Class rdf:about="&COD_Ontology;Theoretical_Spin">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;Properties"/>
-        <rdfs:comment>Predicted Value of the particles&apos; Spin according to the SM</rdfs:comment>
+        <rdfs:comment>Predicted Value of the particles&apos; Spin according to the SM, in hbar units.</rdfs:comment>
     </Class>
     
 
@@ -1241,15 +1275,6 @@
     <Class rdf:about="&COD_Ontology;TransverseMomentum">
         <rdfs:subClassOf rdf:resource="&COD_Ontology;Magnitudes"/>
         <rdfs:comment>Magnitude defined as pt=sqrt(px^2+py^2)</rdfs:comment>
-    </Class>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Type -->
-
-    <Class rdf:about="&COD_Ontology;Type">
-        <rdfs:subClassOf rdf:resource="&COD_Ontology;PhysicsObject"/>
-        <rdfs:comment>Type of particles that are being detected and collecting in the event.</rdfs:comment>
     </Class>
     
 
@@ -1345,6 +1370,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#CmsOpenData2010_Patuples -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;CmsOpenData2010_Patuples">
+        <rdf:type rdf:resource="&COD_Ontology;Patuples"/>
+    </NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#CmsOpenData_Package -->
 
     <NamedIndividual rdf:about="&COD_Ontology;CmsOpenData_Package">
@@ -1354,16 +1387,8 @@
         <COD_Ontology:has_Version_Software>1.0.0</COD_Ontology:has_Version_Software>
         <COD_Ontology:works_in_OS>Unix with Cms Env</COD_Ontology:works_in_OS>
         <COD_Ontology:is_written_in>Python</COD_Ontology:is_written_in>
-        <COD_Ontology:has_Data rdf:resource="&COD_Ontology;CmsOpenData_Patuples"/>
+        <COD_Ontology:has_Data rdf:resource="&COD_Ontology;CmsOpenData2010_Patuples"/>
         <COD_Ontology:has_Documentation rdf:resource="&COD_Ontology;README"/>
-    </NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#CmsOpenData_Patuples -->
-
-    <NamedIndividual rdf:about="&COD_Ontology;CmsOpenData_Patuples">
-        <rdf:type rdf:resource="&COD_Ontology;Patuples"/>
     </NamedIndividual>
     
 
@@ -1388,6 +1413,94 @@
     
 
 
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Distance_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Distance_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Electric_Charge_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Electric_Charge_muon">
+        <COD_Ontology:has_Experimental_Value rdf:datatype="&xsd;integer">-1</COD_Ontology:has_Experimental_Value>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Energy_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Energy_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Eta_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Eta_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Four_Momentum_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Four_Momentum_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Mass_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Mass_muon">
+        <COD_Ontology:has_Experimental_Value>(105.6583715±0.0000035).10^(-3)</COD_Ontology:has_Experimental_Value>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Px_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Px_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Py_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Py_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Pz_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Pz_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_SIP_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_SIP_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Spin_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Spin_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_Transverse_Momentum_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_Transverse_Momentum_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_dB_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_dB_muon"/>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Experimental_pdgID_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Experimental_pdgID_muon"/>
+    
+
+
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Gravitation -->
 
     <NamedIndividual rdf:about="&COD_Ontology;Gravitation">
@@ -1403,6 +1516,23 @@
     <NamedIndividual rdf:about="&COD_Ontology;HadronicCalorimeter">
         <rdf:type rdf:resource="&COD_Ontology;CmsDetectors"/>
         <rdfs:comment>Made of dense materials as brass that determines the path and energy of hadrons</rdfs:comment>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Higgs_Boson -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Higgs_Boson">
+        <rdf:type rdf:resource="&COD_Ontology;Bosons"/>
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Higgs_Boson"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_Higgs_Boson"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_Higgs_Boson"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_Higgs_Boson"/>
+        <sameAs rdf:resource="&COD_Ontology;W_minus"/>
+        <sameAs rdf:resource="&COD_Ontology;W_plus"/>
+        <sameAs rdf:resource="&COD_Ontology;Z"/>
+        <sameAs rdf:resource="&COD_Ontology;gluon"/>
     </NamedIndividual>
     
 
@@ -1424,26 +1554,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Muon_Candidate -->
-
-    <NamedIndividual rdf:about="&COD_Ontology;Muon_Candidate">
-        <rdf:type rdf:resource="&COD_Ontology;Candidates_Particles"/>
-        <rdf:type rdf:resource="&COD_Ontology;Lepton"/>
-        <COD_Ontology:has_dBMin rdf:datatype="&xsd;decimal">0.02</COD_Ontology:has_dBMin>
-        <COD_Ontology:has_Isolation rdf:datatype="&xsd;decimal">0.15</COD_Ontology:has_Isolation>
-        <COD_Ontology:has_DistanceMax rdf:datatype="&xsd;decimal">0.2</COD_Ontology:has_DistanceMax>
-        <COD_Ontology:has_normChiSquaredMax rdf:datatype="&xsd;integer">10</COD_Ontology:has_normChiSquaredMax>
-        <COD_Ontology:has_NumberOfValidHits rdf:datatype="&xsd;integer">10</COD_Ontology:has_NumberOfValidHits>
-        <COD_Ontology:has_EtaMax rdf:datatype="&xsd;decimal">2.4</COD_Ontology:has_EtaMax>
-        <COD_Ontology:has_SIPMin rdf:datatype="&xsd;integer">4</COD_Ontology:has_SIPMin>
-        <COD_Ontology:has_PtMin rdf:datatype="&xsd;integer">5</COD_Ontology:has_PtMin>
-        <rdfs:comment>Second Generation Lepton that fulfills a serie of properties in magnitudes due to the fact that is the product particle of Z decay</rdfs:comment>
-        <COD_Ontology:are_detected_in rdf:resource="&COD_Ontology;MuonChambers"/>
-        <COD_Ontology:are_detected_in rdf:resource="&COD_Ontology;Tracker"/>
-    </NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Primary -->
 
     <NamedIndividual rdf:about="&COD_Ontology;Primary">
@@ -1456,7 +1566,7 @@
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#README -->
 
     <NamedIndividual rdf:about="&COD_Ontology;README">
-        <rdf:type rdf:resource="&COD_Ontology;InternalNote"/>
+        <rdf:type rdf:resource="&COD_Ontology;Publication"/>
         <COD_Ontology:has_Version_Documentation>1.0.0</COD_Ontology:has_Version_Documentation>
         <rdfs:comment>Documentation of CmsOpenData_Package</rdfs:comment>
         <COD_Ontology:has_Contact_Information xml:lang="alumnos.unican.es">gch24</COD_Ontology:has_Contact_Information>
@@ -1473,10 +1583,112 @@
     
 
 
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Color_Charge_bottom -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Color_Charge_bottom">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Color_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>Red, Blue, Green</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Color_Charge_charm -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Color_Charge_charm">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Color_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>Red, Blue, Green</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Color_Charge_down -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Color_Charge_down">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Color_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>Red, Blue, Green</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_up"/>
+    </NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Color_Charge_gluon -->
 
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Color_Charge_gluon">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Color_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>Red, Blue, Green</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Color_Charge_strange -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Color_Charge_strange">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Color_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>Red, Blue, Green</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Color_Charge_top -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Color_Charge_top">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Color_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>Red, Blue, Green</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Color_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Color_Charge_up -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Color_Charge_up">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Color_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>Red, Blue, Green</COD_Ontology:has_Theoretical_Value>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_Higgs_Boson -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_Higgs_Boson">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_W_minus"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_W_plus"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_Z"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
     </NamedIndividual>
     
 
@@ -1488,8 +1700,20 @@
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">-1</COD_Ontology:has_Theoretical_Value>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_W_plus"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_Z"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
     </NamedIndividual>
     
 
@@ -1500,8 +1724,20 @@
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">1</COD_Ontology:has_Theoretical_Value>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_Z"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
     </NamedIndividual>
     
 
@@ -1511,8 +1747,120 @@
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_Z">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_bottom -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_bottom">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>-1/3</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_charm -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_charm">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>+2/3</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_down -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_down">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>-1/3</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_electron -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_electron">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">-1</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_electron_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
     </NamedIndividual>
     
 
@@ -1522,7 +1870,45 @@
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_gluon">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_muon">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">-1</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_muon_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
     </NamedIndividual>
     
 
@@ -1532,6 +1918,92 @@
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_photon">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_strange -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_strange">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>-1/3</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_tau -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_tau">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">-1</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_tau_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_top -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_top">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>+2/3</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Electric_Charge_up -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Electric_Charge_up">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Electric_Charge"/>
+        <COD_Ontology:has_Theoretical_Value>+2/3</COD_Ontology:has_Theoretical_Value>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_Higgs_Boson -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_Higgs_Boson">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">125.3</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_W_minus"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_W_plus"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_Z"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
     </NamedIndividual>
     
 
@@ -1543,8 +2015,20 @@
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">80.401</COD_Ontology:has_Theoretical_Value>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_W_plus"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_Z"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
     </NamedIndividual>
     
 
@@ -1555,8 +2039,20 @@
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">80.401</COD_Ontology:has_Theoretical_Value>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_Z"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
     </NamedIndividual>
     
 
@@ -1566,8 +2062,120 @@
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_Z">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">91.1876</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_bottom -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_bottom">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">4.18</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_charm -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_charm">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">1.29</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_down -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_down">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.0048</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_electron -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_electron">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.000510</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_electron_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_electron_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
     </NamedIndividual>
     
 
@@ -1577,7 +2185,45 @@
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_gluon">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_muon">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.105658</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_muon_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_muon_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
     </NamedIndividual>
     
 
@@ -1587,6 +2233,92 @@
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_photon">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_strange -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_strange">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.095</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_tau -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_tau">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">1.77682</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_tau_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_tau_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_top -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_top">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">173.34</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Mass_up -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Mass_up">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Mass"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.0023</COD_Ontology:has_Theoretical_Value>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_Higgs_Boson -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_Higgs_Boson">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">0</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_W_minus"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_W_plus"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_Z"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
     </NamedIndividual>
     
 
@@ -1598,8 +2330,20 @@
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">1</COD_Ontology:has_Theoretical_Value>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_W_plus"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_Z"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
     </NamedIndividual>
     
 
@@ -1610,8 +2354,20 @@
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">1</COD_Ontology:has_Theoretical_Value>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_Z"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
     </NamedIndividual>
     
 
@@ -1621,8 +2377,120 @@
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_Z">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">1</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_bottom"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_bottom -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_bottom">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_charm"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_charm -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_charm">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_down"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_down -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_down">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_electron -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_electron">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_electron_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_electron_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_electron_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
     </NamedIndividual>
     
 
@@ -1632,7 +2500,45 @@
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_gluon">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">1</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
         <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_muon">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_muon_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_muon_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
     </NamedIndividual>
     
 
@@ -1642,6 +2548,66 @@
     <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_photon">
         <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
         <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;integer">1</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_strange -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_strange">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_tau -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_tau">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_tau_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_tau_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_top -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_top">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
+        <sameAs rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#Theoretical_Spin_up -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;Theoretical_Spin_up">
+        <rdf:type rdf:resource="&COD_Ontology;Theoretical_Spin"/>
+        <COD_Ontology:has_Theoretical_Value rdf:datatype="&xsd;decimal">0.5</COD_Ontology:has_Theoretical_Value>
     </NamedIndividual>
     
 
@@ -1661,10 +2627,10 @@
         <rdf:type rdf:resource="&COD_Ontology;Bosons"/>
         <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
         <rdf:type rdf:resource="&COD_Ontology;Gauge_Boson"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_W_minus"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_W_minus"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_W_minus"/>
+        <sameAs rdf:resource="&COD_Ontology;W_plus"/>
         <COD_Ontology:mediates rdf:resource="&COD_Ontology;Weak"/>
+        <sameAs rdf:resource="&COD_Ontology;Z"/>
+        <sameAs rdf:resource="&COD_Ontology;gluon"/>
     </NamedIndividual>
     
 
@@ -1675,10 +2641,9 @@
         <rdf:type rdf:resource="&COD_Ontology;Bosons"/>
         <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
         <rdf:type rdf:resource="&COD_Ontology;Gauge_Boson"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_W_plus"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_W_plus"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_W_plus"/>
         <COD_Ontology:mediates rdf:resource="&COD_Ontology;Weak"/>
+        <sameAs rdf:resource="&COD_Ontology;Z"/>
+        <sameAs rdf:resource="&COD_Ontology;gluon"/>
     </NamedIndividual>
     
 
@@ -1697,10 +2662,115 @@
         <rdf:type rdf:resource="&COD_Ontology;Bosons"/>
         <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
         <rdf:type rdf:resource="&COD_Ontology;Gauge_Boson"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_Z"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_Z"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_Z"/>
         <COD_Ontology:mediates rdf:resource="&COD_Ontology;Weak"/>
+        <sameAs rdf:resource="&COD_Ontology;gluon"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#bottom -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;bottom">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Quarks"/>
+        <rdf:type rdf:resource="&COD_Ontology;third_generation_quark"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Strong"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Color_Charge_bottom"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_bottom"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_bottom"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_bottom"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#charm -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;charm">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Quarks"/>
+        <rdf:type rdf:resource="&COD_Ontology;second_generation_quark"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Strong"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Color_Charge_charm"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_charm"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_charm"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_charm"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#down -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;down">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Quarks"/>
+        <rdf:type rdf:resource="&COD_Ontology;first_generation_quark"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Strong"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Color_Charge_down"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_down"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_down"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_down"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#electron -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;electron">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Leptons"/>
+        <rdf:type rdf:resource="&COD_Ontology;first_generation_lepton"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Electromagnetism"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_electron"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_electron"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Weak"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#electron_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;electron_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Leptons"/>
+        <rdf:type rdf:resource="&COD_Ontology;first_generation_lepton"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_electron_neutrino"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_electron_neutrino"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_electron_neutrino"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Weak"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#experimental_muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;experimental_muon">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Leptons"/>
+        <rdf:type rdf:resource="&COD_Ontology;PhysicsObject"/>
+        <rdf:type rdf:resource="&COD_Ontology;second_generation_lepton"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Distance_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Electric_Charge_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Energy_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Eta_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Four_Momentum_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Mass_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Px_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Py_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Pz_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_SIP_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Spin_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_Transverse_Momentum_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_dB_muon"/>
+        <COD_Ontology:has_Magnitude rdf:resource="&COD_Ontology;Experimental_pdgID_muon"/>
+        <COD_Ontology:are_detected_in rdf:resource="&COD_Ontology;MuonChambers"/>
+        <COD_Ontology:are_detected_in rdf:resource="&COD_Ontology;Tracker"/>
     </NamedIndividual>
     
 
@@ -1711,6 +2781,42 @@
         <rdf:type rdf:resource="&COD_Ontology;Bosons"/>
         <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
         <rdf:type rdf:resource="&COD_Ontology;Gauge_Boson"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Strong"/>
+        <COD_Ontology:mediates rdf:resource="&COD_Ontology;Strong"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Color_Charge_gluon"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_gluon"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_gluon"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_gluon"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#muon -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;muon">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Leptons"/>
+        <rdf:type rdf:resource="&COD_Ontology;second_generation_lepton"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Electromagnetism"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_muon"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_muon"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Weak"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#muon_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;muon_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Leptons"/>
+        <rdf:type rdf:resource="&COD_Ontology;second_generation_lepton"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_muon_neutrino"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_muon_neutrino"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_muon_neutrino"/>
     </NamedIndividual>
     
 
@@ -1722,9 +2828,85 @@
         <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
         <rdf:type rdf:resource="&COD_Ontology;Gauge_Boson"/>
         <COD_Ontology:mediates rdf:resource="&COD_Ontology;Electromagnetism"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_photon"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_photon"/>
-        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_photon"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#strange -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;strange">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Quarks"/>
+        <rdf:type rdf:resource="&COD_Ontology;second_generation_quark"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Strong"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Color_Charge_strange"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_strange"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_strange"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_strange"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#tau -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;tau">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Leptons"/>
+        <rdf:type rdf:resource="&COD_Ontology;third_generation_lepton"/>
+        <COD_Ontology:mediates rdf:resource="&COD_Ontology;Electromagnetism"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_tau"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_tau"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Weak"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#tau_neutrino -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;tau_neutrino">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Leptons"/>
+        <rdf:type rdf:resource="&COD_Ontology;third_generation_lepton"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_tau_neutrino"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_tau_neutrino"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_tau_neutrino"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Weak"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#top -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;top">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Quarks"/>
+        <rdf:type rdf:resource="&COD_Ontology;third_generation_quark"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Strong"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Color_Charge_top"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_top"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_top"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_top"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/guadalupecanasherrera/ontologies/2015/8/COD_Ontology#up -->
+
+    <NamedIndividual rdf:about="&COD_Ontology;up">
+        <rdf:type rdf:resource="&COD_Ontology;Elementary_Particles"/>
+        <rdf:type rdf:resource="&COD_Ontology;Fermions"/>
+        <rdf:type rdf:resource="&COD_Ontology;Quarks"/>
+        <rdf:type rdf:resource="&COD_Ontology;first_generation_quark"/>
+        <COD_Ontology:experiences rdf:resource="&COD_Ontology;Strong"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Color_Charge_up"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Electric_Charge_up"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Mass_up"/>
+        <COD_Ontology:has_Property rdf:resource="&COD_Ontology;Theoretical_Spin_up"/>
     </NamedIndividual>
     
 
@@ -1743,11 +2925,11 @@
     <rdf:Description rdf:about="&COD_Ontology;StandardModel">
         <rdfs:comment>The Standard Model of particle physics is a theory concerning the electromagnetic, weak, and strong nuclear interactions, as well as classifying all the subatomic particles known.</rdfs:comment>
     </rdf:Description>
-    <rdf:Description rdf:about="&COD_Ontology;Properties">
-        <rdfs:comment>Theoretical Properties associated to particles according to the Standard Model</rdfs:comment>
-    </rdf:Description>
     <rdf:Description rdf:about="&COD_Ontology;DataSet">
         <rdfs:comment>CMS Data take diverse forms and have been identified through four levels of complexity which can provide opporutnities for preservation of the data and the policy.</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="&COD_Ontology;Higgs_Boson">
+        <rdfs:comment>Class of Higgs Boson</rdfs:comment>
     </rdf:Description>
     <rdf:Description rdf:about="&COD_Ontology;Events">
         <rdfs:comment>An Event is the signal collected in a period of time that contents information about several collisions.</rdfs:comment>
