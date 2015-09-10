@@ -20,7 +20,8 @@ from DataFormats.FWLite import Events, Handle
 from CutsConfig import CutsConfig
 import numpy as n
 from scipy.stats import norm
-import matplotlib.mlab as mlab
+#from scipy import optimize
+#import matplotlib.mlab as mlab
 import matplotlib
 matplotlib.use('QT4agg')
 import matplotlib.pylab as P
@@ -247,19 +248,43 @@ class TwoMuonAnalyzer(object):
 
 	def gaussianFit(self):
 		
-		#bins = 100
-		(mu, sigma) = norm.fit(self.zMass)
+		bins = 50
+		mu, sigma = norm.fit(self.zMass)
 
-		n,bins,patches=P.hist(self.zMass, 100, normed=1)
+		P.hist(self.zMass, bins, normed=1, alpha = 0.6)
 
-		y = mlab.normpdf( bins, mu, sigma)
-		l = P.plot(bins, y, 'r--', linewidth=2)
+		xmin, xmax = P.xlim()
+		x = n.linspace(xmin, xmax, 100)
+
+		y = norm.pdf(x, mu, sigma)
+		P.plot(x, y, 'r--', linewidth=2)
 
 		P.xlabel("Invariant mass (GeV/c2)")
 		P.ylabel("frequency")
 				
 		P.show()
 
+
+	def gaussianFit2(self):
+
+		data = P.hist(self.zMass, bins = 100)
+
+		# Equation for Gaussian
+		def f(x, a, b, c):
+			return a * P.exp(-(x - b)**2.0 / (2 * c**2))
+
+		# Generate data from bins as a set of points 
+		x = [0.5 * (data[1][i] + data[1][i+1]) for i in xrange(len(data[1])-1)]
+		y = data[0]
+
+		popt, pcov = optimize.curve_fit(f, x, y)
+
+		x_fit = P.linspace(x[0], x[-1], 100)
+		y_fit = f(x_fit, *popt)
+
+		P.plot(x_fit, y_fit, lw=4, color="r")
+
+		P.show()
 
 	def process(self, maxEv = -1):
 		"""

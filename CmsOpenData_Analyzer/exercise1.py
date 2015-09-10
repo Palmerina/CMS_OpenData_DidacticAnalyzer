@@ -27,6 +27,15 @@ data_files = [
         'root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Electron/PATtuples/Electron_PAT_data_500files_6.root'
 ]
 
+pt_min = 5 
+eta_max = 2.4
+distance = 0.2
+dB_max = 0.02  # cm. dB=impact parameter
+isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
+mass_min=60
+chi2 = 5
+numValidHits = 20
+
 
 maxEv = 100000 #number of processed events. maxEvents = -1 runs over all of them
 
