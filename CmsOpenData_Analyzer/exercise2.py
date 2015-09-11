@@ -41,7 +41,7 @@ mass_min=60
 chi2 = 50
 numValidHits = 0
 
-maxEv = 100000 #number of processed events. maxEvents = -1 runs over all of them
+maxEv = 10000 #number of processed events. maxEvents = -1 runs over all of them
 
 
 cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_max, isolation, mass_min)

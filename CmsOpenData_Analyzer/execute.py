@@ -29,28 +29,34 @@ data_files = [
 
 # cutsConfig parameters:
 
-# These are the cuts applied to the muons in order to select the good ones (see TwoMuonAnalyzer.py)
+# These are the cuts applied to the muons in order 
+#to select the good ones (see TwoMuonAnalyzer.py)
 
-pt_min = 5 
-eta_max = 2.4
-distance = 0.2
-dB_max = 0.02  # cm. dB=impact parameter
-isolation = 0.15 #dimensionless. (sumPt+emEnergy+hadEnergy)/muon.pt = maxima energia antes de considerarlo como un jet de particulas.
-mass_min=60
-chi2 = 5
-numValidHits = 20
+pt_min = 5  # Minimum transverse momentum
+eta_max = 2.4  # Minimum eta angle
+distance = 0.2 # Maximum dz to PV
+dB_max = 0.02  # Maximum impact parameter
+chi2 = 10  # Maximum chi**2
+numValidHits = 10 # Minimum number of valid hits
 
 maxEv = 1000000 #number of processed events. maxEvents = -1 runs over all of them
 
 
+mass_min=40
 cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_max, isolation, mass_min)
 
 analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the TwoMuonAnalyzer class
 
 
-analyzer.process(maxEv) 
+analyzer.process(maxEv)
+
+# Exercise 1 
 analyzer.plotter1()
+
+# Exercise 2
 analyzer.plotter()
+
+# Exercise 3
 #analyzer.gaussianFit()
 
 
