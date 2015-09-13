@@ -33,7 +33,7 @@ data_files = [
 #to select the good ones (see TwoMuonAnalyzer.py)
 
 pt_min = 5  # Minimum transverse momentum
-eta_max = 2.4  # Minimum eta angle
+eta_max = 2.4  # Maximum eta angle
 distance = 0.2 # Maximum dz to PV
 dB_max = 0.02  # Maximum impact parameter
 chi2 = 10  # Maximum chi**2
@@ -42,8 +42,7 @@ numValidHits = 10 # Minimum number of valid hits
 maxEv = 1000000 #number of processed events. maxEvents = -1 runs over all of them
 
 
-mass_min=40
-cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_max, isolation, mass_min)
+cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_max, isolation, chi2, numValidHits)
 
 analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the TwoMuonAnalyzer class
 

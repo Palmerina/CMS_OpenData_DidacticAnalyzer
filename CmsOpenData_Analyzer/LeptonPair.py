@@ -75,29 +75,6 @@ class LeptonPair(object):
 	 	return self.l2.eta()
 
 
-	def chi1(self):
-
-		if not self.l1.globalTrack().isNull():
-			return self.l1.normChi2()
-
-
-	def chi2(self):
-
-		if not self.l2.globalTrack().isNull():
-			return self.l2.normChi2()
-
-
-	def numValidHits1(self):
-
-		if not self.l1.globalTrack().isNull():
-			return self.l1.numberOfValidHits()
-
-
-	def numValidHits2(self):
-
-		if not self.l2.globalTrack().isNull():
-			return self.l2.numberOfValidHits()
-
 
 	def dB1(self):
 		return self.l1.dB(self.l1.PV3D)
