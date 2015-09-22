@@ -26,9 +26,25 @@ ROOT.gROOT.ProcessLine(
    Double_t     px;\
    Double_t     py;\
    Double_t     energy;\
-   Double_t     z;\
    Double_t     vertex_z;\
+   Bool_t       isGlobal;\
+   Bool_t       isTracker;\
+   Double_t     dB;\
+   Double_t     edB;\
+   Double_t     isolation_sumPt;\
+   Double_t     isolation_emEt;\
+   Double_t     isolation_hadEt;\
+   Int_t        numberOfValidHits;\
+   Double_t     normChi2;\
+   Float_t     charge;\
 };" );
+
+
+ROOT.gROOT.ProcessLine(
+"struct MyStructVertex {\
+   Double_t     z;\
+};" );
+
 
 
 class TTreeCreator(object):
@@ -59,7 +75,7 @@ class TTreeCreator(object):
 
 		self.mystruct_muons = ROOT.MyStruct()
 		self.mystruct_electrons = ROOT.MyStruct()
-		self.mystruct_vertex = ROOT.MyStruct()
+		self.mystruct_vertex = ROOT.MyStructVertex()
 		self.f = ROOT.TFile("mytree.root","RECREATE")
 		self.tree=ROOT.TTree("test","test tree")
 
@@ -111,8 +127,8 @@ class TTreeCreator(object):
 
 		"""
 
-		self.tree.Branch("Muon", self.mystruct_muons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D")
-		self.tree.Branch("Electron", self.mystruct_electrons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D")
+		self.tree.Branch("Muon", self.mystruct_muons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D:isGlobal/B:isTracker/B:dB/D:edB/D:isolation_sumPt/D:isolation_emEt/D:isolation_hadEt/D:numberOfValidHits/I:normChi2/D:charge/F")
+		self.tree.Branch("Electron", self.mystruct_electrons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D:isGlobal/B:isTracker/B:dB/D:edB/D:isolation_sumPt/D:isolation_emEt/D:isolation_hadEt/D:numberOfValidHits/I:normChi2/D:charge/F")
 		
 		self.tree.Branch("Vertex_z", self.mystruct_vertex, "z/D")
 
@@ -140,7 +156,21 @@ class TTreeCreator(object):
 				self.mystruct_muons.py=muon.py()
 				self.mystruct_muons.energy=muon.energy()
 				self.mystruct_muons.vertex_z=muon.vertex().z()
+				self.mystruct_muons.isGlobal=muon.isGlobalMuon()
+				self.mystruct_muons.isTracker=muon.isTrackerMuon()
+				self.mystruct_muons.dB=muon.dB(muon.PV3D)
+				self.mystruct_muons.edB=muon.edB(muon.PV3D)
+				self.mystruct_muons.isolation_sumPt=muon.isolationR03().sumPt
+				self.mystruct_muons.isolation_emEt=muon.isolationR03().emEt
+				self.mystruct_muons.isolation_hadEt=muon.isolationR03().hadEt
+				self.mystruct_muons.charge=muon.charge()
+				
+				if not muon.globalTrack().isNull():
 
+					self.mystruct_muons.numberOfValidHits=muon.numberOfValidHits()
+					self.mystruct_muons.normChi2=muon.normChi2()
+
+					
 				self.tree.Fill()
 
 			for electron in electrons: 
