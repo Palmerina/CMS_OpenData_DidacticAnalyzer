@@ -57,7 +57,9 @@ class TTreeCreator(object):
 		self.distance = []
 
 
-		self.mystruct = ROOT.MyStruct()
+		self.mystruct_muons = ROOT.MyStruct()
+		self.mystruct_electrons = ROOT.MyStruct()
+		self.mystruct_vertex = ROOT.MyStruct()
 		self.f = ROOT.TFile("mytree.root","RECREATE")
 		self.tree=ROOT.TTree("test","test tree")
 
@@ -109,10 +111,10 @@ class TTreeCreator(object):
 
 		"""
 
-		self.tree.Branch("Muon", self.mystruct, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D")
-		self.tree.Branch("Electron", self.mystruct, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D")
+		self.tree.Branch("Muon", self.mystruct_muons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D")
+		self.tree.Branch("Electron", self.mystruct_electrons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D")
 		
-		self.tree.Branch("Vertex_z", self.mystruct, "z/D")
+		self.tree.Branch("Vertex_z", self.mystruct_vertex, "z/D")
 
 
 		for N, event in enumerate(self.events):
@@ -126,29 +128,29 @@ class TTreeCreator(object):
 			electrons = self.getElectrons(event)
 			vertex = self.getVertex(event)
 			
-			self.mystruct.z = vertex.z()
+			self.mystruct_vertex.z = vertex.z()
 
 			self.tree.Fill()
 			
 			for muon in muons: 
 					
-				self.mystruct.pt=muon.pt()
-				self.mystruct.eta=muon.eta()
-				self.mystruct.px=muon.px()
-				self.mystruct.py=muon.py()
-				self.mystruct.energy=muon.energy()
-				self.mystruct.vertex_z=muon.vertex().z()
+				self.mystruct_muons.pt=muon.pt()
+				self.mystruct_muons.eta=muon.eta()
+				self.mystruct_muons.px=muon.px()
+				self.mystruct_muons.py=muon.py()
+				self.mystruct_muons.energy=muon.energy()
+				self.mystruct_muons.vertex_z=muon.vertex().z()
 
 				self.tree.Fill()
 
 			for electron in electrons: 
 					
-				self.mystruct.pt=muon.pt()
-				self.mystruct.eta=muon.eta()
-				self.mystruct.px=muon.px()
-				self.mystruct.py=muon.py()
-				self.mystruct.energy=muon.energy()
-				self.mystruct.vertex_z=electron.vertex().z()
+				self.mystruct_electrons.pt=electron.pt()
+				self.mystruct_electrons.eta=electron.eta()
+				self.mystruct_electrons.px=electron.px()
+				self.mystruct_electrons.py=electron.py()
+				self.mystruct_electrons.energy=electron.energy()
+				self.mystruct_electrons.vertex_z=electron.vertex().z()
 
 				self.tree.Fill()
 
