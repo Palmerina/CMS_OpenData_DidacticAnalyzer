@@ -54,28 +54,13 @@ class TTreeCreator(object):
 		self.muonHandle = Handle('std::vector<pat::Muon>')
 		self.vertexHandle = Handle('std::vector<reco::Vertex>')	
 		self.electronHandle = Handle('std::vector<pat::Electron>')
-		self.events = Events(data_files)
-		self.zMass = []
-		self.badZMass = []
-		self.Pt = array.array("d",[0.])
-		self.badZPt = []
-		self.zPt1 = []
-		self.badZPt1 = []
-		self.zPt2 = []
-		self.badZPt2 = []
-		self.eta = array.array("d",[0.])
-		self.badEta = []
-		self.chi2 = []
-		self.badChi2 = []
-		self.numValidHits = []
-		self.badNumValidHits = []
-		self.dB = []
-		self.distance = []
 
+		self.events = Events(data_files)
 
 		self.mystruct_muons = ROOT.MyStruct()
 		self.mystruct_electrons = ROOT.MyStruct()
 		self.mystruct_vertex = ROOT.MyStructVertex()
+
 		self.f = ROOT.TFile("mytree.root","RECREATE")
 		self.tree=ROOT.TTree("test","test tree")
 
