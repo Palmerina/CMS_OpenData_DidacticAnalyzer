@@ -1,4 +1,4 @@
-# Name: TwoMuonAnalyzer.py
+# Name: TTreeCreatorMyStruct.py
 #
 # CMS Open Data
 #
@@ -174,7 +174,11 @@ class TTreeCreator(object):
 					self.mystruct_muons.numberOfValidHits=muon.numberOfValidHits()
 					self.mystruct_muons.normChi2=muon.normChi2()
 
-					
+				else:
+					self.mystruct_muons.numberOfValidHits= 0
+					self.mystruct_muons.normChi2= 0.0
+
+								
 				self.tree.Fill()
 
 
@@ -210,8 +214,6 @@ class TTreeCreator(object):
 		self.f.Close()
 
 		
-
-		return self.tree
 
 
 
