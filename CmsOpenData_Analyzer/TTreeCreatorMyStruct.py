@@ -112,7 +112,26 @@ class TTreeCreator(object):
 
 		"""
 
-		self.tree.Branch("Muon", self.mystruct_muons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D:isGlobal/B:isTracker/B:dB/D:edB/D:isolation_sumPt/D:isolation_emEt/D:isolation_hadEt/D:numberOfValidHits/I:normChi2/D:charge/F")
+	#	self.tree.Branch("Muon", self.mystruct_muons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D:isGlobal/B:isTracker/B:edB/D:isolation_sumPt/D:isolation_emEt/D:isolation_hadEt/D:numberOfValidHits/I:normChi2/D:charge/F")
+
+
+		self.tree.Branch("Muon_pt", ROOT.AddressOf(self.mystruct_muons, "pt"), "pt/D")
+		self.tree.Branch("Muon_eta", ROOT.AddressOf(self.mystruct_muons, "eta"), "eta/D")
+		self.tree.Branch("Muon_px", ROOT.AddressOf(self.mystruct_muons, "px"), "px/D")
+		self.tree.Branch("Muon_py", ROOT.AddressOf(self.mystruct_muons, "py"), "py/D")
+		self.tree.Branch("Muon_energy", ROOT.AddressOf(self.mystruct_muons, "energy"), "energy/D")
+		self.tree.Branch("Muon_vertex_z", ROOT.AddressOf(self.mystruct_muons, "vertex_z"), "vertex_z/D")
+		self.tree.Branch("Muon_isGlobalMuon", ROOT.AddressOf(self.mystruct_muons, "isGlobal"), "isGlobal/B")
+		self.tree.Branch("Muon_isTrackerMuon", ROOT.AddressOf(self.mystruct_muons, "isTracker"), "isTracker/B")
+		self.tree.Branch("Muon_dB", ROOT.AddressOf(self.mystruct_muons, "dB"), "dB/D")
+		self.tree.Branch("Muon_edB", ROOT.AddressOf(self.mystruct_muons, "edB"), "edB/D")
+		self.tree.Branch("Muon_isolation_sumPt", ROOT.AddressOf(self.mystruct_muons, "isolation_sumPt"), "isolation_sumPt/D")
+		self.tree.Branch("Muon_isolation_emEt", ROOT.AddressOf(self.mystruct_muons, "isolation_emEt"), "isolation_emEt/D")
+		self.tree.Branch("Muon_isolation_hadEt", ROOT.AddressOf(self.mystruct_muons, "isolation_hadEt"), "isolation_hadEt/D")
+		self.tree.Branch("Muon_numberOfValidHits", ROOT.AddressOf(self.mystruct_muons, "numberOfValidHits"), "numberOfValidHits/I")
+		self.tree.Branch("Muon_normChi2", ROOT.AddressOf(self.mystruct_muons, "normChi2"), "normChi2/D")
+		self.tree.Branch("Muon_charge", ROOT.AddressOf(self.mystruct_muons, "charge"), "charge/F")
+
 		self.tree.Branch("Electron", self.mystruct_electrons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D:isGlobal/B:isTracker/B:dB/D:edB/D:isolation_sumPt/D:isolation_emEt/D:isolation_hadEt/D:numberOfValidHits/I:normChi2/D:charge/F")
 		
 		self.tree.Branch("Vertex_z", self.mystruct_vertex, "z/D")
@@ -157,6 +176,7 @@ class TTreeCreator(object):
 
 					
 				self.tree.Fill()
+
 
 			for electron in electrons: 
 					
