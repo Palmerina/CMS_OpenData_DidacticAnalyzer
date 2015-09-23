@@ -25,6 +25,7 @@ ROOT.gROOT.ProcessLine(
    Double_t     eta;\
    Double_t     px;\
    Double_t     py;\
+   Double_t     pz;\
    Double_t     energy;\
    Double_t     vertex_z;\
    Bool_t       isGlobal;\
@@ -34,7 +35,7 @@ ROOT.gROOT.ProcessLine(
    Double_t     isolation_sumPt;\
    Double_t     isolation_emEt;\
    Double_t     isolation_hadEt;\
-   Int_t        numberOfValidHits;\
+   UChar_t        numberOfValidHits;\
    Double_t     normChi2;\
    Float_t     charge;\
 };" );
@@ -58,7 +59,7 @@ class TTreeCreator(object):
 		self.events = Events(data_files)
 
 		self.mystruct_muons = ROOT.MyStruct()
-		self.mystruct_electrons = ROOT.MyStruct()
+#		self.mystruct_electrons = ROOT.MyStruct()
 		self.mystruct_vertex = ROOT.MyStructVertex()
 
 		self.f = ROOT.TFile("mytree.root","RECREATE")
@@ -96,7 +97,7 @@ class TTreeCreator(object):
 		"""
 
 		event.getByLabel('patElectrons', self.electronHandle)
-		electrons = self.electronHandle.product()
+		#electrons = self.electronHandle.product()
 		return electrons
 
 
@@ -119,6 +120,7 @@ class TTreeCreator(object):
 		self.tree.Branch("Muon_eta", ROOT.AddressOf(self.mystruct_muons, "eta"), "eta/D")
 		self.tree.Branch("Muon_px", ROOT.AddressOf(self.mystruct_muons, "px"), "px/D")
 		self.tree.Branch("Muon_py", ROOT.AddressOf(self.mystruct_muons, "py"), "py/D")
+		self.tree.Branch("Muon_pz", ROOT.AddressOf(self.mystruct_muons, "pz"), "pz/D")
 		self.tree.Branch("Muon_energy", ROOT.AddressOf(self.mystruct_muons, "energy"), "energy/D")
 		self.tree.Branch("Muon_vertex_z", ROOT.AddressOf(self.mystruct_muons, "vertex_z"), "vertex_z/D")
 		self.tree.Branch("Muon_isGlobalMuon", ROOT.AddressOf(self.mystruct_muons, "isGlobal"), "isGlobal/B")
@@ -128,11 +130,11 @@ class TTreeCreator(object):
 		self.tree.Branch("Muon_isolation_sumPt", ROOT.AddressOf(self.mystruct_muons, "isolation_sumPt"), "isolation_sumPt/D")
 		self.tree.Branch("Muon_isolation_emEt", ROOT.AddressOf(self.mystruct_muons, "isolation_emEt"), "isolation_emEt/D")
 		self.tree.Branch("Muon_isolation_hadEt", ROOT.AddressOf(self.mystruct_muons, "isolation_hadEt"), "isolation_hadEt/D")
-		self.tree.Branch("Muon_numberOfValidHits", ROOT.AddressOf(self.mystruct_muons, "numberOfValidHits"), "numberOfValidHits/I")
+		self.tree.Branch("Muon_numberOfValidHits", ROOT.AddressOf(self.mystruct_muons, "numberOfValidHits"), "numberOfValidHits/b")
 		self.tree.Branch("Muon_normChi2", ROOT.AddressOf(self.mystruct_muons, "normChi2"), "normChi2/D")
 		self.tree.Branch("Muon_charge", ROOT.AddressOf(self.mystruct_muons, "charge"), "charge/F")
 
-		self.tree.Branch("Electron", self.mystruct_electrons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D:isGlobal/B:isTracker/B:dB/D:edB/D:isolation_sumPt/D:isolation_emEt/D:isolation_hadEt/D:numberOfValidHits/I:normChi2/D:charge/F")
+	#	self.tree.Branch("Electron", self.mystruct_electrons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D:isGlobal/B:isTracker/B:dB/D:edB/D:isolation_sumPt/D:isolation_emEt/D:isolation_hadEt/D:numberOfValidHits/I:normChi2/D:charge/F")
 		
 		self.tree.Branch("Vertex_z", self.mystruct_vertex, "z/D")
 
@@ -145,12 +147,12 @@ class TTreeCreator(object):
 			
 
 			muons = self.getMuons(event)
-			electrons = self.getElectrons(event)
+			#electrons = self.getElectrons(event)
 			vertex = self.getVertex(event)
 			
 			self.mystruct_vertex.z = vertex.z()
 
-			self.tree.Fill()
+		#	self.tree.Fill()
 			
 			for muon in muons: 
 					
@@ -158,6 +160,7 @@ class TTreeCreator(object):
 				self.mystruct_muons.eta=muon.eta()
 				self.mystruct_muons.px=muon.px()
 				self.mystruct_muons.py=muon.py()
+				self.mystruct_muons.pz=muon.pz()
 				self.mystruct_muons.energy=muon.energy()
 				self.mystruct_muons.vertex_z=muon.vertex().z()
 				self.mystruct_muons.isGlobal=muon.isGlobalMuon()
@@ -181,33 +184,6 @@ class TTreeCreator(object):
 								
 				self.tree.Fill()
 
-
-			for electron in electrons: 
-					
-				self.mystruct_electrons.pt=electron.pt()
-				self.mystruct_electrons.eta=electron.eta()
-				self.mystruct_electrons.px=electron.px()
-				self.mystruct_electrons.py=electron.py()
-				self.mystruct_electrons.energy=electron.energy()
-				self.mystruct_electrons.vertex_z=electron.vertex().z()
-
-				self.tree.Fill()
-
-
-
-				#if not muon.globalTrack().isNull():
-					#self.chi2.append(muon.normChi2())
-					#self.numValidHits.append(muon.numberOfValidHits())
-				#else:
-					#continue 
-
-
-				#	self.zMass.append(muPair.mass())
-				#	self.zPt.append(muPair.pt())
-				#	self.zPt2.append(muPair.pt2())
-				#	self.zPt1.append(muPair.pt1())
-				#	self.eta.append(muPair.eta1())
-				#	self.eta.append(muPair.eta2())
 
 
 		self.f.Write()

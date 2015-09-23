@@ -45,23 +45,24 @@ class TwoMuonAnalyzer(object):
 		self.Muon_eta = array.array("d", [0.])
 		self.Muon_px = array.array("d", [0.])
 		self.Muon_py = array.array("d", [0.])
+		self.Muon_pz = array.array("d", [0.])
 		self.Muon_energy = array.array("d", [0.])
 		self.Muon_vertex_z = array.array("d", [0.])
-		self.Muon_isGlobalMuon = array.array("i", [0])
-		self.Muon_isTrackerMuon = array.array("i", [0])
+		self.Muon_isGlobalMuon = array.array("B", [0])
+		self.Muon_isTrackerMuon = array.array("B", [0])
 		self.Muon_dB = array.array("d", [0.])
 		self.Muon_edB = array.array("d", [0.])
 		self.Muon_isolation_sumPt = array.array("d", [0.])
 		self.Muon_isolation_emEt = array.array("d", [0.])
 		self.Muon_isolation_hadEt = array.array("d", [0.])
-		self.Muon_numberOfValidHits = array.array("i", [0])
+		self.Muon_numberOfValidHits = array.array("b", [0])
 		self.Muon_normChi2 = array.array("d", [0.])
 		self.Muon_charge = array.array("d", [0.])
 
 		self.Vertex_z = array.array("d", [0.])
 
-		self.h_Muon_pt = ROOT.TH1D("pt","Transverse momentum", 50, 0, 11000)
-		self.h_goodMuon_pt = ROOT.TH1D("pt","Transverse momentum", 50, 0, 11000)
+		self.h_Muon_pt = []
+		self.h_goodMuon_pt = []
 
 		self.zMass = []
 		self.badZMass = []
@@ -225,6 +226,7 @@ class TwoMuonAnalyzer(object):
 		self.tree.SetBranchAddress("Muon_eta", self.Muon_eta)
 		self.tree.SetBranchAddress("Muon_px", self.Muon_px)
 		self.tree.SetBranchAddress("Muon_py", self.Muon_py)
+		self.tree.SetBranchAddress("Muon_pz", self.Muon_pz)
 		self.tree.SetBranchAddress("Muon_energy", self.Muon_energy)
 		self.tree.SetBranchAddress("Muon_vertex_z", self.Muon_vertex_z)
 		self.tree.SetBranchAddress("Muon_isGlobalMuon", self.Muon_isGlobalMuon)
@@ -239,33 +241,80 @@ class TwoMuonAnalyzer(object):
 
 		self.tree.SetBranchAddress("Vertex_z", self.Vertex_z)
 
-		for i in range(0, self.tree.GetEntries()): # loop in all muons
+
+		# loop over all muons
+		for outer in range(0, self.tree.GetEntries()): # loop in all muons
 
 
-			
-			self.tree.GetEntry(i)
+			self.tree.GetEntry(outer)
 		
 	
-			self.h_Muon_pt.Fill(self.Muon_pt[0])
-			
-			self.Pt.append(self.Muon_pt[0])		
+			self.h_Muon_pt.append(self.Muon_pt[0])
+			outerMuon = ROOT.TLorentzVector(self.Muon_px[0], self.Muon_py[0], self.Muon_pz[0], self.Muon_energy[0])						
+				
+			for inner in range(outer+1, self.tree.GetEntries()):
 
+				self.tree.GetEntry(inner)
+
+				innerMuon = ROOT.TLorentzVector(self.Muon_px[0], self.Muon_py[0], self.Muon_pz[0], self.Muon_energy[0])						
+				mass = (outerMuon+innerMuon).M()
+			
+
+	
+
+		
+		# loop over all muons selecting the good ones
+		for outer in range(0, self.tree.GetEntries()): 
+
+			self.tree.GetEntry(outer)
 
 			if self.selectMuons():
-	
-				self.h_goodMuon_pt.Fill(self.Muon_pt[0])
 
-		
+				self.h_goodMuon_pt.append(self.Muon_pt[0])
+				
+				outerMuon = ROOT.TLorentzVector(self.Muon_px[0], self.Muon_py[0], self.Muon_pz[0], self.Muon_energy[0])						
+				outerMuon_charge = Muon_charge[0]
+				
+				
+				for inner in range(outer+1, self.tree.GetEntries()):
 
+					self.tree.GetEntry(inner)
 
+					if self.selectMuons():
+
+						innerMuon = ROOT.TLorentzVector(self.Muon_px[0], self.Muon_py[0], self.Muon_pz[0], self.Muon_energy[0])						
+						innerMuon_charge = Muon_charge[0]
+						if outerMuon_charge * innerMuon_charge >= 0:
+							continue
+
+						mass = (outerMuon+innerMuon).M()
+						if not (mass > self.cutsConfig.mass_min and (mass < 120)):
+							continue
 
 	def plotHistos(self):
 
 
-		c1 = ROOT.TCanvas("pt", "All muons' transverse momentum")
-		c2 = ROOT.TCanvas("pt", "Good muons' transverse momentum")
+	#	c1 = ROOT.TCanvas("pt", "All muons' transverse momentum")
+	#	c2 = ROOT.TCanvas("good pt", "Good muons' transverse momentum")
 
-		self.h_Muon_pt.Draw()
+	#	self.h_Muon_pt.Draw()	
+	#	self.h_goodMuon_pt.Draw()
+
+
+		"""
+		Plots the histograms
+		"""
 		
-		
-		self.h_goodMuon_pt.Draw()
+		P.figure()
+		P.hist(self.h_Muon_pt, bins = 50, log = True)
+		P.xlabel("pt")
+		P.ylabel("frequency")
+
+		P.figure()
+		P.hist(self.h_goodMuon_pt, bins = 50, log = True)
+		P.xlabel("pt")
+		P.ylabel("frequency")
+
+		P.show()
+
+
