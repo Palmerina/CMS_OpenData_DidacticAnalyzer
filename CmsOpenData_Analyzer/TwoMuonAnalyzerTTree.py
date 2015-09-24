@@ -41,6 +41,9 @@ class TwoMuonAnalyzer(object):
 
 		self.cutsConfig = cutsConfig
 		
+
+		# Addresses to the TTree's branches		
+		
 		self.Muon_pt = array.array("d", [0.])
 		self.Muon_eta = array.array("d", [0.])
 		self.Muon_px = array.array("d", [0.])
@@ -60,28 +63,29 @@ class TwoMuonAnalyzer(object):
 		self.Muon_charge = array.array("d", [0.])
 
 		self.Vertex_z = array.array("d", [0.])
+	
 
-		self.h_Muon_pt = []
-		self.h_goodMuon_pt = []
+		# Arrays where the variables are going to be stored
+	
+		self.allMuons_pt.append(Muon_pt[0])
+		self.allMuons_eta.append(Muon_eta[0])	
+		self.allMuons_px.append(Muon_px[0])
+		self.allMuons_py.append(Muon_py[0])
+		self.allMuons_pz.append(Muon_pz[0])
+		self.allMuons_energy.append(Muon_energy[0])
+		self.allMuons_isGlobalMuon.append(Muon_isGlobalMuon[0])
+		self.allMuons_isTrackerMuon.append(Muon_isTrackerMuon[0])
+		self.allMuons_vertex_z.append(Muon_vertex_z[0])
+		self.allMuons_dB.append(Muon_dB[0])
+		self.allMuons_edB.append(Muon_edB[0])
+		self.allMuons_isolation_sumPt.append(Muon_isolation_sumPt[0])
+		self.allMuons_isolation_emEt.append(Muon_isolation_emEt[0])
+		self.allMuons_isolation_hadEt.append(Muon_isolation_hadEt[0])
+		self.allMuons_numberOfValidHits.append(Muon_numberOfValidHits[0])
+		self.allMuons_normChi2.append(Muon_normChi2[0])
+		self.allMuons_charge.append(Muon_charge[0])
 
-		self.zMass = []
-		self.badZMass = []
-		self.Pt = array.array("d", [])
-		self.badZPt = []
-		self.zPt1 = []
-		self.badZPt1 = []
-		self.zPt2 = []
-		self.badZPt2 = []
-		self.eta = []
-		self.badEta = []
-		self.chi2 = []
-		self.badChi2 = []
-		self.numValidHits = []
-		self.badNumValidHits = []
-		self.dB = []
-		self.distance = []
-
-		
+		self.allVertex_z.append(Vertex_z[0])
 
 
 
@@ -92,6 +96,8 @@ class TwoMuonAnalyzer(object):
 	
 		returns: boolean
 		"""
+
+		
 
 	        #muon=getMuons(), vertex=getVertex()
 		#The muon must be detected by both the tracker and the muon chambers
@@ -199,8 +205,8 @@ class TwoMuonAnalyzer(object):
 		"""
 		
 		P.figure()
-		P.hist(self.Pt, bins = 50, log = True)
-		P.xlabel("pt")
+		P.hist(self.allMuons_eta, bins = 50, log = True)
+		P.xlabel("eta")
 		P.ylabel("frequency")
 
 
@@ -241,18 +247,117 @@ class TwoMuonAnalyzer(object):
 
 		self.tree.SetBranchAddress("Vertex_z", self.Vertex_z)
 
+		count = 0
+
+		numEntries = self.tree.GetEntries()
+
+
+		for i in range(0, numEntries):
+
+			self.tree.GetEntry(i)
+
+			self.allMuons_pt.append(Muon_pt[0])
+			self.allMuons_eta.append(Muon_eta[0])	
+			self.allMuons_px.append(Muon_px[0])
+			self.allMuons_py.append(Muon_py[0])
+			self.allMuons_pz.append(Muon_pz[0])
+			self.allMuons_energy.append(Muon_energy[0])
+			self.allMuons_isGlobalMuon.append(Muon_isGlobalMuon[0])
+			self.allMuons_isTrackerMuon.append(Muon_isTrackerMuon[0])
+			self.allMuons_vertex_z.append(Muon_vertex_z[0])
+			self.allMuons_dB.append(Muon_dB[0])
+			self.allMuons_edB.append(Muon_edB[0])
+			self.allMuons_isolation_sumPt.append(Muon_isolation_sumPt[0])
+			self.allMuons_isolation_emEt.append(Muon_isolation_emEt[0])
+			self.allMuons_isolation_hadEt.append(Muon_isolation_hadEt[0])
+			self.allMuons_numberOfValidHits.append(Muon_numberOfValidHits[0])
+			self.allMuons_normChi2.append(Muon_normChi2[0])
+			self.allMuons_charge.append(Muon_charge[0])
+
+			self.allVertex_z.append(Vertex_z[0])
+
+
+
+
+		# loop over all muons selecting the good ones
+		for outer in range(0, self.allMuons_charge.size()): 
+			count+=1
+			print count
+
+			if self.allMuons_isGlobalMuon[outer]>1 or self.allMuons_isTrackerMuon[outer]>1:
+				print "error"
+	
+			outerMuon = ROOT.TLorentzVector(self.allMuons_px[outer], self.allMuons_py[outer], self.allMuons_pz[outer], self.allMuons_energy[outer])						
+
+
+			if self.selectMuons():
+
+				self.goodMuons_pt.append(Muon_pt[outer])
+				self.goodMuons_eta.append(Muon_eta[outer])	
+				self.allMuons_px.append(Muon_px[0])
+				self.allMuons_py.append(Muon_py[0])
+				self.allMuons_pz.append(Muon_pz[0])
+				self.allMuons_energy.append(Muon_energy[0])
+				self.allMuons_isGlobalMuon.append(Muon_isGlobalMuon[0])
+				self.allMuons_isTrackerMuon.append(Muon_isTrackerMuon[0])
+				self.allMuons_vertex_z.append(Muon_vertex_z[0])
+				self.allMuons_dB.append(Muon_dB[0])
+				self.allMuons_edB.append(Muon_edB[0])
+				self.allMuons_isolation_sumPt.append(Muon_isolation_sumPt[0])
+				self.allMuons_isolation_emEt.append(Muon_isolation_emEt[0])
+				self.allMuons_isolation_hadEt.append(Muon_isolation_hadEt[0])
+				self.allMuons_numberOfValidHits.append(Muon_numberOfValidHits[0])
+				self.allMuons_normChi2.append(Muon_normChi2[0])
+				self.allMuons_charge.append(Muon_charge[0])
+
+				self.allVertex_z.append(Vertex_z[0])
+				
+				outerGoodMuon = ROOT.TLorentzVector(self.goodMuons_px[outer], self.goodMuons_py[outer], self.goodMuons_pz[outer], self.goodMuons_energy[outer])						
+				
+				
+			for inner in range(outer+1, self.allMuons_charge.size()):
+
+
+				if self.allMuons_charge[outer] * self.allMuons_charge[inner] >= 0:
+					continue
+
+				innerMuon = ROOT.TLorentzVector(self.allMuons_px[inner], self.allMuons_py[inner], self.allMuons_pz[inner], self.allMuons_energy[inner])						
+				
+				
+				mass = (outerMuon+innerMuon).M()
+
+				if not (mass > self.cutsConfig.mass_min and (mass < 120)):
+					continue
+				
+				if self.selectMuons():
+
+					goodMass = (outerGoodMuon + innerMuon).M()
+
+
+
+
+
+
+
+
+
+
+
 
 		# loop over all muons
-		for outer in range(0, self.tree.GetEntries()): # loop in all muons
+		for outer in range(0, numEntries): # loop in all muons
 
-
+			count+=1
+			print count
 			self.tree.GetEntry(outer)
-		
+
+			if self.Muon_isGlobalMuon[0]>1 or self.Muon_isTrackerMuon[0]>1:
+				print "error"
 	
 			self.h_Muon_pt.append(self.Muon_pt[0])
 			outerMuon = ROOT.TLorentzVector(self.Muon_px[0], self.Muon_py[0], self.Muon_pz[0], self.Muon_energy[0])						
 				
-			for inner in range(outer+1, self.tree.GetEntries()):
+			for inner in range(outer+1, numEntries):
 
 				self.tree.GetEntry(inner)
 
@@ -265,14 +370,22 @@ class TwoMuonAnalyzer(object):
 		
 		# loop over all muons selecting the good ones
 		for outer in range(0, self.tree.GetEntries()): 
-
+			count+=1
+			print count
 			self.tree.GetEntry(outer)
+
+			if self.Muon_isGlobalMuon[0]>1 or self.Muon_isTrackerMuon[0]>1:
+				print "error"
+	
+			self.h_Muon_pt.append(self.Muon_pt[0])
+			outerMuon = ROOT.TLorentzVector(self.Muon_px[0], self.Muon_py[0], self.Muon_pz[0], self.Muon_energy[0])						
+
 
 			if self.selectMuons():
 
 				self.h_goodMuon_pt.append(self.Muon_pt[0])
 				
-				outerMuon = ROOT.TLorentzVector(self.Muon_px[0], self.Muon_py[0], self.Muon_pz[0], self.Muon_energy[0])						
+				outerGoodMuon = ROOT.TLorentzVector(self.Muon_px[0], self.Muon_py[0], self.Muon_pz[0], self.Muon_energy[0])						
 				outerMuon_charge = Muon_charge[0]
 				
 				
