@@ -31,7 +31,7 @@ data_files = [
 maxEv = 10000 #number of processed events. maxEvents = -1 runs over all of them
 
 treeCreator = TTreeCreator(data_files)
-tree=treeCreator.process(maxEv) 
+tree=treeCreator.process1(maxEv) 
 
 
 
