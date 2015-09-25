@@ -17,13 +17,13 @@ __email__ = "pgi25@alumnos.unican.es"
 import ROOT
 from DataFormats.FWLite import Events, Handle
 import array
-
+import numpy as np
 
 npart_max = 1000
 
 ROOT.gROOT.ProcessLine(
 "struct MyStruct {\
-   Double_t     pt;\
+   Double_t    pt[1000];\
    Double_t     eta;\
    Double_t     px;\
    Double_t     py;\
@@ -68,26 +68,26 @@ class TTreeCreator(object):
 		self.f = ROOT.TFile("mytree.root","RECREATE")
 		self.tree=ROOT.TTree("test","test tree")
 		
-		self.Muon_pt = array.array("d", [1000])
-		self.Muon_eta = array.array("d", [1000])
-		self.Muon_px = array.array("d", [1000])
-		self.Muon_py = array.array("d", [1000])
-		self.Muon_pz = array.array("d", [1000])
-		self.Muon_energy = array.array("d", [1000])
-		self.Muon_vertex_z = array.array("d", [1000])
-		self.Muon_isGlobalMuon = array.array("i", [1000])
-		self.Muon_isTrackerMuon = array.array("i", [1000])
-		self.Muon_dB = array.array("d", [1000])
-		self.Muon_edB = array.array("d", [1000])
-		self.Muon_isolation_sumPt = array.array("d", [1000])
-		self.Muon_isolation_emEt = array.array("d", [1000])
-		self.Muon_isolation_hadEt = array.array("d", [1000])
-		self.Muon_numberOfValidHits = array.array("i", [1000])
-		self.Muon_normChi2 = array.array("d", [1000])
-		self.Muon_charge = array.array("d", [1000])
+		self.Muon_pt = array.array("d", [0.]*1000)
+		self.Muon_eta = array.array("d", [0.]*1000)
+		self.Muon_px = array.array("d", [0.]*1000)
+		self.Muon_py = array.array("d", [0.]*1000)
+		self.Muon_pz = array.array("d", [0.]*1000)
+		self.Muon_energy = array.array("d", [0.]*1000)
+		self.Muon_vertex_z = array.array("d", [0.]*1000)
+		self.Muon_isGlobalMuon = array.array("i", [0]*1000)
+		self.Muon_isTrackerMuon = array.array("i", [0]*1000)
+		self.Muon_dB = array.array("d", [0.]*1000)
+		self.Muon_edB = array.array("d", [0.]*1000)
+		self.Muon_isolation_sumPt = array.array("d", [0.]*1000)
+		self.Muon_isolation_emEt = array.array("d", [0.]*1000)
+		self.Muon_isolation_hadEt = array.array("d", [0.]*1000)
+		self.Muon_numberOfValidHits = array.array("i", [0]*1000)
+		self.Muon_normChi2 = array.array("d", [0.]*1000)
+		self.Muon_charge = array.array("d", [0.]*1000)
 
-		self.Vertex_z = array.array("d", [1])
-		self.npart = array.array("I", [1])
+		self.Vertex_z = array.array("d", [0.])
+		self.npart = array.array("I", [0])
 
 
 	def getMuons(self, event):
@@ -237,6 +237,7 @@ class TTreeCreator(object):
 		the most to the Z boson's mass to the list self.zMass.  
 
 		"""
+
 		self.tree.Branch("Vertex_z", self.Vertex_z, "Vertex_z[1]/D")
 
 		self.tree.Branch("npart", self.npart, "npart[1]/I")
@@ -244,7 +245,7 @@ class TTreeCreator(object):
 		self.tree.Branch("Muon_isGlobalMuon", self.Muon_isGlobalMuon, "Muon_isGlobalisMuon[1000]/B")
 
 
-		self.tree.Branch("Muon_pt", self.Muon_pt, "Muon_pt[1000]/D")
+		self.tree.Branch("Muon_pt", "np", self.Muon_pt)
 
 		self.tree.Branch("Muon_eta", self.Muon_eta, "Muon_eta[1000]/D")
 
@@ -284,13 +285,17 @@ class TTreeCreator(object):
 			#electrons = self.getElectrons(event)
 			vertex = self.getVertex(event)
 			
+			if len(muons)<2:
+				continue
+
 			self.Vertex_z[0] = vertex.z()
 			self.npart[0] = len(muons)		
 
 	
 			for i, muon in enumerate(muons): 
 				
-					
+				print i 
+	
 				self.Muon_pt[i]=muon.pt()
 				self.Muon_eta[i]=muon.eta()
 				self.Muon_px[i]=muon.px()
