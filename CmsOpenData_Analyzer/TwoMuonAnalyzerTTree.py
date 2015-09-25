@@ -51,41 +51,42 @@ class TwoMuonAnalyzer(object):
 		self.Muon_pz = array.array("d", [0.])
 		self.Muon_energy = array.array("d", [0.])
 		self.Muon_vertex_z = array.array("d", [0.])
-		self.Muon_isGlobalMuon = array.array("B", [0])
-		self.Muon_isTrackerMuon = array.array("B", [0])
+		self.Muon_isGlobalMuon = array.array("i", [0])
+		self.Muon_isTrackerMuon = array.array("i", [0])
 		self.Muon_dB = array.array("d", [0.])
 		self.Muon_edB = array.array("d", [0.])
 		self.Muon_isolation_sumPt = array.array("d", [0.])
 		self.Muon_isolation_emEt = array.array("d", [0.])
 		self.Muon_isolation_hadEt = array.array("d", [0.])
-		self.Muon_numberOfValidHits = array.array("b", [0])
+		self.Muon_numberOfValidHits = array.array("i", [0])
 		self.Muon_normChi2 = array.array("d", [0.])
 		self.Muon_charge = array.array("d", [0.])
 
 		self.Vertex_z = array.array("d", [0.])
-	
+		self.npart = array.array("I", [0])
 
 		# Arrays where the variables are going to be stored
 	
-		self.allMuons_pt.append(Muon_pt[0])
-		self.allMuons_eta.append(Muon_eta[0])	
-		self.allMuons_px.append(Muon_px[0])
-		self.allMuons_py.append(Muon_py[0])
-		self.allMuons_pz.append(Muon_pz[0])
-		self.allMuons_energy.append(Muon_energy[0])
-		self.allMuons_isGlobalMuon.append(Muon_isGlobalMuon[0])
-		self.allMuons_isTrackerMuon.append(Muon_isTrackerMuon[0])
-		self.allMuons_vertex_z.append(Muon_vertex_z[0])
-		self.allMuons_dB.append(Muon_dB[0])
-		self.allMuons_edB.append(Muon_edB[0])
-		self.allMuons_isolation_sumPt.append(Muon_isolation_sumPt[0])
-		self.allMuons_isolation_emEt.append(Muon_isolation_emEt[0])
-		self.allMuons_isolation_hadEt.append(Muon_isolation_hadEt[0])
-		self.allMuons_numberOfValidHits.append(Muon_numberOfValidHits[0])
-		self.allMuons_normChi2.append(Muon_normChi2[0])
-		self.allMuons_charge.append(Muon_charge[0])
+		self.allMuons_pt = array.array("d", [0.])
+		self.allMuons_eta = array.array("d", [0.])	
+		self.allMuons_px = array.array("d", [0.])
+		self.allMuons_py = array.array("d", [0.])
+		self.allMuons_pz = array.array("d", [0.])
+		self.allMuons_energy = array.array("d", [0.])
+		self.allMuons_isGlobalMuon = array.array("i", [0])
+		self.allMuons_isTrackerMuon = array.array("i", [0])
+		self.allMuons_vertex_z = array.array("d", [0.])
+		self.allMuons_dB = array.array("d", [0.])
+		self.allMuons_edB = array.array("d", [0.])
+		self.allMuons_isolation_sumPt = array.array("d", [0.])
+		self.allMuons_isolation_emEt = array.array("d", [0.])
+		self.allMuons_isolation_hadEt = array.array("d", [0.])
+		self.allMuons_numberOfValidHits = array.array("i", [0.])
+		self.allMuons_normChi2 = array.array("d", [0.])
+		self.allMuons_charge = array.array("d", [0.])
 
-		self.allVertex_z.append(Vertex_z[0])
+		self.event_vertex_z = array.array("d", [0.])
+		self.event_npart = array.array("I", [0])
 
 
 
@@ -246,8 +247,8 @@ class TwoMuonAnalyzer(object):
 		self.tree.SetBranchAddress("Muon_charge", self.Muon_charge)
 
 		self.tree.SetBranchAddress("Vertex_z", self.Vertex_z)
+		self.tree.SetBranchAddress("npart", self.npart)
 
-		count = 0
 
 		numEntries = self.tree.GetEntries()
 
@@ -256,28 +257,30 @@ class TwoMuonAnalyzer(object):
 
 			self.tree.GetEntry(i)
 
-			self.allMuons_pt.append(Muon_pt[0])
-			self.allMuons_eta.append(Muon_eta[0])	
-			self.allMuons_px.append(Muon_px[0])
-			self.allMuons_py.append(Muon_py[0])
-			self.allMuons_pz.append(Muon_pz[0])
-			self.allMuons_energy.append(Muon_energy[0])
-			self.allMuons_isGlobalMuon.append(Muon_isGlobalMuon[0])
-			self.allMuons_isTrackerMuon.append(Muon_isTrackerMuon[0])
-			self.allMuons_vertex_z.append(Muon_vertex_z[0])
-			self.allMuons_dB.append(Muon_dB[0])
-			self.allMuons_edB.append(Muon_edB[0])
-			self.allMuons_isolation_sumPt.append(Muon_isolation_sumPt[0])
-			self.allMuons_isolation_emEt.append(Muon_isolation_emEt[0])
-			self.allMuons_isolation_hadEt.append(Muon_isolation_hadEt[0])
-			self.allMuons_numberOfValidHits.append(Muon_numberOfValidHits[0])
-			self.allMuons_normChi2.append(Muon_normChi2[0])
-			self.allMuons_charge.append(Muon_charge[0])
+	#		self.allMuons_pt.append(self.Muon_pt[0])
+			self.allMuons_eta.append(self.Muon_eta[0])	
+			self.allMuons_px.append(self.Muon_px[0])
+			self.allMuons_py.append(self.Muon_py[0])
+			self.allMuons_pz.append(self.Muon_pz[0])
+			self.allMuons_energy.append(self.Muon_energy[0])
+			self.allMuons_isGlobalMuon.append(self.Muon_isGlobalMuon[0])
+			self.allMuons_isTrackerMuon.append(self.Muon_isTrackerMuon[0])
+			self.allMuons_vertex_z.append(self.Muon_vertex_z[0])
+			self.allMuons_dB.append(self.Muon_dB[0])
+			self.allMuons_edB.append(self.Muon_edB[0])
+			self.allMuons_isolation_sumPt.append(self.Muon_isolation_sumPt[0])
+			self.allMuons_isolation_emEt.append(self.Muon_isolation_emEt[0])
+			self.allMuons_isolation_hadEt.append(self.Muon_isolation_hadEt[0])
+			self.allMuons_numberOfValidHits.append(self.Muon_numberOfValidHits[0])
+			self.allMuons_normChi2.append(self.Muon_normChi2[0])
+			self.allMuons_charge.append(self.Muon_charge[0])
 
-			self.allVertex_z.append(Vertex_z[0])
+			self.event_vertex_z.append(self.Vertex_z[0])
+			self.event_npart.append(self.npart[0])
+			
 
 
-
+	def hvagv(self):
 
 		# loop over all muons selecting the good ones
 		for outer in range(0, self.allMuons_charge.size()): 
