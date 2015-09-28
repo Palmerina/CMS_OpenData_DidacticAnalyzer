@@ -215,7 +215,7 @@ class TwoMuonAnalyzer(object):
 			self.tree.GetEntry(i)  # Muon_* arrays are filled for each event
 
 			# Select events with at least two muons
-			if npart(len)<2:
+			if self.npart(len)<2:
 				continue
 
 			# ALL MUONS
