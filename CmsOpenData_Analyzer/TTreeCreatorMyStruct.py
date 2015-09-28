@@ -17,37 +17,7 @@ __email__ = "pgi25@alumnos.unican.es"
 import ROOT
 from DataFormats.FWLite import Events, Handle
 import array
-import numpy as np
 
-npart_max = 1000
-
-ROOT.gROOT.ProcessLine(
-"struct MyStruct {\
-   Double_t    pt[1000];\
-   Double_t     eta;\
-   Double_t     px;\
-   Double_t     py;\
-   Double_t     pz;\
-   Double_t     energy;\
-   Double_t     vertex_z;\
-   UInt_t       isGlobal;\
-   UInt_t       isTracker;\
-   Double_t     dB;\
-   Double_t     edB;\
-   Double_t     isolation_sumPt;\
-   Double_t     isolation_emEt;\
-   Double_t     isolation_hadEt;\
-   UInt_t        numberOfValidHits;\
-   Double_t     normChi2;\
-   Float_t     charge;\
-};" );
-
-
-ROOT.gROOT.ProcessLine(
-"struct MyStructEvent {\
-   Double_t     z;\
-   Int_t     npart;\
-};" );
 
 
 
@@ -60,10 +30,6 @@ class TTreeCreator(object):
 		self.electronHandle = Handle('std::vector<pat::Electron>')
 
 		self.events = Events(data_files)
-
-		self.mystruct_muons = ROOT.MyStruct()
-#		self.mystruct_electrons = ROOT.MyStruct()
-		self.mystruct_event = ROOT.MyStructEvent()
 
 		self.f = ROOT.TFile("mytree.root","RECREATE")
 		self.tree=ROOT.TTree("test","test tree")
@@ -137,7 +103,6 @@ class TTreeCreator(object):
 
 		"""
 
-	#	self.tree.Branch("Muon", self.mystruct_muons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D:isGlobal/B:isTracker/B:edB/D:isolation_sumPt/D:isolation_emEt/D:isolation_hadEt/D:numberOfValidHits/I:normChi2/D:charge/F")
 
 
 		self.tree.Branch("Muon_pt", ROOT.AddressOf(self.mystruct_muons, "pt"), "pt[1000]/D")
@@ -158,7 +123,6 @@ class TTreeCreator(object):
 		self.tree.Branch("Muon_normChi2", ROOT.AddressOf(self.mystruct_muons, "normChi2"), "normChi2[1000]/D")
 		self.tree.Branch("Muon_charge", ROOT.AddressOf(self.mystruct_muons, "charge"), "charge[1000]/F")
 
-	#	self.tree.Branch("Electron", self.mystruct_electrons, "pt/D:eta/D:px/D:py/D:energy/D:vertex_z/D:isGlobal/B:isTracker/B:dB/D:edB/D:isolation_sumPt/D:isolation_emEt/D:isolation_hadEt/D:numberOfValidHits/I:normChi2/D:charge/F")
 		
 		self.tree.Branch("Vertex_z", ROOT.AddressOf(self.mystruct_event,"z"), "z/D")
 		self.tree.Branch("event_npart", ROOT.AddressOf(self.mystruct_event, "npart"), "npart/I")
@@ -245,13 +209,15 @@ class TTreeCreator(object):
 		self.tree.Branch("Muon_isGlobalMuon", self.Muon_isGlobalMuon, "Muon_isGlobalisMuon[1000]/B")
 
 
-		self.tree.Branch("Muon_pt", "np", self.Muon_pt)
+		self.tree.Branch("Muon_pt", self.Muon_pt, "Muon_pt[1000]/D")
 
 		self.tree.Branch("Muon_eta", self.Muon_eta, "Muon_eta[1000]/D")
 
 		self.tree.Branch("Muon_px", self.Muon_px, "Muon_px[1000]/D")
 
 		self.tree.Branch("Muon_py", self.Muon_py, "Muon_py[1000]/D")
+		self.tree.Branch("Muon_pz", self.Muon_pz, "Muon_pz[1000]/D")
+		self.tree.Branch("Muon_vertex_z", self.Muon_vertex_z, "Muon_vertex_z[1000]/D")
 
 		self.tree.Branch("Muon_energy", self.Muon_energy, "Muon_energy[1000]/D")
 
@@ -282,7 +248,6 @@ class TTreeCreator(object):
 			
 
 			muons = self.getMuons(event)
-			#electrons = self.getElectrons(event)
 			vertex = self.getVertex(event)
 			
 			if len(muons)<2:
