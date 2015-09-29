@@ -1,4 +1,4 @@
-# Name: TTreeCreatorMyStruct.py
+# Name: TTreeCreator.py
 #
 # CMS Open Data
 #
@@ -34,26 +34,27 @@ class TTreeCreator(object):
 		self.f = ROOT.TFile("mytree.root","RECREATE")
 		self.tree=ROOT.TTree("muons","muons tree")
 		
-		self.Muon_pt = array.array("d", [0.]*1000)
-		self.Muon_eta = array.array("d", [0.]*1000)
-		self.Muon_px = array.array("d", [0.]*1000)
-		self.Muon_py = array.array("d", [0.]*1000)
-		self.Muon_pz = array.array("d", [0.]*1000)
-		self.Muon_energy = array.array("d", [0.]*1000)
-		self.Muon_vertex_z = array.array("d", [0.]*1000)
-		self.Muon_isGlobalMuon = array.array("i", [0]*1000)
-		self.Muon_isTrackerMuon = array.array("i", [0]*1000)
-		self.Muon_dB = array.array("d", [0.]*1000)
-		self.Muon_edB = array.array("d", [0.]*1000)
-		self.Muon_isolation_sumPt = array.array("d", [0.]*1000)
-		self.Muon_isolation_emEt = array.array("d", [0.]*1000)
-		self.Muon_isolation_hadEt = array.array("d", [0.]*1000)
-		self.Muon_numberOfValidHits = array.array("i", [0]*1000)
-		self.Muon_normChi2 = array.array("d", [0.]*1000)
-		self.Muon_charge = array.array("d", [0.]*1000)
+		self.npart = array.array("I", [0])
+		
+		self.Muon_pt = array.array("d", [0.]*20)
+		self.Muon_eta = array.array("d", [0.]*20)
+		self.Muon_px = array.array("d", [0.]*20)
+		self.Muon_py = array.array("d", [0.]*20)
+		self.Muon_pz = array.array("d", [0.]*20)
+		self.Muon_energy = array.array("d", [0.]*20)
+		self.Muon_vertex_z = array.array("d", [0.]*20)
+		self.Muon_isGlobalMuon = array.array("i", [0]*20)
+		self.Muon_isTrackerMuon = array.array("i", [0]*20)
+		self.Muon_dB = array.array("d", [0.]*20)
+		self.Muon_edB = array.array("d", [0.]*20)
+		self.Muon_isolation_sumPt = array.array("d", [0.]*20)
+		self.Muon_isolation_emEt = array.array("d", [0.]*20)
+		self.Muon_isolation_hadEt = array.array("d", [0.]*20)
+		self.Muon_numberOfValidHits = array.array("i", [0]*20)
+		self.Muon_normChi2 = array.array("d", [0.]*20)
+		self.Muon_charge = array.array("f", [0.]*20) 
 
 		self.Vertex_z = array.array("d", [0.])
-		self.npart = array.array("I", [0])
 
 
 	def getMuons(self, event):
@@ -108,38 +109,38 @@ class TTreeCreator(object):
 
 		self.tree.Branch("npart", self.npart, "npart[1]/I")
 
-		self.tree.Branch("Muon_isGlobalMuon", self.Muon_isGlobalMuon, "Muon_isGlobalisMuon[1000]/B")
+		self.tree.Branch("Muon_isGlobalMuon", self.Muon_isGlobalMuon, "Muon_isGlobalisMuon[20]/B")
 
 
-		self.tree.Branch("Muon_pt", self.Muon_pt, "Muon_pt[1000]/D")
+		self.tree.Branch("Muon_pt", self.Muon_pt, "Muon_pt[20]/D")
 
-		self.tree.Branch("Muon_eta", self.Muon_eta, "Muon_eta[1000]/D")
+		self.tree.Branch("Muon_eta", self.Muon_eta, "Muon_eta[20]/D")
 
-		self.tree.Branch("Muon_px", self.Muon_px, "Muon_px[1000]/D")
+		self.tree.Branch("Muon_px", self.Muon_px, "Muon_px[20]/D")
 
-		self.tree.Branch("Muon_py", self.Muon_py, "Muon_py[1000]/D")
-		self.tree.Branch("Muon_pz", self.Muon_pz, "Muon_pz[1000]/D")
-		self.tree.Branch("Muon_vertex_z", self.Muon_vertex_z, "Muon_vertex_z[1000]/D")
+		self.tree.Branch("Muon_py", self.Muon_py, "Muon_py[20]/D")
+		self.tree.Branch("Muon_pz", self.Muon_pz, "Muon_pz[20]/D")
+		self.tree.Branch("Muon_vertex_z", self.Muon_vertex_z, "Muon_vertex_z[20]/D")
 
-		self.tree.Branch("Muon_energy", self.Muon_energy, "Muon_energy[1000]/D")
+		self.tree.Branch("Muon_energy", self.Muon_energy, "Muon_energy[20]/D")
 
-		self.tree.Branch("Muon_isTrackerMuon", self.Muon_isTrackerMuon, "Muon_isTrackerMuon[1000]/B")
+		self.tree.Branch("Muon_isTrackerMuon", self.Muon_isTrackerMuon, "Muon_isTrackerMuon[20]/B")
 
-		self.tree.Branch("Muon_dB", self.Muon_dB, "Muon_dB[1000]/D")
+		self.tree.Branch("Muon_dB", self.Muon_dB, "Muon_dB[20]/D")
 
-		self.tree.Branch("Muon_edB", self.Muon_edB, "Muon_edB[1000]/D")
+		self.tree.Branch("Muon_edB", self.Muon_edB, "Muon_edB[20]/D")
 
-		self.tree.Branch("Muon_isolation_sumPt", self.Muon_isolation_sumPt, "Muon_isolation_sumPt[1000]/D")
+		self.tree.Branch("Muon_isolation_sumPt", self.Muon_isolation_sumPt, "Muon_isolation_sumPt[20]/D")
 
-		self.tree.Branch("Muon_isolation_emEt", self.Muon_isolation_emEt, "Muon_isolation_emEt[1000]/D")
+		self.tree.Branch("Muon_isolation_emEt", self.Muon_isolation_emEt, "Muon_isolation_emEt[20]/D")
 
-		self.tree.Branch("Muon_isolation_hadEt", self.Muon_isolation_hadEt, "Muon_isolation_hadEt[1000]/D")
+		self.tree.Branch("Muon_isolation_hadEt", self.Muon_isolation_hadEt, "Muon_isolation_hadEt[20]/D")
 
-		self.tree.Branch("Muon_numberOfValidHits", self.Muon_numberOfValidHits, "Muon_numberOfValidHits[1000]/I")
+		self.tree.Branch("Muon_numberOfValidHits", self.Muon_numberOfValidHits, "Muon_numberOfValidHits[20]/I")
 
-		self.tree.Branch("Muon_normChi2", self.Muon_normChi2, "Muon_normChi2[1000]/D")
+		self.tree.Branch("Muon_normChi2", self.Muon_normChi2, "Muon_normChi2[20]/D")
 
-		self.tree.Branch("Muon_charge", self.Muon_charge, "Muon_charge[1000]/F")
+		self.tree.Branch("Muon_charge", self.Muon_charge, "Muon_charge[20]/F")
 
 
 		for N, event in enumerate(self.events):
@@ -156,11 +157,30 @@ class TTreeCreator(object):
 			self.Vertex_z[0] = vertex.z()
 			self.npart[0] = len(muons)		
 
+			self.Muon_pt = array.array("d", [0.]*20)
+			self.Muon_eta = array.array("d", [0.]*20)
+			self.Muon_px = array.array("d", [0.]*20)
+			self.Muon_py = array.array("d", [0.]*20)
+			self.Muon_pz = array.array("d", [0.]*20)
+			self.Muon_energy = array.array("d", [0.]*20)
+			self.Muon_vertex_z = array.array("d", [0.]*20)
+			self.Muon_isGlobalMuon = array.array("i", [0]*20)
+			self.Muon_isTrackerMuon = array.array("i", [0]*20)
+			self.Muon_dB = array.array("d", [0.]*20)
+			self.Muon_edB = array.array("d", [0.]*20)
+			self.Muon_isolation_sumPt = array.array("d", [0.]*20)
+			self.Muon_isolation_emEt = array.array("d", [0.]*20)
+			self.Muon_isolation_hadEt = array.array("d", [0.]*20)
+			self.Muon_numberOfValidHits = array.array("i", [0]*20)
+			self.Muon_normChi2 = array.array("d", [0.]*20)
+			self.Muon_charge = array.array("f", [0.]*20) 
 	
 			for i, muon in enumerate(muons): 
 				
-				print i 
+			#	print i 
 	
+
+			
 				self.Muon_pt[i]=muon.pt()
 				self.Muon_eta[i]=muon.eta()
 				self.Muon_px[i]=muon.px()
@@ -176,7 +196,9 @@ class TTreeCreator(object):
 				self.Muon_isolation_emEt[i]=muon.isolationR03().emEt
 				self.Muon_isolation_hadEt[i]=muon.isolationR03().hadEt
 				self.Muon_charge[i]=muon.charge()
-				
+
+		
+		
 				if not muon.globalTrack().isNull():
 
 					self.Muon_numberOfValidHits[i]=muon.numberOfValidHits()
@@ -186,11 +208,34 @@ class TTreeCreator(object):
 					self.Muon_numberOfValidHits[i]= 0
 					self.Muon_normChi2[i]= 0.0
 
-							
+			print self.Muon_pt
+			print self.Muon_charge
+			for j in range(len(muons)-1, 19):
 
+				print j
+				self.Muon_pt.pop()
+				self.Muon_px.pop()
+				self.Muon_py.pop()
+				self.Muon_pz.pop()
+				self.Muon_eta.pop()
+				self.Muon_energy.pop()
+				self.Muon_vertex_z.pop()
+				self.Muon_isGlobalMuon.pop()
+				self.Muon_isTrackerMuon.pop()
+				self.Muon_dB.pop()
+				self.Muon_edB.pop()
+				self.Muon_isolation_sumPt.pop()
+				self.Muon_isolation_emEt.pop()
+				self.Muon_isolation_hadEt.pop()
+				self.Muon_charge.pop()
+				self.Muon_numberOfValidHits.pop()
+				self.Muon_normChi2.pop()
+			
+			print self.Muon_pt								
+			print self.Muon_charge
 			self.tree.Fill()
 
 
 		print "Write"
 		self.f.Write()
-		self.f.Close()
+
