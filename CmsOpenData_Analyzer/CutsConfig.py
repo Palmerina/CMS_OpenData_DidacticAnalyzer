@@ -21,7 +21,7 @@ class CutsConfig(object):
 
 	"""
 
-	def __init__(self, pt_min = 5, eta_max = 2.4, distance = 0.2, dB_max = 0.02, isolation = 0.15, mass_min = 40, chi2 = 10, numValidHits = 10):
+	def __init__(self, pt_min = 5, eta_max = 2.4, distance = 0.2, dB_max = 0.02, isolation = 0.15, mass_min = 60, chi2 = 10, numValidHits = 10):
 		
 		self.pt_min = pt_min 
 		self.eta_max = eta_max

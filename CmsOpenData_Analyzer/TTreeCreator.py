@@ -32,7 +32,7 @@ class TTreeCreator(object):
 		self.events = Events(data_files)
 
 		self.f = ROOT.TFile("mytree.root","RECREATE")
-		self.tree=ROOT.TTree("test","test tree")
+		self.tree=ROOT.TTree("muons","muons tree")
 		
 		self.Muon_pt = array.array("d", [0.]*1000)
 		self.Muon_eta = array.array("d", [0.]*1000)

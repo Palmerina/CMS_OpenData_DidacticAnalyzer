@@ -38,11 +38,14 @@ distance = 0.2 # Maximum dz to PV
 dB_max = 0.02  # Maximum impact parameter
 chi2 = 10  # Maximum chi**2
 numValidHits = 10 # Minimum number of valid hits
+isolation = 0.15 # Maximum energy containt in a 
+# cone around the muon before consider it a jet 
 
-maxEv = 1000000 #number of processed events. maxEvents = -1 runs over all of them
+
+maxEv = 10000 #number of processed events. maxEvents = -1 runs over all of them
 
 
-cutsConfig = CutsConfig(pt_min, eta_max, distance, dB_max, isolation, chi2, numValidHits)
+cutsConfig = CutsConfig()
 
 analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the TwoMuonAnalyzer class
 
@@ -50,7 +53,7 @@ analyzer = TwoMuonAnalyzer(cutsConfig, data_files) # creates an object of the Tw
 analyzer.process(maxEv)
 
 # Exercise 1 
-analyzer.plotter1()
+#analyzer.plotter1()
 
 # Exercise 2
 analyzer.plotter()

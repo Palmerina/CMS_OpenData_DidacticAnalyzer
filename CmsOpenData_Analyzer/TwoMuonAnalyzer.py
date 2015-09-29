@@ -58,6 +58,8 @@ class TwoMuonAnalyzer(object):
 		self.badNumValidHits = []
 		self.dB = []
 		self.distance = []
+		self.charge=[]
+		self.edB = []
 
 
 	def getMuons(self, event):
@@ -153,7 +155,7 @@ class TwoMuonAnalyzer(object):
 		ax_1.set_title("Transverse momentum of each component of the muon pair")
 
 		ax_2=fig1.add_subplot(212)
-		ax_2.hist(self.badZPt2, bins = 100, alpha=0.5)
+		ax_2.hist(self.badZPt2, bins = 300, alpha=0.5)
 		ax_2.set_xlim(0, 1000)
 		ax_2.set_xlabel("pt_2 (GeV/c)")
 		ax_2.set_ylabel("frequency")
@@ -195,15 +197,16 @@ class TwoMuonAnalyzer(object):
 		fig1 = P.figure()
 	
 		ax_1 = fig1.add_subplot(211)
-		ax_1.hist(self.zMass, bins = 100, alpha=0.5, label="Good Muons")
-		ax_1.hist(self.badZMass, bins = 100, alpha=0.5, label="All Muons")
+		ax_1.hist(self.zMass, bins = 80, alpha=0.5, label="Good Muons")
+		ax_1.hist(self.badZMass, bins = 80, alpha=0.5, label="All Muons")
+		ax_1.set_xlim(40,120)
 		ax_1.set_xlabel("Invariant mass (GeV/c2)")
 		ax_1.set_ylabel("frequency")
 		ax_1.legend(loc='upper right')
 
 		ax_2 = fig1.add_subplot(212)
-		ax_2.hist(self.zPt, bins = 100, alpha=0.5, label="Good Muons", log=True)
-		ax_2.hist(self.badZPt, bins = 350, alpha=0.5, label="All Muons", log = True)
+		ax_2.hist(self.zPt, bins = 20, alpha=0.5, label="Good Muons", log=True)
+		ax_2.hist(self.badZPt, bins = 500, alpha=0.5, label="All Muons", log = True)
 		ax_2.set_xlim(0, 500)
 		ax_2.set_xlabel("Total pt (GeV/c)")
 		ax_2.set_ylabel("frequency")
@@ -212,15 +215,15 @@ class TwoMuonAnalyzer(object):
 		fig2 = P.figure()
 
 		ax_3 = fig2.add_subplot(211)
-		ax_3.hist(self.zPt1, bins = 100, alpha=0.5, label="Good Muons")
+		ax_3.hist(self.zPt1, bins = 50, alpha=0.5, label="Good Muons")
 		#ax_3.hist(self.badZPt1, bins = 100, normed=1, alpha=0.5, label="All Muons")
-		ax_3.set_xlim(0, 100)
+		ax_3.set_xlim(0, 50)
 		ax_3.set_xlabel("pt_1 (GeV/c)")
 		ax_3.set_ylabel("frequency")
 		ax_3.legend(loc='upper right')
 
 		ax_4 = fig2.add_subplot(212)
-		ax_4.hist(self.zPt2, bins = 100, alpha=0.5, label="Good Muons")
+		ax_4.hist(self.zPt2, bins = 50, alpha=0.5, label="Good Muons")
 		#ax_4.hist(self.badZPt2, bins = 300, normed=1, alpha=0.5, label="All Muons")
 		ax_4.set_xlim(0, 200)
 		ax_4.set_xlabel("pt_2 (GeV/c)")
@@ -229,20 +232,24 @@ class TwoMuonAnalyzer(object):
 
 
 		P.figure()
-		P.hist(self.zMass, bins = 100, alpha=0.5, label="Good Muons")
+		P.hist(self.zMass, bins = 80, alpha=0.5, label="Good Muons")
 		P.xlabel("Invariant mass (GeV/c2)")
 		P.ylabel("frequency")
 		P.xlim(60, 120)
 
 
 		P.figure()
-		P.hist(self.eta, bins = 100, alpha=0.5, label="Good Muons", log = True)
-		P.hist(self.badEta, bins = 100, alpha=0.5, label="All Muons", log = True)
+		P.hist(self.eta, bins = 50, alpha=0.5, label="Good Muons", log = True)
+		P.hist(self.badEta, bins = 50, alpha=0.5, label="All Muons", log = True)
 		P.xlabel("Eta")
 		P.ylabel("frequency")
 		P.legend(loc='upper right')
 
 
+		P.figure()
+		P.hist(self.edB, bins = 50, log = True)
+		P.xlabel("Charge")
+		P.ylabel("frequency")
 
 
 		P.show()
@@ -318,7 +325,7 @@ class TwoMuonAnalyzer(object):
 
 		"""
 
-
+		print self.events
 		for N, event in enumerate(self.events):
 
 			if maxEv >= 0 and (N + 1) >= maxEv:
@@ -335,6 +342,8 @@ class TwoMuonAnalyzer(object):
 			
 			for muon in muons: # it applies the cutsConfig
 				
+				self.charge.append(muon.charge())
+				self.edB.append(muon.edB(muon.PV3D))
 				if not muon.globalTrack().isNull():
 
 					self.chi2.append(muon.normChi2())
@@ -419,11 +428,9 @@ class TwoMuonAnalyzer(object):
 					self.badEta.append(badMuPair.eta2())
 
 					if abs(badMuPair.dB1())<10:
-						print badMuPair.dB1()
 						self.dB.append(badMuPair.dB1())
 
 					if abs(badMuPair.dB2())<10:
-						print badMuPair.dB2()
 						self.dB.append(badMuPair.dB2())
 					self.distance.append(badMuPair.distance1())
 					self.distance.append(badMuPair.distance2())
