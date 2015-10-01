@@ -42,7 +42,7 @@ isolation = 0.15 # Maximum energy containt in a
 # cone around the muon before consider it a jet 
 
 
-maxEv = 10000 #number of processed events. maxEvents = -1 runs over all of them
+maxEv = 1000000 #number of processed events. maxEvents = -1 runs over all of them
 
 
 cutsConfig = CutsConfig()

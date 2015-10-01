@@ -246,35 +246,15 @@ class TwoMuonAnalyzer(object):
 		P.legend(loc='upper right')
 
 
-		P.figure()
-		P.hist(self.edB, bins = 50, log = True)
-		P.xlabel("Charge")
-		P.ylabel("frequency")
-
-
 		P.show()
-
-
-	#	P.figure()
-	#	P.hist(self.chi2, bins = 100, normed=1, alpha=0.5, label="Good Muons")
-	#	P.hist(self.badChi2, bins = 100, normed=1, alpha=0.5, label="Bad Muons")
-	#	P.xlabel("Chi**2")
-	#	P.ylabel("frequency")
-	#	P.legend(loc='upper right')
-
-
-	#	P.figure()
-	#	P.hist(self.numValidHits, bins = 50, normed=1, alpha=0.5, label="Good Muons")
-	#	P.hist(self.badNumValidHits, bins = 50, normed=1, alpha=0.5, label="Bad Muons")
-	#	P.xlabel("Number of valid hits")
-	#	P.ylabel("frequency")
-	#	P.legend(loc='upper right')
-
 
 
 
 	def gaussianFit(self):
-		
+		"""
+		It does not work
+		"""
+
 		bins = 50
 		mu, sigma = norm.fit(self.zMass)
 
@@ -293,7 +273,9 @@ class TwoMuonAnalyzer(object):
 
 
 	def gaussianFit2(self):
-
+		"""
+		It does not work
+		"""
 		data = P.hist(self.zMass, bins = 100)
 
 		# Equation for Gaussian
