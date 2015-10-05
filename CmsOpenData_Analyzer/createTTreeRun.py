@@ -8,7 +8,7 @@
 
 import ROOT
 #from TTreeCreator import TTreeCreator
-from TTreeCreatorMyStruct import TTreeCreator
+from TTreeCreator import TTreeCreator
 
 # CMS data:
 
@@ -27,7 +27,7 @@ data_files = [
         'root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Electron/PATtuples/Electron_PAT_data_500files_6.root'
 ]
 
-maxEv = 10000 #number of processed events. maxEvents = -1 runs over all of them
+maxEv = 100000 #number of processed events. maxEvents = -1 runs over all of them
 
 treeCreator = TTreeCreator(data_files)
 tree=treeCreator.process(maxEv) 

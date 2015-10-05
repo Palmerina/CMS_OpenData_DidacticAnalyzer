@@ -37,32 +37,32 @@ class TwoMuonAnalyzer(object):
 		TwoMuonAnalyzer initializer
 		"""
 		self.f = ROOT.TFile("mytree.root", "read")
-		self.tree = self.f.Get("test")
+		self.tree = self.f.Get("muons")
 
 		self.cutsConfig = cutsConfig
 		
 
 		# Initialization of variables		
 		
-		self.Muon_pt = array.array("d", [0.]*50)
-		self.Muon_eta = array.array("d", [0.]*50)
-		self.Muon_px = array.array("d", [0.]*50)
-		self.Muon_py = array.array("d", [0.]*50)
-		self.Muon_pz = array.array("d", [0.]*50)
-		self.Muon_energy = array.array("d", [0.]*50)
-		self.Muon_vertex_z = array.array("d", [0.]*50)
+		self.Muon_pt = array.array("f")
+		self.Muon_eta = array.array("f", [0.]*50)
+		self.Muon_px = array.array("f", [0.]*50)
+		self.Muon_py = array.array("f", [0.]*50)
+		self.Muon_pz = array.array("f", [0.]*50)
+		self.Muon_energy = array.array("f", [0.]*50)
+		self.Muon_vertex_z = array.array("f", [0.]*50)
 		self.Muon_isGlobalMuon = array.array("i", [0]*50)
 		self.Muon_isTrackerMuon = array.array("i", [0]*50)
-		self.Muon_dB = array.array("d", [0.]*50)
-		self.Muon_edB = array.array("d", [0.]*50)
-		self.Muon_isolation_sumPt = array.array("d", [0.]*50)
-		self.Muon_isolation_emEt = array.array("d", [0.]*50)
-		self.Muon_isolation_hadEt = array.array("d", [0.]*50)
+		self.Muon_dB = array.array("f", [0.]*50)
+		self.Muon_edB = array.array("f", [0.]*50)
+		self.Muon_isolation_sumPt = array.array("f", [0.]*50)
+		self.Muon_isolation_emEt = array.array("f", [0.]*50)
+		self.Muon_isolation_hadEt = array.array("f", [0.]*50)
 		self.Muon_numberOfValidHits = array.array("i", [0]*50)
-		self.Muon_normChi2 = array.array("d", [0.]*50)
-		self.Muon_charge = array.array("d", [0.]*50)
+		self.Muon_normChi2 = array.array("f", [0.]*50)
+		self.Muon_charge = array.array("f", [0.]*50)
 
-		self.Vertex_z = array.array("d", [0.])
+		self.Vertex_z = array.array("f", [0.])
 		self.npart = array.array("i", [0])
 
 		
@@ -70,45 +70,45 @@ class TwoMuonAnalyzer(object):
 
 		# Arrays where the variables are going to be stored
 	
-		self.allMuons_pt = array.array("d", [0.])
-		self.allMuons_eta = array.array("d", [0.])	
-		self.allMuons_px = array.array("d", [0.])
-		self.allMuons_py = array.array("d", [0.])
-		self.allMuons_pz = array.array("d", [0.])
-		self.allMuons_energy = array.array("d", [0.])
+		self.allMuons_pt = array.array("f")
+		self.allMuons_eta = array.array("f", [0.])	
+		self.allMuons_px = array.array("f", [0.])
+		self.allMuons_py = array.array("f", [0.])
+		self.allMuons_pz = array.array("f", [0.])
+		self.allMuons_energy = array.array("f", [0.])
 		self.allMuons_isGlobalMuon = array.array("i", [0])
 		self.allMuons_isTrackerMuon = array.array("i", [0])
-		self.allMuons_vertex_z = array.array("d", [0.])
-		self.allMuons_dB = array.array("d", [0.])
-		self.allMuons_edB = array.array("d", [0.])
-		self.allMuons_isolation_sumPt = array.array("d", [0.])
-		self.allMuons_isolation_emEt = array.array("d", [0.])
-		self.allMuons_isolation_hadEt = array.array("d", [0.])
+		self.allMuons_vertex_z = array.array("f", [0.])
+		self.allMuons_dB = array.array("f", [0.])
+		self.allMuons_edB = array.array("f", [0.])
+		self.allMuons_isolation_sumPt = array.array("f", [0.])
+		self.allMuons_isolation_emEt = array.array("f", [0.])
+		self.allMuons_isolation_hadEt = array.array("f", [0.])
 		self.allMuons_numberOfValidHits = array.array("i", [0])
-		self.allMuons_normChi2 = array.array("d", [0.])
-		self.allMuons_charge = array.array("d", [0.])
-		self.mass = array.array("d", [0.])
+		self.allMuons_normChi2 = array.array("f", [0.])
+		self.allMuons_charge = array.array("f", [0.])
+		self.mass = array.array("f", [0.])
 
-		self.event_vertex_z = array.array("d", [0.])
+		self.event_vertex_z = array.array("f", [0.])
 
-		self.goodMuons_pt = array.array("d", [0.])
-		self.goodMuons_eta = array.array("d", [0.])	
-		self.goodMuons_px = array.array("d", [0.])
-		self.goodMuons_py = array.array("d", [0.])
-		self.goodMuons_pz = array.array("d", [0.])
-		self.goodMuons_energy = array.array("d", [0.])
+		self.goodMuons_pt = array.array("f")
+		self.goodMuons_eta = array.array("f", [0.])	
+		self.goodMuons_px = array.array("f", [0.])
+		self.goodMuons_py = array.array("f", [0.])
+		self.goodMuons_pz = array.array("f", [0.])
+		self.goodMuons_energy = array.array("f", [0.])
 		self.goodMuons_isGlobalMuon = array.array("i", [0])
 		self.goodMuons_isTrackerMuon = array.array("i", [0])
-		self.goodMuons_vertex_z = array.array("d", [0.])
-		self.goodMuons_dB = array.array("d", [0.])
-		self.goodMuons_edB = array.array("d", [0.])
-		self.goodMuons_isolation_sumPt = array.array("d", [0.])
-		self.goodMuons_isolation_emEt = array.array("d", [0.])
-		self.goodMuons_isolation_hadEt = array.array("d", [0.])
+		self.goodMuons_vertex_z = array.array("f", [0.])
+		self.goodMuons_dB = array.array("f", [0.])
+		self.goodMuons_edB = array.array("f", [0.])
+		self.goodMuons_isolation_sumPt = array.array("f", [0.])
+		self.goodMuons_isolation_emEt = array.array("f", [0.])
+		self.goodMuons_isolation_hadEt = array.array("f", [0.])
 		self.goodMuons_numberOfValidHits = array.array("i", [0])
-		self.goodMuons_normChi2 = array.array("d", [0.])
-		self.goodMuons_charge = array.array("d", [0.])
-		self.good_mass = array.array("d", [0.])
+		self.goodMuons_normChi2 = array.array("f", [0.])
+		self.goodMuons_charge = array.array("f", [0.])
+		self.good_mass = array.array("f", [0.])
 
 	def selectMuons(self, iMuon):
 		"""
@@ -204,18 +204,14 @@ class TwoMuonAnalyzer(object):
 		self.tree.SetBranchAddress("Vertex_z", self.Vertex_z)
 		self.tree.SetBranchAddress("npart", self.npart)
 
-		print "Despues de SetBranchAddress"
-
 		numEntries = self.tree.GetEntries()
 
 
 		# Loop over the events
 
 		for i in range(0, numEntries): 
-			print "entra en el lazo"
 			self.tree.GetEntry(i)  # Muon_* arrays are filled for each event
-			print "Despues de GetEntry"
-			print self.Muon_pt[0]
+			print self.Muon_pt
 			# Select events with at least two muons
 			if self.npart[0]<2:
 				continue
@@ -280,7 +276,7 @@ class TwoMuonAnalyzer(object):
 				# Loop over all muons				
 				for kMuon in range(0, self.npart[0] - 1):
 
-					innerMuon_charge = self.Muon_charge[jMuon]
+					innerMuon_charge = self.Muon_charge[kMuon]
 
 					if innerMuon_charge * outerMuon_charge >=0:
 						continue
@@ -360,8 +356,8 @@ class TwoMuonAnalyzer(object):
 		"""
 		
 		P.figure()
-		P.hist(self.allMuons_eta, bins = 50, log = True)
-		P.xlabel("eta")
+		P.hist(self.allMuons_pt, bins = 50, log = True)
+		P.xlabel("pt")
 		P.ylabel("frequency")
 
 

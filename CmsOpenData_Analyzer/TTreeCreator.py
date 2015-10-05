@@ -8,11 +8,11 @@
 
 
 __author__ = "Palmerina Gonzalez Izquierdo"
-__copyright__ = "Copyright (C) 2015 Palmerina G. I."
+__copyright__ = "Copyright (C) 015 Palmerina G. I."
 __license__ = "Public Domain"
-__version__ = "1.0"
+__version__ = "1."
 __maintainer__ = "Palmerina Gonzalez"
-__email__ = "pgi25@alumnos.unican.es"
+__email__ = "pgi2@alumnos.unican.es"
 
 import ROOT
 from DataFormats.FWLite import Events, Handle
@@ -34,27 +34,27 @@ class TTreeCreator(object):
 		self.f = ROOT.TFile("mytree.root","RECREATE")
 		self.tree=ROOT.TTree("muons","muons tree")
 		
-		self.npart = array.array("I", [0])
+		self.npart = array.array("I")
 		
-		self.Muon_pt = array.array("d", [0.]*20)
-		self.Muon_eta = array.array("d", [0.]*20)
-		self.Muon_px = array.array("d", [0.]*20)
-		self.Muon_py = array.array("d", [0.]*20)
-		self.Muon_pz = array.array("d", [0.]*20)
-		self.Muon_energy = array.array("d", [0.]*20)
-		self.Muon_vertex_z = array.array("d", [0.]*20)
-		self.Muon_isGlobalMuon = array.array("i", [0]*20)
-		self.Muon_isTrackerMuon = array.array("i", [0]*20)
-		self.Muon_dB = array.array("d", [0.]*20)
-		self.Muon_edB = array.array("d", [0.]*20)
-		self.Muon_isolation_sumPt = array.array("d", [0.]*20)
-		self.Muon_isolation_emEt = array.array("d", [0.]*20)
-		self.Muon_isolation_hadEt = array.array("d", [0.]*20)
-		self.Muon_numberOfValidHits = array.array("i", [0]*20)
-		self.Muon_normChi2 = array.array("d", [0.]*20)
-		self.Muon_charge = array.array("f", [0.]*20) 
+		self.Muon_pt = array.array("f")
+		self.Muon_eta = array.array("f")
+		self.Muon_px = array.array("f")
+		self.Muon_py = array.array("f")
+		self.Muon_pz = array.array("f")
+		self.Muon_energy = array.array("f")
+		self.Muon_vertex_z = array.array("f")
+		self.Muon_isGlobalMuon = array.array("i")
+		self.Muon_isTrackerMuon = array.array("i")
+		self.Muon_dB = array.array("f")
+		self.Muon_edB = array.array("f")
+		self.Muon_isolation_sumPt = array.array("f")
+		self.Muon_isolation_emEt = array.array("f")
+		self.Muon_isolation_hadEt = array.array("f")
+		self.Muon_numberOfValidHits = array.array("i")
+		self.Muon_normChi2 = array.array("f")
+		self.Muon_charge = array.array("f") 
 
-		self.Vertex_z = array.array("d", [0.])
+		self.Vertex_z = array.array("f")
 
 
 	def getMuons(self, event):
@@ -105,42 +105,42 @@ class TTreeCreator(object):
 
 		"""
 
-		self.tree.Branch("Vertex_z", self.Vertex_z, "Vertex_z[1]/D")
+		self.tree.Branch("Vertex_z", self.Vertex_z, "Vertex_z/F")
 
-		self.tree.Branch("npart", self.npart, "npart[1]/I")
+		self.tree.Branch("npart", self.npart, "npart/I")
 
-		self.tree.Branch("Muon_isGlobalMuon", self.Muon_isGlobalMuon, "Muon_isGlobalisMuon[20]/B")
+		self.tree.Branch("Muon_isGlobalMuon", self.Muon_isGlobalMuon, "Muon_isGlobalisMuon/B")
 
 
-		self.tree.Branch("Muon_pt", self.Muon_pt, "Muon_pt[20]/D")
+		self.tree.Branch("Muon_pt", self.Muon_pt, "Muon_pt/F")
 
-		self.tree.Branch("Muon_eta", self.Muon_eta, "Muon_eta[20]/D")
+		self.tree.Branch("Muon_eta", self.Muon_eta, "Muon_eta/F")
 
-		self.tree.Branch("Muon_px", self.Muon_px, "Muon_px[20]/D")
+		self.tree.Branch("Muon_px", self.Muon_px, "Muon_px/F")
 
-		self.tree.Branch("Muon_py", self.Muon_py, "Muon_py[20]/D")
-		self.tree.Branch("Muon_pz", self.Muon_pz, "Muon_pz[20]/D")
-		self.tree.Branch("Muon_vertex_z", self.Muon_vertex_z, "Muon_vertex_z[20]/D")
+		self.tree.Branch("Muon_py", self.Muon_py, "Muon_py/F")
+		self.tree.Branch("Muon_pz", self.Muon_pz, "Muon_pz/F")
+		self.tree.Branch("Muon_vertex_z", self.Muon_vertex_z, "Muon_vertex_z/F")
 
-		self.tree.Branch("Muon_energy", self.Muon_energy, "Muon_energy[20]/D")
+		self.tree.Branch("Muon_energy", self.Muon_energy, "Muon_energy/F")
 
-		self.tree.Branch("Muon_isTrackerMuon", self.Muon_isTrackerMuon, "Muon_isTrackerMuon[20]/B")
+		self.tree.Branch("Muon_isTrackerMuon", self.Muon_isTrackerMuon, "Muon_isTrackerMuon/F")
 
-		self.tree.Branch("Muon_dB", self.Muon_dB, "Muon_dB[20]/D")
+		self.tree.Branch("Muon_dB", self.Muon_dB, "Muon_dB/F")
 
-		self.tree.Branch("Muon_edB", self.Muon_edB, "Muon_edB[20]/D")
+		self.tree.Branch("Muon_edB", self.Muon_edB, "Muon_edB/F")
 
-		self.tree.Branch("Muon_isolation_sumPt", self.Muon_isolation_sumPt, "Muon_isolation_sumPt[20]/D")
+		self.tree.Branch("Muon_isolation_sumPt", self.Muon_isolation_sumPt, "Muon_isolation_sumPt/F")
 
-		self.tree.Branch("Muon_isolation_emEt", self.Muon_isolation_emEt, "Muon_isolation_emEt[20]/D")
+		self.tree.Branch("Muon_isolation_emEt", self.Muon_isolation_emEt, "Muon_isolation_emEt/F")
 
-		self.tree.Branch("Muon_isolation_hadEt", self.Muon_isolation_hadEt, "Muon_isolation_hadEt[20]/D")
+		self.tree.Branch("Muon_isolation_hadEt", self.Muon_isolation_hadEt, "Muon_isolation_hadEt/F")
 
-		self.tree.Branch("Muon_numberOfValidHits", self.Muon_numberOfValidHits, "Muon_numberOfValidHits[20]/I")
+		self.tree.Branch("Muon_numberOfValidHits", self.Muon_numberOfValidHits, "Muon_numberOfValidHits/I")
 
-		self.tree.Branch("Muon_normChi2", self.Muon_normChi2, "Muon_normChi2[20]/D")
+		self.tree.Branch("Muon_normChi2", self.Muon_normChi2, "Muon_normChi2/F")
 
-		self.tree.Branch("Muon_charge", self.Muon_charge, "Muon_charge[20]/F")
+		self.tree.Branch("Muon_charge", self.Muon_charge, "Muon_charge/F")
 
 
 		for N, event in enumerate(self.events):
@@ -154,88 +154,75 @@ class TTreeCreator(object):
 			vertex = self.getVertex(event)
 			
 
-			self.Vertex_z[0] = vertex.z()
-			self.npart[0] = len(muons)		
+			self.Vertex_z.append(vertex.z())
+			self.npart.append(len(muons))		
 
-			self.Muon_pt = array.array("d", [0.]*20)
-			self.Muon_eta = array.array("d", [0.]*20)
-			self.Muon_px = array.array("d", [0.]*20)
-			self.Muon_py = array.array("d", [0.]*20)
-			self.Muon_pz = array.array("d", [0.]*20)
-			self.Muon_energy = array.array("d", [0.]*20)
-			self.Muon_vertex_z = array.array("d", [0.]*20)
-			self.Muon_isGlobalMuon = array.array("i", [0]*20)
-			self.Muon_isTrackerMuon = array.array("i", [0]*20)
-			self.Muon_dB = array.array("d", [0.]*20)
-			self.Muon_edB = array.array("d", [0.]*20)
-			self.Muon_isolation_sumPt = array.array("d", [0.]*20)
-			self.Muon_isolation_emEt = array.array("d", [0.]*20)
-			self.Muon_isolation_hadEt = array.array("d", [0.]*20)
-			self.Muon_numberOfValidHits = array.array("i", [0]*20)
-			self.Muon_normChi2 = array.array("d", [0.]*20)
-			self.Muon_charge = array.array("f", [0.]*20) 
 	
 			for i, muon in enumerate(muons): 
 				
-			#	print i 
+				print i 
 	
 
 			
-				self.Muon_pt[i]=muon.pt()
-				self.Muon_eta[i]=muon.eta()
-				self.Muon_px[i]=muon.px()
-				self.Muon_py[i]=muon.py()
-				self.Muon_pz[i]=muon.pz()
-				self.Muon_energy[i]=muon.energy()
-				self.Muon_vertex_z[i]=muon.vertex().z()
-				self.Muon_isGlobalMuon[i]=muon.isGlobalMuon()
-				self.Muon_isTrackerMuon[i]=muon.isTrackerMuon()
-				self.Muon_dB[i]=muon.dB(muon.PV3D)
-				self.Muon_edB[i]=muon.edB(muon.PV3D)
-				self.Muon_isolation_sumPt[i]=muon.isolationR03().sumPt
-				self.Muon_isolation_emEt[i]=muon.isolationR03().emEt
-				self.Muon_isolation_hadEt[i]=muon.isolationR03().hadEt
-				self.Muon_charge[i]=muon.charge()
+				self.Muon_pt.append(muon.pt())
+				self.Muon_eta.append(muon.eta())
+				self.Muon_px.append(muon.px())
+				self.Muon_py.append(muon.py())
+				self.Muon_pz.append(muon.pz())
+				self.Muon_energy.append(muon.energy())
+				self.Muon_vertex_z.append(muon.vertex().z())
+				self.Muon_isGlobalMuon.append(muon.isGlobalMuon())
+				self.Muon_isTrackerMuon.append(muon.isTrackerMuon())
+				self.Muon_dB.append(muon.dB(muon.PV3D))
+				self.Muon_edB.append(muon.edB(muon.PV3D))
+				self.Muon_isolation_sumPt.append(muon.isolationR03().sumPt)
+				self.Muon_isolation_emEt.append(muon.isolationR03().emEt)
+				self.Muon_isolation_hadEt.append(muon.isolationR03().hadEt)
+				self.Muon_charge.append(muon.charge())
 
 		
 		
 				if not muon.globalTrack().isNull():
 
-					self.Muon_numberOfValidHits[i]=muon.numberOfValidHits()
-					self.Muon_normChi2[i]=muon.normChi2()
+					self.Muon_numberOfValidHits.append(muon.numberOfValidHits())
+					self.Muon_normChi2.append(muon.normChi2())
 
 				else:
-					self.Muon_numberOfValidHits[i]= 0
-					self.Muon_normChi2[i]= 0.0
+					self.Muon_numberOfValidHits.append(0)
+
+					self.Muon_normChi2.append(0.0)
 
 			print self.Muon_pt
-			print self.Muon_charge
-			for j in range(len(muons)-1, 19):
 
-				print j
-				self.Muon_pt.pop()
-				self.Muon_px.pop()
-				self.Muon_py.pop()
-				self.Muon_pz.pop()
-				self.Muon_eta.pop()
-				self.Muon_energy.pop()
-				self.Muon_vertex_z.pop()
-				self.Muon_isGlobalMuon.pop()
-				self.Muon_isTrackerMuon.pop()
-				self.Muon_dB.pop()
-				self.Muon_edB.pop()
-				self.Muon_isolation_sumPt.pop()
-				self.Muon_isolation_emEt.pop()
-				self.Muon_isolation_hadEt.pop()
-				self.Muon_charge.pop()
-				self.Muon_numberOfValidHits.pop()
-				self.Muon_normChi2.pop()
+
+		#	for j in range(len(muons)-1, 49):
+
+			#	print j
+			#	self.Muon_px.pop()
+			#	self.Muon_py.pop()
+			#	self.Muon_pz.pop()
+			#	self.Muon_eta.pop()
+			#	self.Muon_energy.pop()
+			#	self.Muon_vertex_z.pop()
+			#	self.Muon_isGlobalMuon.pop()
+			#	self.Muon_isTrackerMuon.pop()
+			#	self.Muon_dB.pop()
+			#	self.Muon_edB.pop()
+			#	self.Muon_isolation_sumPt.pop()
+			#	self.Muon_isolation_emEt.pop()
+			#	self.Muon_isolation_hadEt.pop()
+			#	self.Muon_charge.pop()
+			#	self.Muon_numberOfValidHits.pop()
+			#	self.Muon_normChi2.pop()
 			
-			print self.Muon_pt								
-			print self.Muon_charge
 			self.tree.Fill()
+
+			for k in range(len(self.Muon_pt)):
+
+				self.Muon_pt.pop()
 
 
 		print "Write"
+
 		self.f.Write()
 
