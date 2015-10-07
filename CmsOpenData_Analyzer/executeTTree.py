@@ -7,7 +7,7 @@
 # Returns: 
 
 import ROOT
-from TwoMuonAnalyzerTTree2 import TwoMuonAnalyzer
+from TwoMuonAnalyzerTTree import TwoMuonAnalyzer
 from CutsConfig import CutsConfig
 
 
@@ -20,10 +20,11 @@ analyzer = TwoMuonAnalyzer(cutsConfig) # creates an object of the TwoMuonAnalyze
 
 analyzer.process()
 
+# Exercise 1
+analyzer.plotter1()
 
 # Exercise 2
-analyzer.plotter()
-analyzer.plotHistos()
+analyzer.plotter2()
 
 # Exercise 3
 #analyzer.gaussianFit()

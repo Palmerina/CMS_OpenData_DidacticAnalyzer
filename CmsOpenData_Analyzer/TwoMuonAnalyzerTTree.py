@@ -86,6 +86,7 @@ class TwoMuonAnalyzer(object):
 		self.allMuons_isolation_hadEt = array.array("f", [0.])
 		self.allMuons_numberOfValidHits = array.array("i", [0])
 		self.allMuons_normChi2 = array.array("f", [0.])
+		self.allMuons_distance = array.array("f", [0.])
 		self.allMuons_charge = array.array("i", [0])
 		self.mass = array.array("f", [0.])
 
@@ -107,6 +108,7 @@ class TwoMuonAnalyzer(object):
 		self.goodMuons_isolation_hadEt = array.array("f", [0.])
 		self.goodMuons_numberOfValidHits = array.array("i", [0])
 		self.goodMuons_normChi2 = array.array("f", [0.])
+		self.goodMuons_distance = array.array("f", [0.])
 		self.goodMuons_charge = array.array("i", [0])
 		self.good_mass = array.array("f", [0.])
 
@@ -229,6 +231,7 @@ class TwoMuonAnalyzer(object):
 				self.allMuons_vertex_z.append(self.Muon_vertex_z[iMuon])
 				self.allMuons_dB.append(self.Muon_dB[iMuon])
 				self.allMuons_edB.append(self.Muon_edB[iMuon])
+				self.allMuons_distance.append(abs(self.Muon_vertex_z[iMuon] - self.Vertex_z[0]))
 
 				if not self.Muon_numberOfValidHits[iMuon] == 0:
 					self.allMuons_numberOfValidHits.append(self.Muon_numberOfValidHits[iMuon])
@@ -249,6 +252,7 @@ class TwoMuonAnalyzer(object):
 					self.goodMuons_vertex_z.append(self.Muon_vertex_z[iMuon])
 					self.goodMuons_dB.append(self.Muon_dB[iMuon])
 					self.goodMuons_edB.append(self.Muon_edB[iMuon])
+					self.goodMuons_distance.append(abs(self.Muon_vertex_z[iMuon] - self.Vertex_z[0]))
 
 					# GOOD MUONS
 					# Loop over the muons
@@ -309,88 +313,73 @@ class TwoMuonAnalyzer(object):
 
 		fig1 = P.figure()
 		ax_1=fig1.add_subplot(211)
-		ax_1.hist(self.badZPt1, bins = 100, alpha=0.5)
+		ax_1.hist(self.allMuons_eta, bins = 100, alpha=0.5)
 		ax_1.set_xlim(0, 200)
-		ax_1.set_xlabel("pt_1 (GeV/c)")
+		ax_1.set_xlabel("Eta")
 		ax_1.set_ylabel("frequency")
-		ax_1.set_title("Transverse momentum of each component of the muon pair")
 
 		ax_2=fig1.add_subplot(212)
-		ax_2.hist(self.badZPt2, bins = 300, alpha=0.5)
+		ax_2.hist(self.allMuons_pt, bins = 300, alpha=0.5)
 		ax_2.set_xlim(0, 1000)
-		ax_2.set_xlabel("pt_2 (GeV/c)")
+		ax_2.set_xlabel("Transverse momentum (GeV/c)")
 		ax_2.set_ylabel("frequency")
 
 		fig2 = P.figure()
 		ax_3 = fig2.add_subplot(211)
-		ax_3.hist(self.badChi2, bins = 100, alpha=0.5)
+		ax_3.hist(self.alMuons_normChi2, bins = 100, alpha=0.5)
 		ax_3.set_xlabel("Chi**2")
 		ax_3.set_ylabel("frequency")
 
 
 		ax_4 = fig2.add_subplot(212)
-		ax_4.hist(self.badNumValidHits, bins = 20, alpha=0.5)
+		ax_4.hist(self.allMuons_numberOfValidHits, bins = 20, alpha=0.5)
 		ax_4.set_xlabel("Number of valid hits")
 		ax_4.set_ylabel("frequency")
 
 		fig3 = P.figure()
 		ax_5 = fig3.add_subplot(211)
-		ax_5.hist(self.dB, bins = 100, alpha=0.5, log=True)
+		ax_5.hist(self.allMuons_dB, bins = 100, alpha=0.5, log=True)
 		ax_5.set_xlabel("Impact parameter")
 		ax_5.set_ylabel("frequency")
 		ax_5.set_title("Distance to the primary vertex")
 
 
 		ax_6 = fig3.add_subplot(212)
-		ax_6.hist(self.distance, bins = 100, alpha=0.5, log=True)
+		ax_6.hist(self.allMuons_distance, bins = 100, alpha=0.5, log=True)
 		ax_6.set_xlabel("Dz to PV")
 		ax_6.set_ylabel("frequency")
 
 		P.show()
 
 
-	def plotter(self):
+	def plotter2(self):
 
 		"""
 		Plots the histograms
 		"""
 		
-		P.figure()
-		P.hist(self.allMuons_pt, bins = 50, log = True)
-		P.xlabel("pt")
-		P.ylabel("frequency")
+		fig1 = P.figure()
+	
+		ax_1 = fig1.add_subplot(211)
+		ax_1.hist(self.goodMass, bins = 80, alpha=0.5, label="Good Muons")
+		ax_1.hist(self.massass, bins = 80, alpha=0.5, label="All Muons")
+		ax_1.set_xlim(40,120)
+		ax_1.set_xlabel("Invariant mass (GeV/c2)")
+		ax_1.set_ylabel("frequency")
+		ax_1.legend(loc='upper right')
+
+		ax_2 = fig1.add_subplot(212)
+		ax_2.hist(self.goodMuons_eta, bins = 50, alpha=0.5, label="Good Muons", log=True)
+		ax_2.hist(self.allMuons_eta, bins = 50, alpha=0.5, label="All Muons", log = True)
+		ax_2.set_xlim(-10, 10)
+		ax_2.set_xlabel("Eta")
+		ax_2.set_ylabel("frequency")
+		ax_2.legend(loc='upper right')
 
 
 		P.show()
 
 
 		
-
-
-	def plotHistos(self):
-
-
-	#	c1 = ROOT.TCanvas("pt", "All muons' transverse momentum")
-	#	c2 = ROOT.TCanvas("good pt", "Good muons' transverse momentum")
-
-	#	self.h_Muon_pt.Draw()	
-	#	self.h_goodMuon_pt.Draw()
-
-
-		"""
-		Plots the histograms
-		"""
-		
-		P.figure()
-		P.hist(self.h_Muon_pt, bins = 50, log = True)
-		P.xlabel("pt")
-		P.ylabel("frequency")
-
-		P.figure()
-		P.hist(self.h_goodMuon_pt, bins = 50, log = True)
-		P.xlabel("pt")
-		P.ylabel("frequency")
-
-		P.show()
 
 
