@@ -15,6 +15,7 @@ __maintainer__ = "Palmerina Gonzalez"
 __email__ = "pgi25@alumnos.unican.es"
 
 import ROOT
+from LeptonPair import LeptonPair #class LeptonPair inside LeptonPair.py
 from CutsConfig import CutsConfig
 import numpy as n
 from scipy.stats import norm
@@ -70,46 +71,46 @@ class TwoMuonAnalyzer(object):
 		# Arrays where the variables are going to be stored
 	
 		self.allMuons_pt = array.array("f")
-		self.allMuons_eta = array.array("f", [0.])	
-		self.allMuons_px = array.array("f", [0.])
-		self.allMuons_py = array.array("f", [0.])
-		self.allMuons_pz = array.array("f", [0.])
-		self.allMuons_energy = array.array("f", [0.])
-		self.allMuons_isGlobalMuon = array.array("i", [0])
-		self.allMuons_isTrackerMuon = array.array("i", [0])
-		self.allMuons_vertex_z = array.array("f", [0.])
-		self.allMuons_dB = array.array("f", [0.])
-		self.allMuons_edB = array.array("f", [0.])
-		self.allMuons_isolation_sumPt = array.array("f", [0.])
-		self.allMuons_isolation_emEt = array.array("f", [0.])
-		self.allMuons_isolation_hadEt = array.array("f", [0.])
-		self.allMuons_numberOfValidHits = array.array("i", [0])
-		self.allMuons_normChi2 = array.array("f", [0.])
-		self.allMuons_distance = array.array("f", [0.])
-		self.allMuons_charge = array.array("i", [0])
-		self.mass = array.array("f", [0.])
+		self.allMuons_eta = array.array("f")	
+		self.allMuons_px = array.array("f")
+		self.allMuons_py = array.array("f")
+		self.allMuons_pz = array.array("f")
+		self.allMuons_energy = array.array("f")
+		self.allMuons_isGlobalMuon = array.array("i")
+		self.allMuons_isTrackerMuon = array.array("i")
+		self.allMuons_vertex_z = array.array("f")
+		self.allMuons_dB = array.array("f")
+		self.allMuons_edB = array.array("f")
+		self.allMuons_isolation_sumPt = array.array("f")
+		self.allMuons_isolation_emEt = array.array("f")
+		self.allMuons_isolation_hadEt = array.array("f")
+		self.allMuons_numberOfValidHits = array.array("i")
+		self.allMuons_normChi2 = array.array("f")
+		self.allMuons_distance = array.array("f")
+		self.allMuons_charge = array.array("i")
+		self.mass = array.array("f")
 
-		self.event_vertex_z = array.array("f", [0.])
+		self.event_vertex_z = array.array("f")
 
 		self.goodMuons_pt = array.array("f")
-		self.goodMuons_eta = array.array("f", [0.])	
-		self.goodMuons_px = array.array("f", [0.])
-		self.goodMuons_py = array.array("f", [0.])
-		self.goodMuons_pz = array.array("f", [0.])
-		self.goodMuons_energy = array.array("f", [0.])
-		self.goodMuons_isGlobalMuon = array.array("i", [0])
-		self.goodMuons_isTrackerMuon = array.array("i", [0])
-		self.goodMuons_vertex_z = array.array("f", [0.])
-		self.goodMuons_dB = array.array("f", [0.])
-		self.goodMuons_edB = array.array("f", [0.])
-		self.goodMuons_isolation_sumPt = array.array("f", [0.])
-		self.goodMuons_isolation_emEt = array.array("f", [0.])
-		self.goodMuons_isolation_hadEt = array.array("f", [0.])
-		self.goodMuons_numberOfValidHits = array.array("i", [0])
-		self.goodMuons_normChi2 = array.array("f", [0.])
-		self.goodMuons_distance = array.array("f", [0.])
-		self.goodMuons_charge = array.array("i", [0])
-		self.good_mass = array.array("f", [0.])
+		self.goodMuons_eta = array.array("f")	
+		self.goodMuons_px = array.array("f")
+		self.goodMuons_py = array.array("f")
+		self.goodMuons_pz = array.array("f")
+		self.goodMuons_energy = array.array("f")
+		self.goodMuons_isGlobalMuon = array.array("i")
+		self.goodMuons_isTrackerMuon = array.array("i")
+		self.goodMuons_vertex_z = array.array("f")
+		self.goodMuons_dB = array.array("f")
+		self.goodMuons_edB = array.array("f")
+		self.goodMuons_isolation_sumPt = array.array("f")
+		self.goodMuons_isolation_emEt = array.array("f")
+		self.goodMuons_isolation_hadEt = array.array("f")
+		self.goodMuons_numberOfValidHits = array.array("i")
+		self.goodMuons_normChi2 = array.array("f")
+		self.goodMuons_distance = array.array("f")
+		self.goodMuons_charge = array.array("i")
+		self.good_mass = array.array("f")
 
 	def selectMuons(self, iMuon):
 		"""
@@ -176,12 +177,13 @@ class TwoMuonAnalyzer(object):
 		"""
 		maxEv: maximum number of processed events
 		       maxEv=-1 runs over good the events
-		It selects the good muons, gets their four-momentum (using TLorentzVector)
-		applying the cut configuration and paires them up.
-		It gets the mass of every pair and adds it to the array self.goodMass. 
-		
+		It selects the good muons applying the cut configuration
+		and paires up them creating objects of the class LeptonPair.
+		It gets the mass of every pair and adds the one which approaches 
+		the most to the Z boson's mass to the list self.zMass.  
 		"""
 	
+		print "arranca process"	
 		# Address arrays to the TTree's branches
 
 		self.tree.SetBranchAddress("Muon_pt", self.Muon_pt)
@@ -209,17 +211,14 @@ class TwoMuonAnalyzer(object):
 
 		# Loop over the events
 
-		for i in range(0, numEntries):
- 
-		#	print i+1, "processed events" 
-
+		for i in range(0, numEntries): 
 			self.tree.GetEntry(i)  # Muon_* arrays are filled for each event
-			
+			print self.Muon_pt
 			# Select events with at least two muons
 			if self.npart[0]<2:
 				continue
 			
-		#	print self.npart[0], muons
+			print self.npart[0]
 
 			# ALL MUONS
 			# Loop over the muons
@@ -240,8 +239,8 @@ class TwoMuonAnalyzer(object):
 					self.allMuons_normChi2.append(self.Muon_normChi2[iMuon])
 
 				# Muon's four-momentum 
-				outerMuon = ROOT.TLorentzVector(self.Muon_px[iMuon], self.Muon_py[iMuon], self.Muon_pz[iMuon], self.Muon_energy[iMuon])
-				outerMuon_charge = self.Muon_charge[iMuon]
+		#		outerMuon = ROOT.TLorentzVector(self.Muon_px[iMuon], self.Muon_py[iMuon], self.Muon_pz[iMuon], self.Muon_energy[iMuon])
+		#		outerMuon_charge = self.Muon_charge[iMuon]
 
 				# Selec the good muons
 				if self.selectMuons(iMuon):
@@ -254,6 +253,7 @@ class TwoMuonAnalyzer(object):
 					self.goodMuons_dB.append(self.Muon_dB[iMuon])
 					self.goodMuons_edB.append(self.Muon_edB[iMuon])
 					self.goodMuons_distance.append(abs(self.Muon_vertex_z[iMuon] - self.Vertex_z[0]))
+
 
 					# GOOD MUONS
 					# Loop over the muons
@@ -298,12 +298,13 @@ class TwoMuonAnalyzer(object):
 
 
 
+
+
 	
 		
 	def plotter1(self):
 		"""
 		Plots the transverse momentum 
-
 		"""
 
 	#	P.figure()
@@ -380,7 +381,5 @@ class TwoMuonAnalyzer(object):
 
 		P.show()
 
-
-		
-
+	
 
