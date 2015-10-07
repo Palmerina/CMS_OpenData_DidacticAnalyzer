@@ -8,7 +8,7 @@
 
 
 __author__ = "Palmerina Gonzalez Izquierdo"
-__copyright__ = "Copyright (C) 2015 Palmerina G. I."
+__copyright__ = "Copyright (C) 5015 Palmerina G. I."
 __license__ = "Public Domain"
 __version__ = "1.0"
 __maintainer__ = "Palmerina Gonzalez"
@@ -34,26 +34,26 @@ class TTreeCreator(object):
 		self.f = ROOT.TFile("mytree2.root","RECREATE")
 		self.tree=ROOT.TTree("muons","muons tree")
 		
-		self.Muon_pt = array.array("d", [0.]*50)
-		self.Muon_eta = array.array("d", [0.]*50)
-		self.Muon_px = array.array("d", [0.]*50)
-		self.Muon_py = array.array("d", [0.]*50)
-		self.Muon_pz = array.array("d", [0.]*50)
-		self.Muon_energy = array.array("d", [0.]*50)
-		self.Muon_vertex_z = array.array("d", [0.]*50)
-		self.Muon_isGlobalMuon = array.array("i", [0]*50)
-		self.Muon_isTrackerMuon = array.array("i", [0]*50)
-		self.Muon_dB = array.array("d", [0.]*50)
-		self.Muon_edB = array.array("d", [0.]*50)
-		self.Muon_isolation_sumPt = array.array("d", [0.]*50)
-		self.Muon_isolation_emEt = array.array("d", [0.]*50)
-		self.Muon_isolation_hadEt = array.array("d", [0.]*50)
+		self.Muon_pt = array.array("d", [-999.0]*50)
+		self.Muon_eta = array.array("d", [-999.0]*50)
+		self.Muon_px = array.array("d", [-999.0]*50)
+		self.Muon_py = array.array("d", [-999.0]*50)
+		self.Muon_pz = array.array("d", [-999.0]*50)
+		self.Muon_energy = array.array("d", [-999.0]*50)
+		self.Muon_vertex_z = array.array("d", [-999.0]*50)
+		self.Muon_isGlobalMuon = array.array("i", [-999]*50)
+		self.Muon_isTrackerMuon = array.array("i", [-999]*50)
+		self.Muon_dB = array.array("d", [-999.0]*50)
+		self.Muon_edB = array.array("d", [-999.0]*50)
+		self.Muon_isolation_sumPt = array.array("d", [-999.0]*50)
+		self.Muon_isolation_emEt = array.array("d", [-999.0]*50)
+		self.Muon_isolation_hadEt = array.array("d", [-999.0]*50)
 		self.Muon_numberOfValidHits = array.array("i", [0]*50)
-		self.Muon_normChi2 = array.array("d", [0.]*50)
-		self.Muon_charge = array.array("d", [0.]*50)
+		self.Muon_normChi2 = array.array("d", [-999.0]*50)
+		self.Muon_charge = array.array("i", [-999]*50)
 
-		self.Vertex_z = array.array("d", [0.])
-		self.npart = array.array("I", [0])
+		self.Vertex_z = array.array("d", [-999.0])
+		self.npart = array.array("i", [-999])
 
 
 	def getMuons(self, event):
@@ -137,7 +137,7 @@ class TTreeCreator(object):
 
 		self.tree.Branch("Muon_normChi2", self.Muon_normChi2, "Muon_normChi2[50]/D")
 
-		self.tree.Branch("Muon_charge", self.Muon_charge, "Muon_charge[50]/F")
+		self.tree.Branch("Muon_charge", self.Muon_charge, "Muon_charge[50]/I")
 
 
 		for N, event in enumerate(self.events):
@@ -180,8 +180,8 @@ class TTreeCreator(object):
 					self.Muon_normChi2[i]=muon.normChi2()
 
 				else:
-					self.Muon_numberOfValidHits[i]= 0
-					self.Muon_normChi2[i]= 0.0
+					self.Muon_numberOfValidHits[i]= -999
+					self.Muon_normChi2[i]= -999.0
 
 							
 
@@ -192,26 +192,26 @@ class TTreeCreator(object):
 			for i, muon in enumerate(muons): 
 				
 	
-				self.Muon_pt[i]=0.0
-				self.Muon_eta[i]=0.0
-				self.Muon_px[i]=0.0
-				self.Muon_py[i]=0.0
-				self.Muon_pz[i]=0.0
-				self.Muon_energy[i]=0.0
-				self.Muon_vertex_z[i]=0.0
-				self.Muon_isGlobalMuon[i]=0
-				self.Muon_isTrackerMuon[i]=0
-				self.Muon_dB[i]=0.0
-				self.Muon_edB[i]=0.0
-				self.Muon_isolation_sumPt[i]=0.0
-				self.Muon_isolation_emEt[i]=0.0
-				self.Muon_isolation_hadEt[i]=0.0
-				self.Muon_charge[i]=0.0
+				self.Muon_pt[i]=-999.0
+				self.Muon_eta[i]=-999.0
+				self.Muon_px[i]=-999.0
+				self.Muon_py[i]=-999.0
+				self.Muon_pz[i]=-999.0
+				self.Muon_energy[i]=-999.0
+				self.Muon_vertex_z[i]=-999.0
+				self.Muon_isGlobalMuon[i]=-999
+				self.Muon_isTrackerMuon[i]=-999
+				self.Muon_dB[i]=-999.0
+				self.Muon_edB[i]=-999.0
+				self.Muon_isolation_sumPt[i]=-999.0
+				self.Muon_isolation_emEt[i]=-999.0
+				self.Muon_isolation_hadEt[i]=-999.0
+				self.Muon_charge[i]=-999
 				
 				if not muon.globalTrack().isNull():
 
-					self.Muon_numberOfValidHits[i]=0
-					self.Muon_normChi2[i]=0.0
+					self.Muon_numberOfValidHits[i]=-999
+					self.Muon_normChi2[i]=-999.0
 
 		print "Write"
 		self.f.Write()
