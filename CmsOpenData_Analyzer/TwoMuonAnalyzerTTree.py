@@ -60,7 +60,7 @@ class TwoMuonAnalyzer(object):
 		self.Muon_isolation_hadEt = array.array("f", [0.]*50)
 		self.Muon_numberOfValidHits = array.array("i", [0]*50)
 		self.Muon_normChi2 = array.array("f", [0.]*50)
-		self.Muon_charge = array.array("f", [0.]*50)
+		self.Muon_charge = array.array("i", [0]*50)
 
 		self.Vertex_z = array.array("f", [0.])
 		self.npart = array.array("i", [0])
@@ -86,7 +86,7 @@ class TwoMuonAnalyzer(object):
 		self.allMuons_isolation_hadEt = array.array("f", [0.])
 		self.allMuons_numberOfValidHits = array.array("i", [0])
 		self.allMuons_normChi2 = array.array("f", [0.])
-		self.allMuons_charge = array.array("f", [0.])
+		self.allMuons_charge = array.array("i", [0])
 		self.mass = array.array("f", [0.])
 
 		self.event_vertex_z = array.array("f", [0.])
@@ -107,7 +107,7 @@ class TwoMuonAnalyzer(object):
 		self.goodMuons_isolation_hadEt = array.array("f", [0.])
 		self.goodMuons_numberOfValidHits = array.array("i", [0])
 		self.goodMuons_normChi2 = array.array("f", [0.])
-		self.goodMuons_charge = array.array("f", [0.])
+		self.goodMuons_charge = array.array("i", [0])
 		self.good_mass = array.array("f", [0.])
 
 	def selectMuons(self, iMuon):
