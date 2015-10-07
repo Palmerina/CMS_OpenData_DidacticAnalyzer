@@ -15,7 +15,6 @@ __maintainer__ = "Palmerina Gonzalez"
 __email__ = "pgi25@alumnos.unican.es"
 
 import ROOT
-from LeptonPair import LeptonPair #class LeptonPair inside LeptonPair.py
 from CutsConfig import CutsConfig
 import numpy as n
 from scipy.stats import norm
@@ -44,7 +43,7 @@ class TwoMuonAnalyzer(object):
 
 		# Initialization of variables		
 		
-		self.Muon_pt = array.array("f")
+		self.Muon_pt = array.array("f", [0.]*50)
 		self.Muon_eta = array.array("f", [0.]*50)
 		self.Muon_px = array.array("f", [0.]*50)
 		self.Muon_py = array.array("f", [0.]*50)
@@ -177,13 +176,12 @@ class TwoMuonAnalyzer(object):
 		"""
 		maxEv: maximum number of processed events
 		       maxEv=-1 runs over good the events
-		It selects the good muons applying the cut configuration
-		and paires up them creating objects of the class LeptonPair.
-		It gets the mass of every pair and adds the one which approaches 
-		the most to the Z boson's mass to the list self.zMass.  
+		It selects the good muons, gets their four-momentum (using TLorentzVector)
+		applying the cut configuration and paires them up.
+		It gets the mass of every pair and adds it to the array self.goodMass. 
+		
 		"""
 	
-		print "arranca process"	
 		# Address arrays to the TTree's branches
 
 		self.tree.SetBranchAddress("Muon_pt", self.Muon_pt)
@@ -211,14 +209,17 @@ class TwoMuonAnalyzer(object):
 
 		# Loop over the events
 
-		for i in range(0, numEntries): 
+		for i in range(0, numEntries):
+ 
+		#	print i+1, "processed events" 
+
 			self.tree.GetEntry(i)  # Muon_* arrays are filled for each event
-			print self.Muon_pt
+			
 			# Select events with at least two muons
 			if self.npart[0]<2:
 				continue
 			
-			print self.npart[0]
+		#	print self.npart[0], muons
 
 			# ALL MUONS
 			# Loop over the muons
