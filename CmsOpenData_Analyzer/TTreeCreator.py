@@ -179,11 +179,15 @@ class TTreeCreator(object):
 					self.Muon_numberOfValidHits[i]=muon.numberOfValidHits()
 					self.Muon_normChi2[i]=muon.normChi2()
 
+			#		if muon.normChi2() == float("inf"):
+				#		print muon.normChi2()
+					
+
 				else:
 					self.Muon_numberOfValidHits[i]= -999
 					self.Muon_normChi2[i]= -999.0
 
-							
+									
 
 			self.tree.Fill()
 
